@@ -69,3 +69,6 @@ crashlytics-build.properties
 
 # Recordings can get excessive in size
 /[Rr]ecordings/
+
+# Asset meta data should only be ignored when the corresponding asset is also ignored
+!/[Aa]ssets/**/*.meta
