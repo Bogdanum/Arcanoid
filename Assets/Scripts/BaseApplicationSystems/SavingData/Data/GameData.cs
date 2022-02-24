@@ -1,7 +1,5 @@
-using UnityEngine;
-
 [System.Serializable]
 public class GameData
 {
-   public SystemLanguage Language;
+   public LanguagesEnums.Language Language = LanguagesEnums.Language.English;
 }
