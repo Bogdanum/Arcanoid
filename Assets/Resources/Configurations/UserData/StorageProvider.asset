@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3598ad846f8848bb94810ee5e1254c83, type: 3}
   m_Name: StorageProvider
   m_EditorClassIdentifier: 
-  storageLocation: 0
+  storageLocation: 1
+  binaryFileName: GameData.dat

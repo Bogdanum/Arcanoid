@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerPrefsStorage : IStorage
+public class PlayerPrefsGameDataStorage : IGameDataStorage
 {
     private const string DATA_KEY = "GameData";
     

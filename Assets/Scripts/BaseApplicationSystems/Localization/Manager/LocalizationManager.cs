@@ -2,12 +2,16 @@ using UnityEngine;
 
 public class LocalizationManager : Singleton<LocalizationManager>
 {
-    private const string PARSER_CONFIG_PATH = "Configurations/Localization/CsvParserConfig";
+    private const string PARSER_CONFIG_PATH = "Configurations/Localization/JsonParserConfig";
     private ITranslationsStorage _translationsStorage;
 
     protected override void Init()
     {
         var parserConfig = LoadParserConfig();
+        if (parserConfig == null)
+        {
+            Debug.LogError("Config file not found in " + PARSER_CONFIG_PATH, this);
+        }
         _translationsStorage = new TranslationsStorage(parserConfig, StoredDataManager.Instance);
     }
 

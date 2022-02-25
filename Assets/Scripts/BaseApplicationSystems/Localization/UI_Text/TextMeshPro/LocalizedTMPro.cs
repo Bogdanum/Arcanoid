@@ -1,10 +1,13 @@
+using System;
 using TMPro;
 using UnityEngine;
 
 public class LocalizedTMPro : MonoBehaviour , ILanguageChangeListener
 {
-    [SerializeField] protected TMP_Text label;
-    [SerializeField] protected string translationID = "translation_error";
+    [SerializeField] private TMP_Text label;
+    [SerializeField] private string translationID = "translation_error";
+    [SerializeField] private TextWithValueParams textWithValueParams;
+    private string _insertedValue;
 
     private void OnEnable()
     {
@@ -16,13 +19,33 @@ public class LocalizedTMPro : MonoBehaviour , ILanguageChangeListener
     {
         MessageBus.Unsubscribe(this);
     }
+    
+    public void ChangeTranslationID(string newID)
+    {
+        translationID = newID;
+        UpdateTranslation();
+    }
+    
+    public void InsertNumber(string insertedValue)
+    {
+        _insertedValue = insertedValue;
+        OnLanguageChanged();
+    }
 
-    protected void UpdateTranslation()
+    private void UpdateTranslation()
     {
         OnLanguageChanged();
     }
-    public virtual void OnLanguageChanged()
+    public void OnLanguageChanged()
     {
-        label.text = LocalizationManager.Instance.GetTranslation(translationID);
+        var translate = LocalizationManager.Instance.GetTranslation(translationID);
+        if (textWithValueParams.IsTextWithValue)
+        {
+            label.text = String.Format(textWithValueParams.Format, translate, _insertedValue);
+        }
+        else
+        {
+            label.text = translate;
+        }
     }
 }

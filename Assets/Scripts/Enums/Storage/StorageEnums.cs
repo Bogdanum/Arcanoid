@@ -2,6 +2,7 @@ public static class StorageEnums
 {
     public enum StorageLocation
     {
-        PlayerPrefs
+        PlayerPrefs,
+        BinaryFile
     }
 }

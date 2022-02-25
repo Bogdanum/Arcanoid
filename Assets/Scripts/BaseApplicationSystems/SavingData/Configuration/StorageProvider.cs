@@ -5,17 +5,22 @@ public class StorageProvider : ScriptableObject
 {
     [SerializeField, Space(10)] 
     private StorageEnums.StorageLocation storageLocation;
+    [SerializeField] private string binaryFileName = "GameData.dat";
     
-    public IStorage GetStorage()
+    public IGameDataStorage GetStorage()
     {
         switch (storageLocation)
         {
             case StorageEnums.StorageLocation.PlayerPrefs:
             {
-                return new PlayerPrefsStorage();
+                return new PlayerPrefsGameDataStorage();
+            }
+            case StorageEnums.StorageLocation.BinaryFile:
+            {
+                return new BinaryGameDataStorage(binaryFileName);
             }
             default: 
-                return new PlayerPrefsStorage();
+                return new PlayerPrefsGameDataStorage();
         }
     }
 }
