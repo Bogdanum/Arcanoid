@@ -23,7 +23,7 @@ public class MobileInputListener : MonoBehaviour, IInputBlockingHandler
 
         if (_isHolding && Input.GetMouseButtonUp(0))
         {
-            // push ball
+            MessageBus.RaiseEvent<ILaunchBallHandler>(handler => handler.OnLaunchCommand());
             _isHolding = false;
             return;
         }

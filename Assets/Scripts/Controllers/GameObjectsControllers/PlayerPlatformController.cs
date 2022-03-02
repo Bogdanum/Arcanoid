@@ -15,5 +15,11 @@ public class PlayerPlatformController : MonoBehaviour
     {
         platform.Init(settings.TargetPositionAccuracy, gameBounds.GetGameBoundarySizeX());
         platform.RefreshParameters(settings.InitialSpeed, settings.InitialSize);
+        SpawnBall();
+    }
+
+    private void SpawnBall()
+    {
+        MessageBus.RaiseEvent<IMainBallLifecycleHandler>(handler => handler.OnCreateNewBallOnPlatform(platform.SpawnPoint));
     }
 }
