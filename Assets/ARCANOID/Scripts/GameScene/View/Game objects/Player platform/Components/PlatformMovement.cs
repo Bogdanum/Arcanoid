@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class PlatformMovement : MonoBehaviour, IPointerPositionHandler
 {
-    [SerializeField] private Rigidbody2D rigidbody;
-    
+    [SerializeField] private new Rigidbody2D rigidbody;
+
     private Transform _platformTransform;
     private Vector3 _startPosition;
     private float _size;
