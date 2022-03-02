@@ -2,15 +2,13 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PoolsManager : Singleton<PoolsManager>
+public class PoolsManager : MonoBehaviour
 {
-    private const string POOLS_SETTINGS_PATH = "Configurations/PoolingSystem/PoolsSettings";
     private Dictionary<Type, SpecificObjectPool> _allPools;
 
-    protected override void Init()
+    public void Init(SpecificPoolsSettings settings)
     {
         _allPools = new Dictionary<Type, SpecificObjectPool>();
-        var settings = Resources.Load<SpecificPoolsSettings>(POOLS_SETTINGS_PATH);
         CreatePools(settings);
     }
 

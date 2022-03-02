@@ -1,26 +1,17 @@
 using UnityEngine;
+using Zenject;
 
-public class LocalizationManager : Singleton<LocalizationManager>
+public class LocalizationManager : MonoBehaviour
 {
-    private const string PARSER_CONFIG_PATH = "Configurations/Localization/JsonParserConfig";
     private ITranslationsStorage _translationsStorage;
+    [Inject] private StoredDataManager _storedDataManager;
 
-    protected override void Init()
+    public void Init(LanguageParserConfig parserConfig)
     {
-        var parserConfig = LoadParserConfig();
-        if (parserConfig == null)
-        {
-            Debug.LogError("Config file not found in " + PARSER_CONFIG_PATH, this);
-        }
-        _translationsStorage = new TranslationsStorage(parserConfig, StoredDataManager.Instance);
+        _translationsStorage = new TranslationsStorage(parserConfig, _storedDataManager);
     }
 
-    private LanguageParserConfig LoadParserConfig()
-    {
-        return Resources.Load<LanguageParserConfig>(PARSER_CONFIG_PATH);
-    }
-    
-    protected override void OnApplicationQuit() => SaveCurrentLanguage();
+    private void OnApplicationQuit() => SaveCurrentLanguage();
 
     private void OnApplicationPause(bool status) => SaveCurrentLanguage();
 

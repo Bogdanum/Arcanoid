@@ -1,12 +1,15 @@
 using System;
 using TMPro;
 using UnityEngine;
+using Zenject;
 
 public class LocalizedTMPro : MonoBehaviour , ILanguageChangeListener
 {
     [SerializeField] private TMP_Text label;
     [SerializeField] private string translationID = "translation_error";
     [SerializeField] private TextWithValueParams textWithValueParams;
+
+    [Inject] private LocalizationManager _localizationManager;
     private string _insertedValue;
 
     private void OnEnable()
@@ -38,7 +41,7 @@ public class LocalizedTMPro : MonoBehaviour , ILanguageChangeListener
     }
     public void OnLanguageChanged()
     {
-        var translate = LocalizationManager.Instance.GetTranslation(translationID);
+        var translate = _localizationManager.GetTranslation(translationID);
         if (textWithValueParams.IsTextWithValue)
         {
             label.text = String.Format(textWithValueParams.Format, translate, _insertedValue);

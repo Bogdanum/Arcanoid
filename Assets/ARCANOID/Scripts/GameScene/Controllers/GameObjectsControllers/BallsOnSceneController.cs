@@ -1,12 +1,14 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
 
 public class BallsOnSceneController : MonoBehaviour, IMainBallLifecycleHandler, ILaunchBallHandler
 {
     [SerializeField] private Transform ballsContainer;
     [SerializeField] private BallPhysicsSettings ballPhysicsSettings;
 
+    [Inject] private PoolsManager _poolsManager;
     private List<Ball> _ballsList;
     private Ball _currentBallOnPlatform;
     private float _currentBallslVelocity;
@@ -37,7 +39,7 @@ public class BallsOnSceneController : MonoBehaviour, IMainBallLifecycleHandler, 
 
     private Ball SpawnBallAtPosition(Vector3 position, Transform parent)
     {
-        return PoolsManager.Instance.GetItem<Ball>(position, parent);
+        return _poolsManager.GetItem<Ball>(position, parent);
     }
 
     private void SetBallsVelocity()
@@ -79,7 +81,7 @@ public class BallsOnSceneController : MonoBehaviour, IMainBallLifecycleHandler, 
 
     public void OnDestroyBall(Ball ball)
     {
-        PoolsManager.Instance.ReturnItemToPool(ball);
+        _poolsManager.ReturnItemToPool(ball);
         _ballsList.Remove(ball);
 
         if (_ballsList.Count < 1)
@@ -90,10 +92,9 @@ public class BallsOnSceneController : MonoBehaviour, IMainBallLifecycleHandler, 
 
     public void RemoveAllBallsOnScene()
     {
-        var poolManager = PoolsManager.Instance;
         foreach (var ball in _ballsList)
         {
-            poolManager.ReturnItemToPool(ball);
+            _poolsManager.ReturnItemToPool(ball);
         }
         _ballsList.Clear();
     }

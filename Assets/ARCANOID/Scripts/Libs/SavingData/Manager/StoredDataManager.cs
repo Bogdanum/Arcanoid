@@ -1,13 +1,12 @@
 using UnityEngine;
 
-public class StoredDataManager : Singleton<StoredDataManager>
+public class StoredDataManager : MonoBehaviour
 {
-    private const string PROVIDER_CONFIG_PATH = "Configurations/UserData/StorageProvider"; 
     private StorageProvider _storageProvider;
 
-    protected override void Init()
+    public void Init(StorageProvider storageProvider)
     {
-        _storageProvider = Resources.Load<StorageProvider>(PROVIDER_CONFIG_PATH);
+        _storageProvider = storageProvider;
     }
 
     public GameData GetGameData() => LoadData();

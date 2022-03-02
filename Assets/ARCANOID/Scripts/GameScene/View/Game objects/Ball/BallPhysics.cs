@@ -23,7 +23,7 @@ public class BallPhysics : MonoBehaviour
           ballRigidbody.simulated = true;
      }
 
-     private void FixedUpdate()
+     private void Update()
      {
           if (Mathf.Abs(ballRigidbody.velocity.magnitude - _velocity) > 0)
           {
