@@ -4,23 +4,18 @@ using UnityEngine;
 public class StorageProvider : ScriptableObject
 {
     [SerializeField, Space(10)] 
-    private StorageEnums.StorageLocation storageLocation;
-    [SerializeField] private string binaryFileName = "GameData.dat";
-    
-    public IGameDataStorage GetStorage()
+    private StorageLocation storageLocation = StorageLocation.BinaryFile;
+
+    public IDataStorage<T> GetStorage<T>() where T : IStoredData
     {
         switch (storageLocation)
         {
-            case StorageEnums.StorageLocation.PlayerPrefs:
+            case StorageLocation.BinaryFile:
             {
-                return new PlayerPrefsGameDataStorage();
-            }
-            case StorageEnums.StorageLocation.BinaryFile:
-            {
-                return new BinaryGameDataStorage(binaryFileName);
+                return new BinaryDataStorage<T>();
             }
             default: 
-                return new PlayerPrefsGameDataStorage();
+                return new BinaryDataStorage<T>();
         }
     }
 }

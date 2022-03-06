@@ -9,7 +9,7 @@ public class StoredDataManagerInstaller : MonoInstaller
     public override void InstallBindings()
     {
         var storedDataManagerInstance = Container.InstantiatePrefabForComponent<StoredDataManager>(storedDataManager);
-        Container.Bind<StoredDataManager>().FromInstance(storedDataManagerInstance).AsSingle().NonLazy();
         storedDataManagerInstance.Init(storageProvider);
+        Container.Bind<StoredDataManager>().FromInstance(storedDataManagerInstance).AsSingle().NonLazy();
     }
 }

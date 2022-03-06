@@ -1,4 +1,4 @@
 public interface ILanguageChangeListener : ISubscriber
 {
-    void OnLanguageChanged();
+    void OnLanguageChanged(LocalizationManager localizationManager);
 }

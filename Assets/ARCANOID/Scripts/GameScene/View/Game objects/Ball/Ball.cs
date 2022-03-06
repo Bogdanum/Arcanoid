@@ -8,7 +8,7 @@ public class Ball : PoolItem
     private BallBaseSettings _ballSettings;
     private float _velocity;
     
-    public float Damage { get; private set; }
+    public int Damage { get; private set; }
 
     public void Init(BallBaseSettings settings)
     {
