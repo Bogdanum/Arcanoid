@@ -17,12 +17,12 @@ public abstract class DestructibleBlock : Block
 
     public virtual void SetInitialParams(BlockRendererParamsID paramsID)
     {
-        collider.Enable();
+        blockCollider.Enable();
         _healthPoints = _designProps.BlockHealth.DefaultHealth;
         cracksRenderer.Refresh();
         var rendererParams = _designProps.GetBlockRendererParamsByID(paramsID);
         mainSpriteRenderer.SetSprite(rendererParams.mainSprite);
-        particleSystem.SetColor(rendererParams.particlesColor);
+        blockParticleSystem.SetColor(rendererParams.particlesColor);
 
         MessageBus.RaiseEvent<IBlockLifecycleHandler>(handler => handler.OnDestructibleBlockSpawned());
     }
@@ -30,16 +30,16 @@ public abstract class DestructibleBlock : Block
     public override void OnSpawned()
     {
         base.OnSpawned();
-        collider.onCollisionEnter += OnHitByBall;
-        collider.onTriggerEnter += Destroy;
+        blockCollider.onCollisionEnter += OnHitByBall;
+        blockCollider.onTriggerEnter += Destroy;
     }
 
     public override void OnDespawned()
     {
         base.OnDespawned();
         DisableTriggerColliderState();
-        collider.onCollisionEnter -= OnHitByBall;
-        collider.onTriggerEnter -= Destroy;
+        blockCollider.onCollisionEnter -= OnHitByBall;
+        blockCollider.onTriggerEnter -= Destroy;
     }
 
     public void OnHitByBall(Collider2D other)
@@ -73,19 +73,19 @@ public abstract class DestructibleBlock : Block
     private IEnumerator PlayParticlesAndDestroy()
     {
         DisableView();
-        yield return particleSystem.Play();
+        yield return blockParticleSystem.Play();
         OnCompleteDestroyParticles();
     }
 
     private void DisableView()
     {
         mainSpriteRenderer.Disable();
-        collider.Disable();
+        blockCollider.Disable();
         cracksRenderer.Disable();
     }
 
     protected abstract void OnCompleteDestroyParticles();
 
-    public void SetTriggerColliderState() => collider.SetTrigger(true);
-    public void DisableTriggerColliderState() => collider.SetTrigger(false);
+    public void SetTriggerColliderState() => blockCollider.SetTrigger(true);
+    public void DisableTriggerColliderState() => blockCollider.SetTrigger(false);
 }

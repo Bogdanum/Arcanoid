@@ -1,8 +1,8 @@
 using UnityEngine;
 
 public class BlockCracksRenderer : MonoBehaviour
-{
-    [SerializeField] private SpriteRenderer renderer;
+{ 
+    [SerializeField] private SpriteRenderer cracksRenderer;
     private BlockHealth _blockHealth;
     
     public void Init(BlockHealth blockHealth)
@@ -12,17 +12,17 @@ public class BlockCracksRenderer : MonoBehaviour
 
     public void Refresh()
     {
-        renderer.enabled = true;
-        renderer.sprite = null;
+        cracksRenderer.enabled = true;
+        cracksRenderer.sprite = null;
     }
 
-    public void Disable() => renderer.enabled = false;
+    public void Disable() => cracksRenderer.enabled = false;
 
     public void ShowCracksByHealth(int healthPoints)
     {
         Sprite cracksState = _blockHealth.GetCracksByHealth(healthPoints);
-        renderer.sprite = cracksState;
-        renderer.size = Vector2.one;
+        cracksRenderer.sprite = cracksState;
+        cracksRenderer.size = Vector2.one;
     }
     
 }

@@ -3,17 +3,17 @@ using UnityEngine;
 
 public class BlockParticleSystem : MonoBehaviour
 {
-    [SerializeField] private ParticleSystem particleSystem;
+    [SerializeField] private ParticleSystem particles;
 
     public void SetColor(Color color)
     {
-        var settings = particleSystem.main;
+        var settings = particles.main;
         settings.startColor = color;
     }
 
     public IEnumerator Play()
     {
-        particleSystem.Play();
-        yield return new WaitUntil(() => !particleSystem.isPlaying);
+        particles.Play();
+        yield return new WaitUntil(() => !particles.isPlaying);
     }
 }

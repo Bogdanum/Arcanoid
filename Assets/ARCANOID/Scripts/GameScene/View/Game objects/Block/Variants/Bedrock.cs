@@ -16,7 +16,7 @@ public class Bedrock : Block
     {
         var rendererParams = _properties.GetBlockRendererParamsByID(BlockRendererParamsID.Bedrock);
         mainSpriteRenderer.SetSprite(rendererParams.mainSprite);
-        particleSystem.SetColor(rendererParams.particlesColor);
+        blockParticleSystem.SetColor(rendererParams.particlesColor);
     }
 
     public override void Destroy()
@@ -32,7 +32,7 @@ public class Bedrock : Block
     private IEnumerator PlayParticlesAndDestroy(Action onComplete = null)
     {
         mainSpriteRenderer.Disable();
-        yield return particleSystem.Play();
+        yield return blockParticleSystem.Play();
         onComplete?.Invoke();
     }
 }

@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class BlockCollider : MonoBehaviour
 {
-    [SerializeField] protected BoxCollider2D collider;
+    [SerializeField] protected BoxCollider2D targetCollider;
     public event Action onTriggerEnter;
     public event Action<Collider2D> onCollisionEnter;
 
@@ -17,7 +17,7 @@ public class BlockCollider : MonoBehaviour
         onCollisionEnter?.Invoke(collision.collider);
     }
 
-    public void Enable() => collider.enabled = true;
-    public void Disable() => collider.enabled = false;
-    public void SetTrigger(bool isTrigger) => collider.isTrigger = isTrigger;
+    public void Enable() => targetCollider.enabled = true;
+    public void Disable() => targetCollider.enabled = false;
+    public void SetTrigger(bool isTrigger) => targetCollider.isTrigger = isTrigger;
 }

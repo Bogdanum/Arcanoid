@@ -2,27 +2,27 @@ using UnityEngine;
 
 public class SpriteComponent : MonoBehaviour
 {
-    [SerializeField] private SpriteRenderer renderer;
+    [SerializeField] private SpriteRenderer mainSpriteRenderer;
     [SerializeField] private BonusRendererParams bonusRendererParams;
 
     public void RefreshScale()
     {
         if (bonusRendererParams.isBonusRenderer)
         {
-            renderer.size = bonusRendererParams.bonusSpriteScale;
+            mainSpriteRenderer.size = bonusRendererParams.bonusSpriteScale;
         }
     }
 
     public void SetSprite(Sprite sprite)
     {
-        renderer.enabled = true;
-        renderer.sprite = sprite;
+        mainSpriteRenderer.enabled = true;
+        mainSpriteRenderer.sprite = sprite;
         RefreshScale();
     }
 
     public void Disable()
     {
-        renderer.enabled = false;
+        mainSpriteRenderer.enabled = false;
     }
 }
 
