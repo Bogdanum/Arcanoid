@@ -1,12 +1,13 @@
 using System.Collections.Generic;
+using UnityEngine;
 
 public class TranslationsStorage : ITranslationsStorage
 {
     private Dictionary<string, string> _translationsDictionary;
     private ILanguageParser _languageParser;
     private LanguageParserConfig _parserConfig;
-    private LanguagesEnums.Language _currentLanguage;
     private StoredDataManager _storedDataManager;
+    private LanguagesEnums.Language _currentLanguage;
 
     public TranslationsStorage(LanguageParserConfig parserConfig, StoredDataManager storedDataManager)
     {
@@ -44,6 +45,8 @@ public class TranslationsStorage : ITranslationsStorage
     
     public void SetLanguage(LanguagesEnums.Language language)
     {
+        if (language == _currentLanguage) return;
+        
         _currentLanguage = language;
         CreateParser(_parserConfig);
         SaveCurrentLanguage();

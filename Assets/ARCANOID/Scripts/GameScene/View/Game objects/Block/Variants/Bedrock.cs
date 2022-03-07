@@ -17,6 +17,7 @@ public class Bedrock : Block
         var rendererParams = _properties.GetBlockRendererParamsByID(BlockRendererParamsID.Bedrock);
         mainSpriteRenderer.SetSprite(rendererParams.mainSprite);
         blockParticleSystem.SetColor(rendererParams.particlesColor);
+        blockParticleSystem.SetSize(transform.localScale);
     }
 
     public override void Destroy()

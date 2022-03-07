@@ -11,6 +11,11 @@ public class BlockParticleSystem : MonoBehaviour
         settings.startColor = color;
     }
 
+    public void SetSize(Vector3 size)
+    {
+        transform.localScale = size;
+    }
+
     public IEnumerator Play()
     {
         particles.Play();

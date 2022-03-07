@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 
-public class BallsOnSceneController : MonoBehaviour, IMainBallLifecycleHandler, ILaunchBallHandler
+public class BallsOnSceneController : MonoBehaviour, IMainBallLifecycleHandler, ILaunchBallHandler, IComplexityIncreaseHandler
 {
     [SerializeField] private Transform ballsContainer;
     [SerializeField] private BallPhysicsSettings ballPhysicsSettings;
@@ -54,14 +54,15 @@ public class BallsOnSceneController : MonoBehaviour, IMainBallLifecycleHandler, 
         SetBallsVelocity();
     }
 
-    public void IncreaseBallsVelocityByStep()
+    
+    public void OnIncreasingComplexity()
     {
         if (_currentBallsVelocity >= ballPhysicsSettings.MaxVelocity) return;
 
         _currentBallsVelocity += ballPhysicsSettings.VelocityIncreaseStep;
         SetBallsVelocity();
     }
-
+    
     public void ExecuteMethodForAllBalls(Action<Ball> method)
     {
         foreach (var ball in _ballsList)

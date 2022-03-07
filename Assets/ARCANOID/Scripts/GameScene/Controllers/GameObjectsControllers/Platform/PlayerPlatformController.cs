@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerPlatformController : MonoBehaviour
+public class PlayerPlatformController : MonoBehaviour, IStartLevelHandler
 {
     [SerializeField] private GameBounds gameBounds;
     [SerializeField] private Platform platform;
@@ -11,10 +11,18 @@ public class PlayerPlatformController : MonoBehaviour
         Init();
     }
 
+    private void OnEnable() => MessageBus.Subscribe(this);
+    private void OnDisable() => MessageBus.Unsubscribe(this);
+
     private void Init()
     {
         platform.Init(settings.TargetPositionAccuracy, gameBounds.GetGameBoundarySizeX());
         platform.RefreshParameters(settings.InitialSpeed, settings.InitialSize);
+        SpawnBall();  // <-- test
+    }
+    
+    public void OnLevelStarted()
+    {
         SpawnBall();
     }
 

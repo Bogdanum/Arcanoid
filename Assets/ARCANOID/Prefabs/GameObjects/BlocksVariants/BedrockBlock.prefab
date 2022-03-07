@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6655255597928517506}
+  - component: {fileID: 5507673077613454664}
   - component: {fileID: 6576825960386927565}
   - component: {fileID: 2913452394362680101}
-  - component: {fileID: 5507673077613454664}
   m_Layer: 7
   m_Name: ParticleSystem
   m_TagString: Untagged
@@ -33,6 +33,19 @@ Transform:
   m_Father: {fileID: 6655255599009907350}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5507673077613454664
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6655255597928517509}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2d4298e85b44dc6b1a100d2b8a54c70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particles: {fileID: 6576825960386927565}
 --- !u!198 &6576825960386927565
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -607,7 +620,7 @@ ParticleSystem:
     gravityModifier:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 0.5
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -4863,19 +4876,6 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
---- !u!114 &5507673077613454664
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6655255597928517509}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f2d4298e85b44dc6b1a100d2b8a54c70, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  particleSystem: {fileID: 6576825960386927565}
 --- !u!1 &6655255598543717862
 GameObject:
   m_ObjectHideFlags: 0
@@ -4918,7 +4918,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 6655255598543717862}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 4fe073ddf2ca2479a959a33cdcaa9d94, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -4947,7 +4947,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 705cfbcf0fe8435a8a4f2823cd4c1b9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collider: {fileID: 7871150146933336749}
+  targetCollider: {fileID: 7871150146933336749}
 --- !u!50 &2264729734670565939
 Rigidbody2D:
   serializedVersion: 4
@@ -5015,9 +5015,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcc958d77d2a44dd8f6658cb278e892e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collider: {fileID: 2018450171774263918}
+  blockCollider: {fileID: 2018450171774263918}
   mainSpriteRenderer: {fileID: 8559668890734105905}
-  particleSystem: {fileID: 5507673077613454664}
+  blockParticleSystem: {fileID: 5507673077613454664}
 --- !u!1 &6655255599865684716
 GameObject:
   m_ObjectHideFlags: 0
@@ -5113,7 +5113,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33499a6ac45541bbbb211cb7700554d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  renderer: {fileID: 6343618040766818946}
+  mainSpriteRenderer: {fileID: 6343618040766818946}
   bonusRendererParams:
     isBonusRenderer: 0
     bonusSpriteScale: {x: 0, y: 0}

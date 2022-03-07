@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PlatformMovement : MonoBehaviour, IPointerPositionHandler
 {
-    [SerializeField] private new Rigidbody2D rigidbody;
+    [SerializeField] private Rigidbody2D platformRigidbody;
 
     private Transform _platformTransform;
     private Vector3 _startPosition;
@@ -77,7 +77,7 @@ public class PlatformMovement : MonoBehaviour, IPointerPositionHandler
             float velocity = directionVector.normalized.x * _speed;
             target.x = _platformTransform.position.x + velocity * Time.fixedDeltaTime;
             
-            rigidbody.MovePosition(target);
+            platformRigidbody.MovePosition(target);
         }
     }
 }

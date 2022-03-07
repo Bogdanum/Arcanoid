@@ -23,6 +23,7 @@ public abstract class DestructibleBlock : Block
         var rendererParams = _designProps.GetBlockRendererParamsByID(paramsID);
         mainSpriteRenderer.SetSprite(rendererParams.mainSprite);
         blockParticleSystem.SetColor(rendererParams.particlesColor);
+        blockParticleSystem.SetSize(transform.localScale);
 
         MessageBus.RaiseEvent<IBlockLifecycleHandler>(handler => handler.OnDestructibleBlockSpawned());
     }

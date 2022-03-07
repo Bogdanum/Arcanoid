@@ -1,9 +1,7 @@
-
-public static class ScenesEnums 
+public enum Scene
 {
-     public enum Scene
-     {
-          MenuScene = 0,
-          GameScene = 1
-     }
+     MenuScene = 0,
+     LevelSelection = 1,
+     GameScene = 2
 }
+

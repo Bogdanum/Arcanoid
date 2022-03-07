@@ -47,9 +47,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17881ab0471542eea4b0e828b5434aba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collider: {fileID: 2717701840512479236}
+  blockCollider: {fileID: 2717701840512479236}
   mainSpriteRenderer: {fileID: 4531694028717430335}
-  particleSystem: {fileID: 3529312039805545110}
+  blockParticleSystem: {fileID: 3529312039805545110}
   cracksRenderer: {fileID: 7050649909951525898}
 --- !u!1 &1912373077351638401
 GameObject:
@@ -146,7 +146,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33499a6ac45541bbbb211cb7700554d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  renderer: {fileID: 4753203122758197484}
+  mainSpriteRenderer: {fileID: 4753203122758197484}
   bonusRendererParams:
     isBonusRenderer: 0
     bonusSpriteScale: {x: 0, y: 0}
@@ -195,7 +195,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2d4298e85b44dc6b1a100d2b8a54c70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  particleSystem: {fileID: 4385441823948518291}
+  particles: {fileID: 4385441823948518291}
 --- !u!198 &4385441823948518291
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -770,7 +770,7 @@ ParticleSystem:
     gravityModifier:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 0.5
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -5097,7 +5097,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -5121,7 +5121,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0ca4dcd9af149e1a5aa4b3f96fa0136, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  renderer: {fileID: 8853220785100463674}
+  cracksRenderer: {fileID: 8853220785100463674}
 --- !u!1 &7838015799263611201
 GameObject:
   m_ObjectHideFlags: 0
@@ -5164,7 +5164,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 7838015799263611201}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 4fe073ddf2ca2479a959a33cdcaa9d94, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -5193,7 +5193,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 705cfbcf0fe8435a8a4f2823cd4c1b9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collider: {fileID: 2353712260410492048}
+  targetCollider: {fileID: 2353712260410492048}
 --- !u!50 &125433131378310387
 Rigidbody2D:
   serializedVersion: 4

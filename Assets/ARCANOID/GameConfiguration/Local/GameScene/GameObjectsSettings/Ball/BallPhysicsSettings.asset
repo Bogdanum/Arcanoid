@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: BallPhysicsSettings
   m_EditorClassIdentifier: 
   initialVelocity: 4
-  maxVelocity: 10
-  velocityIncreaseStep: 0.5
+  maxVelocity: 7
+  velocityIncreaseStep: 0.1
