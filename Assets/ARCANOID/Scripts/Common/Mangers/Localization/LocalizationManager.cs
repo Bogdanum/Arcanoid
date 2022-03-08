@@ -40,6 +40,6 @@ public class LocalizationManager : MonoBehaviour
 
     private void RaiseUpdateLanguageEvent()
     {
-        MessageBus.RaiseEvent<ILanguageChangeListener>(listener => listener.OnLanguageChanged(this));
+        MessageBus.RaiseEvent<ILanguageChangeListener>(listener => listener.OnLanguageChanged());
     }
 }

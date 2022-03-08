@@ -1,10 +1,12 @@
 using UnityEngine;
+using Zenject;
+
 public abstract class LocalizedText : MonoBehaviour, ILanguageChangeListener
 {
     [SerializeField] protected string translationID = "translation_error";
     [SerializeField] protected TextWithValueParams textWithValueParams;
+    [Inject] protected LocalizationManager _localizationManager;
     
-    protected LocalizationManager _localizationManager;
     protected string _insertedValue;
 
     protected virtual void OnEnable()
@@ -31,12 +33,8 @@ public abstract class LocalizedText : MonoBehaviour, ILanguageChangeListener
         RefreshLabel();
     }
 
-    public void OnLanguageChanged(LocalizationManager localizationManager)
+    public void OnLanguageChanged()
     {
-        if (_localizationManager == null)
-        {
-            _localizationManager = localizationManager;
-        }
         RefreshLabel();
     }
 

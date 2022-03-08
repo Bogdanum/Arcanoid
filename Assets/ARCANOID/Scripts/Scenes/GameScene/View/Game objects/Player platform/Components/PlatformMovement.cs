@@ -73,8 +73,8 @@ public class PlatformMovement : MonoBehaviour, IPointerPositionHandler
 
         if (absDistanceToTarget > _targetPosAccuracy)
         {
-            var directionVector = target - (Vector2)transform.position;
-            float velocity = directionVector.normalized.x * _speed;
+            float directionX = target.x - transform.position.x;
+            float velocity = directionX * _speed;
             target.x = _platformTransform.position.x + velocity * Time.fixedDeltaTime;
             
             platformRigidbody.MovePosition(target);

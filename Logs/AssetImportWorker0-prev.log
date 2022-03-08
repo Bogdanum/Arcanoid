@@ -22,100 +22,100 @@ AssetImportWorker0
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-53352
+49433
 Successfully changed project path to: /Users/bogdan/Bogdanum Games/Arcanoid
 /Users/bogdan/Bogdanum Games/Arcanoid
 Using Asset Import Pipeline V2.
-Refreshing native plugins compatible for Editor in 60.11 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 48.66 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2020.3.26f1 (7298b473bc1a)
 [Subsystems] Discovering subsystems at path /Applications/Unity/Hub/Editor/2020.3.26f1/Unity.app/Contents/Resources/UnitySubsystems
 [Subsystems] Discovering subsystems at path /Users/bogdan/Bogdanum Games/Arcanoid/Assets
 GfxDevice: creating device client; threaded=0
-2022-03-07 15:19:48.217 Unity[4480:145086] (null) preferred device: Apple M1 (high power)
-2022-03-07 15:19:48.217 Unity[4480:145086] Metal devices available: 1
-2022-03-07 15:19:48.217 Unity[4480:145086] 0: Apple M1 (high power)
-2022-03-07 15:19:48.217 Unity[4480:145086] Forcing user selected device: Apple M1 (high power)
+2022-03-08 18:10:49.964 Unity[2589:25841] (null) preferred device: Apple M1 (high power)
+2022-03-08 18:10:49.964 Unity[2589:25841] Metal devices available: 1
+2022-03-08 18:10:49.964 Unity[2589:25841] 0: Apple M1 (high power)
+2022-03-08 18:10:49.964 Unity[2589:25841] Forcing user selected device: Apple M1 (high power)
 Initializing Metal device caps: Apple M1
 Initialize mono
 Mono path[0] = '/Applications/Unity/Hub/Editor/2020.3.26f1/Unity.app/Contents/Managed'
 Mono path[1] = '/Applications/Unity/Hub/Editor/2020.3.26f1/Unity.app/Contents/MonoBleedingEdge/lib/mono/unityjit'
 Mono config path = '/Applications/Unity/Hub/Editor/2020.3.26f1/Unity.app/Contents/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56480
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56589
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: /Applications/Unity/Hub/Editor/2020.3.26f1/Unity.app/Contents/PlaybackEngines/MacStandaloneSupport/UnityEditor.OSXStandalone.Extensions.dll
-Registered in 0.001058 seconds.
+Registered in 0.001855 seconds.
 Native extension for OSXStandalone target not found
-Refreshing native plugins compatible for Editor in 47.66 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 52.27 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.182 seconds
+- Completed reload, in  1.140 seconds
 Domain Reload Profiling:
-	ReloadAssembly (1182ms)
-		BeginReloadAssembly (93ms)
+	ReloadAssembly (1140ms)
+		BeginReloadAssembly (79ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (0ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
 			CreateAndSetChildDomain (2ms)
-		EndReloadAssembly (978ms)
-			LoadAssemblies (91ms)
+		EndReloadAssembly (950ms)
+			LoadAssemblies (77ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (182ms)
+			SetupTypeCache (173ms)
 			ReleaseScriptCaches (0ms)
-			RebuildScriptCaches (39ms)
-			SetupLoadedEditorAssemblies (486ms)
+			RebuildScriptCaches (40ms)
+			SetupLoadedEditorAssemblies (467ms)
 				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (11ms)
+				InitializePlatformSupportModulesInManaged (10ms)
 				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (48ms)
+				RefreshPlugins (52ms)
 				BeforeProcessingInitializeOnLoad (26ms)
-				ProcessInitializeOnLoadAttributes (287ms)
-				ProcessInitializeOnLoadMethodAttributes (111ms)
+				ProcessInitializeOnLoadAttributes (277ms)
+				ProcessInitializeOnLoadMethodAttributes (101ms)
 				AfterProcessingInitializeOnLoad (0ms)
-				EditorAssembliesLoaded (3ms)
+				EditorAssembliesLoaded (1ms)
 			ExecutionOrderSort2 (0ms)
 			AwakeInstancesAfterBackupRestoration (0ms)
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.004578 seconds.
+Registered in 0.003965 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for OSXStandalone target not found
-Refreshing native plugins compatible for Editor in 47.38 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 49.30 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  2.194 seconds
+- Completed reload, in  2.183 seconds
 Domain Reload Profiling:
-	ReloadAssembly (2196ms)
-		BeginReloadAssembly (240ms)
+	ReloadAssembly (2185ms)
+		BeginReloadAssembly (245ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (30ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
 			CreateAndSetChildDomain (29ms)
-		EndReloadAssembly (1869ms)
-			LoadAssemblies (192ms)
+		EndReloadAssembly (1857ms)
+			LoadAssemblies (198ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (381ms)
+			SetupTypeCache (369ms)
 			ReleaseScriptCaches (1ms)
-			RebuildScriptCaches (55ms)
-			SetupLoadedEditorAssemblies (953ms)
+			RebuildScriptCaches (57ms)
+			SetupLoadedEditorAssemblies (943ms)
 				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (8ms)
+				InitializePlatformSupportModulesInManaged (9ms)
 				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (47ms)
-				BeforeProcessingInitializeOnLoad (140ms)
-				ProcessInitializeOnLoadAttributes (705ms)
-				ProcessInitializeOnLoadMethodAttributes (51ms)
+				RefreshPlugins (49ms)
+				BeforeProcessingInitializeOnLoad (141ms)
+				ProcessInitializeOnLoadAttributes (695ms)
+				ProcessInitializeOnLoadMethodAttributes (48ms)
 				AfterProcessingInitializeOnLoad (1ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (30ms)
+			AwakeInstancesAfterBackupRestoration (31ms)
 Platform modules already initialized, skipping
-Validating Project structure ... 0.009143 seconds.
+Validating Project structure ... 0.006071 seconds.
 Shader import version has changed; will reimport all shaders...
-Upgrading shader files ...0.017567 seconds.
+Upgrading shader files ...0.016751 seconds.
 Application.AssetDatabase Initial Script Refresh Start
 RefreshInfo: InitialScriptRefreshV2(NoUpdateAssetOptions) scanfilter:  ... 1 filters
 RefreshProfiler: Total: 0.000ms
@@ -125,20 +125,20 @@ Application.AssetDatabase.Refresh End
 RefreshInfo: StopAssetImportingV2(ForceSynchronousImport) scanfilter: 
 RefreshProfiler: Total: 0.000ms
 Launching external process: /Applications/Unity/Hub/Editor/2020.3.26f1/Unity.app/Contents/Tools/UnityShaderCompiler
-Launched and connected shader compiler UnityShaderCompiler after 0.17 seconds
+Launched and connected shader compiler UnityShaderCompiler after 0.02 seconds
 Initializing Unity extensions:
-2022-03-07 15:19:53.449 Unity[4480:145086] NSEventModifierFlagFunction specified to -setKeyEquivalentModifierMask: for item <NSMenuItem: 0x600000ac6220 Font Asset, ke='Command-F12'>, but is only supported for system-provided menu items; will not be used
-2022-03-07 15:19:53.453 Unity[4480:145086] NSEventModifierFlagFunction specified to -setKeyEquivalentModifierMask: for item <NSMenuItem: 0x600000adadf0 Font Asset, ke='Command-F12'>, but is only supported for system-provided menu items; will not be used
+2022-03-08 18:10:54.795 Unity[2589:25841] NSEventModifierFlagFunction specified to -setKeyEquivalentModifierMask: for item <NSMenuItem: 0x60000331fcd0 Font Asset, ke='Command-F12'>, but is only supported for system-provided menu items; will not be used
+2022-03-08 18:10:54.799 Unity[2589:25841] NSEventModifierFlagFunction specified to -setKeyEquivalentModifierMask: for item <NSMenuItem: 0x600003372ae0 Font Asset, ke='Command-F12'>, but is only supported for system-provided menu items; will not be used
 ========================================================================
 Worker process is ready to serve import requests
-Refreshing native plugins compatible for Editor in 0.45 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 0.47 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2580 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 2584 Unused Serialized files (Serialized files now loaded: 0)
 System memory in use before: 212.3 MB.
 System memory in use after: 211.6 MB.
 
-Unloading 165 unused Assets to reduce memory usage. Loaded Objects now: 3055.
-Total: 3.793708 ms (FindLiveObjects: 0.151125 ms CreateObjectMapping: 0.057292 ms MarkObjects: 3.161375 ms  DeleteObjects: 0.422625 ms)
+Unloading 167 unused Assets to reduce memory usage. Loaded Objects now: 3059.
+Total: 2.626792 ms (FindLiveObjects: 0.121041 ms CreateObjectMapping: 0.057500 ms MarkObjects: 2.020917 ms  DeleteObjects: 0.426500 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
@@ -152,81 +152,25 @@ AssetImportParameters requested are different than current active one (requested
   custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
 ========================================================================
 Received Import Request.
-  path: Assets/ARCANOID/Prefabs/UI/Layers/SceneLoader.prefab
-  artifactKey: Guid(f85fa2bf6b82d41389ae0c253ddb8c3e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/ARCANOID/Prefabs/UI/Layers/SceneLoader.prefab using Guid(f85fa2bf6b82d41389ae0c253ddb8c3e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f7a23332d8a03d11cc8bd154fa528e12') in 0.397846 seconds 
-  Import took 0.403686 seconds .
+  path: Assets/ARCANOID/Scripts/Libs/EventSystem
+  artifactKey: Guid(6389f18d39fd4410b5e4b36c4c4d220e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/ARCANOID/Scripts/Libs/EventSystem using Guid(6389f18d39fd4410b5e4b36c4c4d220e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bdd4f5e1d176911c1a5b5461e081ab37') in 0.006196 seconds 
+  Import took 0.009210 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 424.633357 seconds.
-  path: Assets/ARCANOID/Editor
-  artifactKey: Guid(d3afda3830d164f099fa2223bd27d881) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/ARCANOID/Editor using Guid(d3afda3830d164f099fa2223bd27d881) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '729954c5c6ecb66d3e1cdda292b281df') in 0.001918 seconds 
-  Import took 0.021081 seconds .
+  Time since last request: 0.000925 seconds.
+  path: Assets/ARCANOID/Scripts/Libs/EventSystem/MessageBus.cs
+  artifactKey: Guid(804bdd92d38141dd998c62896c90eb62) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/ARCANOID/Scripts/Libs/EventSystem/MessageBus.cs using Guid(804bdd92d38141dd998c62896c90eb62) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '23ac45035775039e46a952fec3351376') in 0.134261 seconds 
+  Import took 0.138748 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 4.796755 seconds.
-  path: Assets/ARCANOID/GameConfiguration/Global/Resources/Configurations/UserData
-  artifactKey: Guid(2de34dbdcd104de98572f1da3fecb01e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/ARCANOID/GameConfiguration/Global/Resources/Configurations/UserData using Guid(2de34dbdcd104de98572f1da3fecb01e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '09a26d2e45e20beb07220e773beefeb1') in 0.001765 seconds 
-  Import took 0.008234 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.863724 seconds.
-  path: Assets/ARCANOID/GameConfiguration/Global/Resources/Configurations/UserData/StorageProvider.asset
-  artifactKey: Guid(9dfbd557d0d6440fbb494ada4410082b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/ARCANOID/GameConfiguration/Global/Resources/Configurations/UserData/StorageProvider.asset using Guid(9dfbd557d0d6440fbb494ada4410082b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '735d6ae39a3cf425da4d0dde91b0cf39') in 0.100649 seconds 
-  Import took 0.107381 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 2.134498 seconds.
-  path: Assets/ARCANOID/GameConfiguration/Global/Resources/Configurations/Localization
-  artifactKey: Guid(9e0af00fbbc444938f1860fbfa03167b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/ARCANOID/GameConfiguration/Global/Resources/Configurations/Localization using Guid(9e0af00fbbc444938f1860fbfa03167b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dde73533c12e6ee3d17fead0550c937a') in 0.001740 seconds 
-  Import took 0.008114 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.568991 seconds.
-  path: Assets/ARCANOID/GameConfiguration/Global/Resources/Configurations/Localization/JsonParserConfig.asset
-  artifactKey: Guid(1a2276a2e40554d9c915264f57e1a391) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/ARCANOID/GameConfiguration/Global/Resources/Configurations/Localization/JsonParserConfig.asset using Guid(1a2276a2e40554d9c915264f57e1a391) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a592c5f94a52a8531207a02f90a6bfea') in 0.002894 seconds 
-  Import took 0.006175 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 5.668011 seconds.
-  path: Assets/ARCANOID/Resources/Localization/EnglishTranslation.json
-  artifactKey: Guid(8113c0d9003564976adde8dbc4ab5d82) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/ARCANOID/Resources/Localization/EnglishTranslation.json using Guid(8113c0d9003564976adde8dbc4ab5d82) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f310177ab7dc06f318f4bb85af8e920d') in 0.095586 seconds 
-  Import took 0.101090 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 27.896179 seconds.
-  path: Assets/ARCANOID/Resources/Localization/EnglishTranslation.json
-  artifactKey: Guid(8113c0d9003564976adde8dbc4ab5d82) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/ARCANOID/Resources/Localization/EnglishTranslation.json using Guid(8113c0d9003564976adde8dbc4ab5d82) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '850f11daa73dfb7e4842527ddc4fdbc1') in 0.016963 seconds 
-  Import took 0.042917 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 47.003826 seconds.
-  path: Assets/ARCANOID/Resources/Localization/RussianTranslation.json
-  artifactKey: Guid(2983b3510b44d422f8afe731deb8af3c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/ARCANOID/Resources/Localization/RussianTranslation.json using Guid(2983b3510b44d422f8afe731deb8af3c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a5bd94ab965cb3bdacb7427c7c4cd29f') in 0.029664 seconds 
-  Import took 0.075276 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 15.584874 seconds.
-  path: Assets/ARCANOID/Scripts/Common/ProjectContext/Resources/ProjectContext.prefab
-  artifactKey: Guid(44458b121a01c442991857f700e249d1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/ARCANOID/Scripts/Common/ProjectContext/Resources/ProjectContext.prefab using Guid(44458b121a01c442991857f700e249d1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '055c9fdb68e68f8f6d4ce7100dbb8937') in 0.048534 seconds 
-  Import took 0.052698 seconds .
+  Time since last request: 1.540577 seconds.
+  path: Assets/ARCANOID/Scripts/Libs/EventSystem/Interface
+  artifactKey: Guid(6d015e96545c404c826f45ba61983499) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/ARCANOID/Scripts/Libs/EventSystem/Interface using Guid(6d015e96545c404c826f45ba61983499) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5e490c2b40dddb93f6a160f3aec11b58') in 0.000813 seconds 
+  Import took 0.003855 seconds .
 
 AssetImportWorkerClient::OnTransportError - code=2 error=End of file
