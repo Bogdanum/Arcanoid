@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class Platform : MonoBehaviour
+public class Platform : MonoBehaviour, IPauseHandler
 {
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private PlatformMovement platformMovement;
@@ -46,4 +46,7 @@ public class Platform : MonoBehaviour
     }
 
     public void LockControl() => platformMovement.LockControl();
+    public void OnGamePaused() => LockControl();
+
+    public void OnGameResumed() => platformMovement.UnlockControl();
 }

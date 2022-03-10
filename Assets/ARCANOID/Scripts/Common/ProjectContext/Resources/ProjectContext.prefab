@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5442926502244582934}
   - component: {fileID: 8877760339164504499}
   - component: {fileID: 4620103529850727414}
+  - component: {fileID: 3981425374651247220}
   - component: {fileID: 5833517898206396785}
   - component: {fileID: 849288598081089685}
   - component: {fileID: 6840529946148899366}
@@ -54,6 +55,7 @@ MonoBehaviour:
   - {fileID: 4620103529850727414}
   - {fileID: 5833517898206396785}
   - {fileID: 849288598081089685}
+  - {fileID: 3981425374651247220}
   - {fileID: 6840529946148899366}
   _installerPrefabs: []
   _parentNewObjectsUnderContext: 1
@@ -97,6 +99,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   localizationManager: {fileID: 8153428913056225290, guid: 0cbce00b057d04c9e92d019891b4696b, type: 3}
   languageParserConfig: {fileID: 11400000, guid: 1a2276a2e40554d9c915264f57e1a391, type: 2}
+--- !u!114 &3981425374651247220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8757052223946265851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c80a2d23d813407aa8ffe4d189876b8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 6849726732435864225, guid: 73d350b84e7bf4df89d0438697e08c78, type: 3}
 --- !u!114 &5833517898206396785
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -128,6 +143,7 @@ MonoBehaviour:
   popups:
   - {fileID: 7582887936178321220, guid: 608ff6d17014c4298bd4f6cbcff10287, type: 3}
   - {fileID: 2298823397059424433, guid: 166b2555be4dd44bca9a8558814f9aa7, type: 3}
+  - {fileID: 3411387850130544864, guid: 97d8ef4da46e747ae9732884727954d3, type: 3}
 --- !u!114 &6840529946148899366
 MonoBehaviour:
   m_ObjectHideFlags: 0

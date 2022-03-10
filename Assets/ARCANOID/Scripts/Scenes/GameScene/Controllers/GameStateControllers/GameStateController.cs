@@ -57,18 +57,4 @@ public class GameStateController : MonoBehaviour, IGlobalGameStateHandler, IGame
     }
 
     #endregion
-
-    #region PAUSE
-
-    private void Pause()
-    {
-        
-    }
-
-    private void Resume()
-    {
-        
-    }
-
-    #endregion
 }

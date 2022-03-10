@@ -1,10 +1,11 @@
 using UnityEngine;
 using Zenject;
 
-public class BlocksOnSceneController : MonoBehaviour, IBlockLifecycleHandler, IClearGameFieldHandler
+public class BlocksOnSceneController : MonoBehaviour, IBlockLifecycleHandler, IClearGameFieldHandler, ILocalGameStateHandler
 {
     [SerializeField] private GridOfBlocks gridOfBlocks;
-    
+    [SerializeField] private ProgressSliderCounter progressSliderCounter;
+
     [Inject] private PoolsManager _poolsManager;
     private BlockSpawnerController _spawner;
     private int _blocksOnSceneCount;
@@ -33,6 +34,7 @@ public class BlocksOnSceneController : MonoBehaviour, IBlockLifecycleHandler, IC
     public void OnPlayingBlockDestructionParticles(Block block)
     {
         _blocksOnSceneCount--;
+        progressSliderCounter.UpdateProgress(_blocksOnSceneCount);
         gridOfBlocks.Remove(block);
         IncreaseGameComplexity();
         
@@ -57,5 +59,16 @@ public class BlocksOnSceneController : MonoBehaviour, IBlockLifecycleHandler, IC
     {
         _spawner.ClearBlocks();
         _blocksOnSceneCount = 0;
+        progressSliderCounter.ResetProgressBar();
     }
+
+    public void OnStartGame()
+    {
+        progressSliderCounter.InitProgressBar(0, _blocksOnSceneCount);
+    }
+    
+    public void OnPrepare() {}
+    
+    public void OnContinueGame() {}
+    public void OnEndGame() {}
 }
