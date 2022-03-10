@@ -23,7 +23,7 @@ public class LanguageButton : AnimatedButton
     {
         if (PointerEnter && Interactable)
         {
-            onSelectLanguage.Invoke(language);
+            onSelectLanguage?.Invoke(language);
         }
     }
 }

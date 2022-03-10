@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class GameFieldCreationController : MonoBehaviour
+public class GameFieldCreationController : MonoBehaviour, ILocalGameStateHandler
 {
      [SerializeField] private FieldBorders fieldBorders;
      [SerializeField] private Transform blocksContainer;
@@ -9,6 +9,9 @@ public class GameFieldCreationController : MonoBehaviour
      [SerializeField] private CellsVisualization cellsVisualization;
 
      private CellsGrid _cellsGrid;
+
+     private void OnEnable() => MessageBus.Subscribe(this);
+     private void OnDisable() => MessageBus.Unsubscribe(this);
 
      private void Awake()
      {
@@ -22,16 +25,16 @@ public class GameFieldCreationController : MonoBehaviour
           fieldBorders.Init();
      }
 
-     private void Start()
-     {
-          OnGamePreparation();
-     }
-
-     private void OnGamePreparation()
+     public void OnPrepare()
      {
           _cellsGrid.Create(5, 8);
           gridOfBlocks.Fill(_cellsGrid);
           _cellsGrid.SendCreateBlocksRequest();
      }
-     
+
+     public void OnStartGame() {}
+
+     public void OnContinueGame() {}
+
+     public void OnEndGame() {}
 }

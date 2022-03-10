@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 
-public class BallsOnSceneController : MonoBehaviour, IMainBallLifecycleHandler, ILaunchBallHandler, IComplexityIncreaseHandler
+public class BallsOnSceneController : MonoBehaviour, IMainBallLifecycleHandler, ILaunchBallHandler, IComplexityIncreaseHandler, ILocalGameStateHandler, IClearGameFieldHandler
 {
     [SerializeField] private Transform ballsContainer;
     [SerializeField] private BallPhysicsSettings ballPhysicsSettings;
@@ -87,11 +87,14 @@ public class BallsOnSceneController : MonoBehaviour, IMainBallLifecycleHandler, 
 
         if (_ballsList.Count < 1)
         {
-            MessageBus.RaiseEvent<IRemoveHealthHandler>(handler => handler.OnRemoveHealth());
+            MessageBus.RaiseEvent<IPlayerHealthChangeHandler>(handler => handler.OnRemoveHealth());
         }
     }
 
-    public void RemoveAllBallsOnScene()
+    public void OnEndGame() => RemoveAllBallsOnScene();
+    public void OnClearGameField() => RemoveAllBallsOnScene();
+    
+    private void RemoveAllBallsOnScene()
     {
         foreach (var ball in _ballsList)
         {
@@ -99,4 +102,11 @@ public class BallsOnSceneController : MonoBehaviour, IMainBallLifecycleHandler, 
         }
         _ballsList.Clear();
     }
+
+    public void OnPrepare()
+    {
+        _currentBallsVelocity = ballPhysicsSettings.InitialVelocity;
+    }
+    public void OnStartGame() {}
+    public void OnContinueGame() {}
 }

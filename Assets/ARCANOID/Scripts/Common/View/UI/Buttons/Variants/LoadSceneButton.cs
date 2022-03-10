@@ -22,7 +22,7 @@ public class LoadSceneButton : AnimatedButton
     {
         if (PointerEnter && Interactable)
         {
-            onClick.Invoke(targetScene);
+            onClick?.Invoke(targetScene);
         }
     }
 }

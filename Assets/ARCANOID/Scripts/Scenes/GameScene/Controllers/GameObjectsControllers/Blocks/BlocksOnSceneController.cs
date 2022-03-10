@@ -1,7 +1,7 @@
 using UnityEngine;
 using Zenject;
 
-public class BlocksOnSceneController : MonoBehaviour, IBlockLifecycleHandler
+public class BlocksOnSceneController : MonoBehaviour, IBlockLifecycleHandler, IClearGameFieldHandler
 {
     [SerializeField] private GridOfBlocks gridOfBlocks;
     
@@ -38,7 +38,7 @@ public class BlocksOnSceneController : MonoBehaviour, IBlockLifecycleHandler
         
         if (_blocksOnSceneCount < 1)
         {
-            // Victory
+            MessageBus.RaiseEvent<IGameResultHandler>(handler => handler.OnVictory());
         }
     }
 
@@ -51,5 +51,11 @@ public class BlocksOnSceneController : MonoBehaviour, IBlockLifecycleHandler
     {
         _spawner.DestroyConcreteBlock(block);
         gridOfBlocks.Remove(block);
+    }
+
+    public void OnClearGameField()
+    {
+        _spawner.ClearBlocks();
+        _blocksOnSceneCount = 0;
     }
 }

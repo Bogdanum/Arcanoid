@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Platform : MonoBehaviour
@@ -22,6 +23,7 @@ public class Platform : MonoBehaviour
         SetNewSpeed(speed);
         SetNewSize(size);
         platformMovement.RefreshParameters();
+        StopAllCoroutines();
     }
 
     public void SetNewSize(float size)
@@ -37,5 +39,11 @@ public class Platform : MonoBehaviour
     {
         platformMovement.SetNewSpeed(speed);
     }
-    
+
+    public void BackToInitialPosition(Action onComplete = null)
+    {
+        StartCoroutine(platformMovement.BackToInitialPosition(onComplete));
+    }
+
+    public void LockControl() => platformMovement.LockControl();
 }

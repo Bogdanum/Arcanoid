@@ -1,3 +1,5 @@
+using System;
+using System.Collections;
 using UnityEngine;
 
 public class PlatformMovement : MonoBehaviour, IPointerPositionHandler
@@ -15,12 +17,9 @@ public class PlatformMovement : MonoBehaviour, IPointerPositionHandler
     
     private void OnEnable() => MessageBus.Subscribe(this);
     private void OnDisable() => MessageBus.Unsubscribe(this);
-    
     public void LockControl() => _controlLock = true;
-    
     public void UnlockControl() => _controlLock = false;
-    
-    
+
     public void Init(float targetPosAccuracy, float gameBoundarySize)
     {
         _platformTransform = transform;
@@ -79,5 +78,17 @@ public class PlatformMovement : MonoBehaviour, IPointerPositionHandler
             
             platformRigidbody.MovePosition(target);
         }
+    }
+
+    public IEnumerator BackToInitialPosition(Action onComplete = null)
+    {
+        LockControl();
+        while (Mathf.Abs(_platformTransform.position.x - _startPosition.x) > _targetPosAccuracy)
+        {
+            SmoothMoveToTarget(_startPosition);
+            yield return new WaitForEndOfFrame();
+        }
+        UnlockControl();
+        onComplete?.Invoke();
     }
 }

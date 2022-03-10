@@ -15,9 +15,9 @@ MonoBehaviour:
   blockHealth:
     defaultHealth: 3
     cracksSteps:
-    - {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-    - {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-    - {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+    - {fileID: 21300000, guid: 30345386b632a4593a1331d30670fe63, type: 3}
+    - {fileID: 21300000, guid: d6a29f8a118a346b8814b899b13e501a, type: 3}
+    - {fileID: 21300000, guid: e0a2990efa8614c9d9aca3fadfd1f9b4, type: 3}
   blocksRendererSettings:
   - rendererParamsID: 1
     blockRendererParams:

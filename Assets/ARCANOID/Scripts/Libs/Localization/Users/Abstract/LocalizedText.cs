@@ -6,13 +6,13 @@ public abstract class LocalizedText : MonoBehaviour, ILanguageChangeListener
     [SerializeField] protected string translationID = "translation_error";
     [SerializeField] protected TextWithValueParams textWithValueParams;
     [Inject] protected LocalizationManager _localizationManager;
-    
+
     protected string _insertedValue;
 
     protected virtual void OnEnable()
     {
         MessageBus.Subscribe(this);
-        
+
         if (_localizationManager != null) RefreshLabel();
     }
 

@@ -5,7 +5,7 @@ using UnityEngine;
 public abstract class BasePopup : PoolableUIEntity
 {
     [SerializeField] private PopupAnimationController animationController;
-    
+
     public override void Init()
     {
         gameObject.SetActive(false);

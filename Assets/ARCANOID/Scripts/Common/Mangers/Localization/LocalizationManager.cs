@@ -17,7 +17,7 @@ public class LocalizationManager : MonoBehaviour
 
     private void SaveCurrentLanguage()
     {
-        _translationsStorage.SaveCurrentLanguage();
+        _translationsStorage?.SaveCurrentLanguage();
     }
 
     private void Start() => RaiseUpdateLanguageEvent();
