@@ -125,6 +125,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   popupsManager: {fileID: 5130880039729825515, guid: 1ce17e8864e2e4f60bb7c8e98613b382, type: 3}
   containerPrefab: {fileID: 5350986951393141301, guid: dfa11901bd4fb4c0299835e740db32fc, type: 3}
+  popups:
+  - {fileID: 7582887936178321220, guid: 608ff6d17014c4298bd4f6cbcff10287, type: 3}
+  - {fileID: 2298823397059424433, guid: 166b2555be4dd44bca9a8558814f9aa7, type: 3}
 --- !u!114 &6840529946148899366
 MonoBehaviour:
   m_ObjectHideFlags: 0
