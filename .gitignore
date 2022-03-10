@@ -8,12 +8,17 @@ Assets/Plugins/Editor/JetBrains*
 # Visual Studio Code
 .vscode/
 
+# MacOS
+*.DS_Store
+
 ### Unity ###
 [Ll]ibrary/
 [Tt]emp/
 [Oo]bj/
 [Bb]uild/
 [Bb]uilds/
+/[Ll]ogs/
+/[Uu]serSettings/
 Assets/AssetStoreTools*
 
 # Visual Studio cache directory
