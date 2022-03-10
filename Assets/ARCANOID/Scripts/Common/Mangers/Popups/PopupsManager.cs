@@ -2,20 +2,16 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Zenject;
 
 public class PopupsManager : MonoBehaviour
 {
-    [Inject] private PoolsManager _poolsManager;
-    private Transform _container;
-    private Dictionary<Type, BasePopup> _popupsStorage;
+    private PopupsContainer _container;
     private Stack<BasePopup> _stackOfPopups;
     
     public void Init(PopupsContainer container)
     {
-        _popupsStorage = new Dictionary<Type, BasePopup>();
         _stackOfPopups = new Stack<BasePopup>();
-        _container = container.transform;
+        _container = container;
     }
 
     public IEnumerator Show<T>(Action onComplete = null) where T : BasePopup
@@ -29,21 +25,13 @@ public class PopupsManager : MonoBehaviour
     private BasePopup GetPopup<T>() where T : BasePopup
     {
         Type popupType = typeof(T);
-        if (!_popupsStorage.ContainsKey(popupType))
+        if (!_container.PopupsStorage.ContainsKey(popupType))
         {
-            CreateAndSavePopup<T>(popupType);
+            Debug.Log("Missing Popup in container!", _container.transform);
         }
-        return _popupsStorage[popupType];
+        return _container.PopupsStorage[popupType];
     }
-
-    private void CreateAndSavePopup<T>(Type popupType) where T : BasePopup
-    {
-        var popup = _poolsManager.GetItem<T>(Vector3.zero, _container);
-        var popupRect = (RectTransform) popup.transform;
-        popupRect.RefreshScaleAndPosition();
-        _popupsStorage.Add(popupType, popup);
-    }
-
+    
     public IEnumerator HideLast()
     {
         var last = _stackOfPopups.Pop();
@@ -58,16 +46,6 @@ public class PopupsManager : MonoBehaviour
             var popup = _stackOfPopups.Peek();
             yield return popup.Hide();
         }
-        _stackOfPopups.Clear();
-    }
-
-    public void ClearAll()
-    {
-        foreach (var entry in _popupsStorage)
-        {
-            _poolsManager.ReturnItemToPool(entry.Key, entry.Value);
-        }
-        _popupsStorage.Clear();
         _stackOfPopups.Clear();
     }
 }

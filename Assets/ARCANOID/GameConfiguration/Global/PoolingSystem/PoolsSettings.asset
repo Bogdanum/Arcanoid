@@ -30,14 +30,6 @@ MonoBehaviour:
     itemSettings: {fileID: 11400000, guid: 4c6d8d934b70242f4807f097f906654f, type: 2}
     initialCount: 20
   - factory: {fileID: 2240241413435544493, guid: c82352a77d4aa4516a5e628f56170a0b, type: 3}
-    itemPrefab: {fileID: 7582887936178321220, guid: 608ff6d17014c4298bd4f6cbcff10287, type: 3}
-    itemSettings: {fileID: 11400000, guid: 25cb4acadf0544c12824f223493ef361, type: 2}
-    initialCount: 1
-  - factory: {fileID: 2240241413435544493, guid: c82352a77d4aa4516a5e628f56170a0b, type: 3}
-    itemPrefab: {fileID: 2298823397059424433, guid: 166b2555be4dd44bca9a8558814f9aa7, type: 3}
-    itemSettings: {fileID: 11400000, guid: 25cb4acadf0544c12824f223493ef361, type: 2}
-    initialCount: 1
-  - factory: {fileID: 2240241413435544493, guid: c82352a77d4aa4516a5e628f56170a0b, type: 3}
     itemPrefab: {fileID: 4985601299984787262, guid: 598772188491543b99f7498dd6842302, type: 3}
     itemSettings: {fileID: 11400000, guid: 25cb4acadf0544c12824f223493ef361, type: 2}
     initialCount: 5

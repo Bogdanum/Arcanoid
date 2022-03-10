@@ -3,14 +3,16 @@ using UnityEngine;
 public class MobileInputListener : MonoBehaviour, IInputBlockingHandler
 {
     [SerializeField] private Camera cameraRaycaster;
-    
+    [SerializeField] private float headerOffset;
+
+    private Vector3 _pointerPos;
     private bool _isBlocked;
     private bool _isHolding;
 
     private void OnEnable() => MessageBus.Subscribe(this);
-    
-    private void OnDisable() => MessageBus.Unsubscribe(this);
 
+    private void OnDisable() => MessageBus.Unsubscribe(this);
+        
     private void Update()
     {
         if (_isBlocked) return;
@@ -23,7 +25,10 @@ public class MobileInputListener : MonoBehaviour, IInputBlockingHandler
 
         if (_isHolding && Input.GetMouseButtonUp(0))
         {
-            MessageBus.RaiseEvent<ILaunchBallHandler>(handler => handler.OnLaunchCommand());
+            if (InPermittedArea())
+            {
+                MessageBus.RaiseEvent<ILaunchBallHandler>(handler => handler.OnLaunchCommand());
+            }
             _isHolding = false;
             return;
         }
@@ -36,8 +41,16 @@ public class MobileInputListener : MonoBehaviour, IInputBlockingHandler
 
     private void SendCurrentPointerPosition()
     {
-        Vector3 pointerPos = cameraRaycaster.ScreenToWorldPoint(Input.mousePosition);
-        MessageBus.RaiseEvent<IPointerPositionHandler>(handler => handler.OnUpdatePointerPosition(pointerPos));
+         _pointerPos= cameraRaycaster.ScreenToWorldPoint(Input.mousePosition);
+        if (InPermittedArea())
+        {
+            MessageBus.RaiseEvent<IPointerPositionHandler>(handler => handler.OnUpdatePointerPosition(_pointerPos));   
+        }
+    }
+
+    private bool InPermittedArea()
+    {
+        return _pointerPos.y < cameraRaycaster.orthographicSize - headerOffset;
     }
 
     public void OnInputActivation()

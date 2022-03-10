@@ -7,8 +7,8 @@ public class BallsOnSceneController : MonoBehaviour, IMainBallLifecycleHandler, 
 {
     [SerializeField] private Transform ballsContainer;
     [SerializeField] private BallPhysicsSettings ballPhysicsSettings;
-
     [Inject] private PoolsManager _poolsManager;
+    
     private List<Ball> _ballsList;
     private Ball _currentBallOnPlatform;
     private float _currentBallsVelocity;

@@ -13,7 +13,14 @@ public abstract class LocalizedText : MonoBehaviour, ILanguageChangeListener
     {
         MessageBus.Subscribe(this);
 
-        if (_localizationManager != null) RefreshLabel();
+        if (_localizationManager != null)
+        {
+            RefreshLabel();
+        }
+        else
+        {
+            Debug.Log("Missing Localization manager: " + gameObject.name);
+        }
     }
 
     protected virtual void OnDisable()

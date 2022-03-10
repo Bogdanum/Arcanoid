@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Ball : PoolItem
+public class Ball : PoolItem, IPauseHandler
 {
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private BallPhysics ballPhysics;
@@ -17,6 +17,7 @@ public class Ball : PoolItem
     
     public override void OnSpawned()
     {
+        MessageBus.Subscribe(this);
         base.OnSpawned();
         spriteRenderer.sprite = _ballSettings.DefaultSprite;
         Damage = _ballSettings.Damage;
@@ -24,6 +25,7 @@ public class Ball : PoolItem
 
     public override void OnDespawned()
     {
+        MessageBus.Unsubscribe(this);
         base.OnDespawned();
         ballPhysics.DisablePhysics();
     }
@@ -45,5 +47,15 @@ public class Ball : PoolItem
     {
         Vector2 velocityVector = direction.normalized * _velocity;
         ballPhysics.StartMovement(velocityVector);
+    }
+
+    public void OnGamePaused() => ballPhysics.DisablePhysics();
+
+    public void OnGameResumed()
+    {
+        if (ballPhysics.IsMoving)
+        {
+            ballPhysics.EnablePhysics();
+        }
     }
 }
