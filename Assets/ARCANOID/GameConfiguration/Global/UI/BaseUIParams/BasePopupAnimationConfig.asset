@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97f3f754d3a74d16b2668808072a759b, type: 3}
   m_Name: BasePopupAnimationConfig
   m_EditorClassIdentifier: 
-  fadeInDuration: 0.5
-  fadeOutDuration: 0.5
-  fadeInEase: 17
-  fadeOutEase: 18
+  fadeInDuration: 0.3
+  fadeOutDuration: 0.3
+  fadeInEase: 1
+  fadeOutEase: 1
+  fadeInDelay: 1

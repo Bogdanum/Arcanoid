@@ -12,7 +12,11 @@ public abstract class AnimatedButton : MonoBehaviour, IPointerDownHandler, IPoin
 
     public void OnPointerEnter(PointerEventData eventData) => PointerEnter = true;
 
-    public void OnPointerExit(PointerEventData eventData) => PointerEnter = false;
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        PointerEnter = false;
+        ReturnToNormalAnim();
+    }
 
     public void SetInteractable(bool state)
     {
@@ -24,7 +28,6 @@ public abstract class AnimatedButton : MonoBehaviour, IPointerDownHandler, IPoin
     private void OnPointerUp()
     {
         ExecuteClickEvent();
-        ReturnToNormalAnim();
     }
 
     protected abstract void ReturnToNormalAnim();

@@ -1,3 +1,4 @@
+using System;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -5,12 +6,13 @@ using UnityEngine.SceneManagement;
 public class SceneLoader : MonoBehaviour
 {
     [SerializeField] private LoadingScreen loadingScreen;
-    [SerializeField] private FadingPanel fadingPanel;
+    [SerializeField] private FadingPanel loadingScreenPanel;
+    [SerializeField] private FadingPanel blackScreenPanel;
     [SerializeField] private LoadingScreenConfig config;
 
-    public async void LoadScene(Scene sceneName)
+    public async void LoadSceneAsync(Scene sceneName)
     {
-        fadingPanel.FadeIn(config.FadeinTime, config.FadingEase, config.FadeinDelay);
+        FadeIn(loadingScreenPanel);
         loadingScreen.ResetValues();
         
         var scene = SceneManager.LoadSceneAsync((int)sceneName);
@@ -22,6 +24,25 @@ public class SceneLoader : MonoBehaviour
         } 
         while (scene.progress < 0.9f);
         scene.allowSceneActivation = true;
-        fadingPanel.FadeOut(config.FadeOutTime, config.FadingEase, config.FadeOutDelay);
+        FadeOut(loadingScreenPanel);
+    }
+
+    public void LoadScene(Scene scene)
+    {
+        FadeIn(blackScreenPanel, () =>
+        {
+            SceneManager.LoadScene((int)scene);
+            FadeOut(blackScreenPanel);
+        });
+    }
+
+    private void FadeIn(FadingPanel panel, Action onComplete = null)
+    {
+        panel.FadeIn(config.FadeinTime, config.FadingEase, config.FadeinDelay, onComplete);
+    }
+
+    private void FadeOut(FadingPanel panel, Action onComplete = null)
+    {
+        panel.FadeOut(config.FadeOutTime, config.FadingEase, config.FadeOutDelay, onComplete);
     }
 }

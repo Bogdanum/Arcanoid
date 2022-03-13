@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe2af2525975430498e0588698c6c3c1, type: 3}
   m_Name: BallPhysicsSettings
   m_EditorClassIdentifier: 
-  initialVelocity: 4
-  maxVelocity: 7
+  initialVelocity: 3
+  maxVelocity: 5
   velocityIncreaseStep: 0.1

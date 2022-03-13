@@ -1,7 +1,9 @@
 using UnityEngine;
+using Zenject;
 
 public class GameFieldCreationController : MonoBehaviour, ILocalGameStateHandler
 {
+     [Inject] private LevelPacksManager levelPacksManager;
      [SerializeField] private FieldBorders fieldBorders;
      [SerializeField] private Transform blocksContainer;
      [SerializeField] private FieldSizeController fieldSizeController;
@@ -27,7 +29,7 @@ public class GameFieldCreationController : MonoBehaviour, ILocalGameStateHandler
 
      public void OnPrepare()
      {
-          _cellsGrid.Create(5, 8);
+          _cellsGrid.Create(levelPacksManager.GetCurrentLevelData());
           gridOfBlocks.Fill(_cellsGrid);
           _cellsGrid.SendCreateBlocksRequest();
      }

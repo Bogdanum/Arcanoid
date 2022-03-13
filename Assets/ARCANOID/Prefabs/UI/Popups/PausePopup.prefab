@@ -700,9 +700,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animationController: {fileID: 4828472567364724123}
-  resumeButton: {fileID: 2780219665294013800}
   restartButton: {fileID: 5641936954199602251}
-  backToMapButton: {fileID: 5472209306544621187}
   restartButtonLocker: {fileID: 6255075891866789908}
 --- !u!114 &4828472567364724123
 MonoBehaviour:
@@ -1217,7 +1215,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 3411387850130544864}
         m_TargetAssemblyTypeName: PausePopup, Assembly-CSharp
-        m_MethodName: OnBackToMapClicked
+        m_MethodName: BackToLevelsMap
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

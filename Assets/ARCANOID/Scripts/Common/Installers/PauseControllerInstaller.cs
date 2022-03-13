@@ -8,6 +8,6 @@ public class PauseControllerInstaller : MonoInstaller
     public override void InstallBindings()
     {
         var pauseControllerInstance = Container.InstantiatePrefabForComponent<PauseController>(prefab);
-        Container.Bind<PauseController>().FromInstance(pauseControllerInstance).AsSingle().NonLazy();
+        Container.Bind<PauseController>().FromInstance(pauseControllerInstance).AsSingle();
     }
 }

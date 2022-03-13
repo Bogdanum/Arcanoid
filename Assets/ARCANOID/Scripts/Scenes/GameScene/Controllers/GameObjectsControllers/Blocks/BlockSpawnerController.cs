@@ -5,32 +5,21 @@ using UnityEngine;
 public class BlockSpawnerController
 {   
     private readonly PoolsManager _poolsManager;
+    private readonly Dictionary<BlockType, IBlockSpawner> _spawners;
     private readonly Dictionary<Type, List<Block>> _blocks;
-
-    public BlockSpawnerController(PoolsManager poolsManager)
+    
+    public BlockSpawnerController(PoolsManager poolsManager, Dictionary<BlockType, IBlockSpawner> spawners)
     {
         _poolsManager = poolsManager;
+        _spawners = spawners;
         _blocks = new Dictionary<Type, List<Block>>();
     }
 
     public Block GetSpawnedBlock(BlockProperties properties, Vector3 position, Vector3 scale, Transform parent)
     {
-        switch (properties.Type)
-        {
-            case BlockType.Simple:
-            {
-                var block = new SimpleBlockSpawner(_poolsManager).Spawn(properties.ParamsID, position, scale, parent);
-                AddToDictionary(block);
-                return block;
-            }
-            case BlockType.Bedrock:
-            {
-                var block = new BedrockSpawner(_poolsManager).Spawn(position, scale, parent);
-                AddToDictionary(block);
-                return null;
-            }
-            default: return null;
-        }
+        var block = _spawners[properties.Type].Spawn(properties, position, scale, parent);
+        AddToDictionary(block);
+        return block;
     }
 
     private void AddToDictionary(Block block)

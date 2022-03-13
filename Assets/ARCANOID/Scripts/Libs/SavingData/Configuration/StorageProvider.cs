@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "StorageProvider", menuName = "Storage/StorageProvider")]
+[CreateAssetMenu(fileName = "StorageProvider", menuName = "Data/Storage/StorageProvider")]
 public class StorageProvider : ScriptableObject
 {
     [SerializeField, Space(10)] 
