@@ -1042,7 +1042,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9730d6c808041f78b5151ae5b16d280, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  translationID: translation_error
+  translationID: lose_title
   textWithValueParams:
     isTextWithValue: 0
     format: '{0}: {1}'
@@ -1231,7 +1231,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9730d6c808041f78b5151ae5b16d280, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  translationID: translation_error
+  translationID: restart
   textWithValueParams:
     isTextWithValue: 0
     format: '{0}: {1}'
@@ -1450,6 +1450,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fader: {fileID: 7582887936178321246}
   config: {fileID: 11400000, guid: cef9b61a09d774cd4b5854ddc275536c, type: 2}
+  overrideParams:
+    useOverrideParams: 0
+    fadeInDelay: 0
 --- !u!114 &7582887936178321246
 MonoBehaviour:
   m_ObjectHideFlags: 0

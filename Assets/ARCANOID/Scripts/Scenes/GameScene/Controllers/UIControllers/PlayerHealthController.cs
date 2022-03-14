@@ -5,16 +5,19 @@ public class PlayerHealthController : MonoBehaviour, IPlayerHealthChangeHandler,
 {
     [SerializeField] private PlayerHealthView view;
     [SerializeField] private HealthViewGridConfig config;
-    [Inject] private PoolsManager _poolsManager;
-    
+    private PoolsManager _poolsManager;
     private int _currentHeartID;
 
+    [Inject]
+    public void Init(PoolsManager poolsManager)
+    {
+        _poolsManager = poolsManager;
+    }
+    
     private void OnEnable() => MessageBus.Subscribe(this);
     private void OnDisable() => MessageBus.Unsubscribe(this);
 
-    public void OnPrepare() => Init();
-    
-    private void Init()
+    public void OnPrepare()
     {
         view.Init(config, _poolsManager);
         _currentHeartID = config.InitHealthCount - 1;

@@ -7,6 +7,7 @@ public class GameTitleLoopAnimation : MonoBehaviour
     [SerializeField] private Vector3 maxPosition;
     [SerializeField] private float moveTime;
     [SerializeField] private Ease ease;
+    [SerializeField] private LoopType loopType = LoopType.Yoyo;
     private Tween _tween;
     private bool _isPause = true;
 
@@ -27,28 +28,8 @@ public class GameTitleLoopAnimation : MonoBehaviour
     private void StartLoopAnim()
     {
         if (_tween != null || _isPause) return;
-
+        
         transform.localPosition = minPosition;
-        MinMaxMove();
-    }
-
-    private void MinMaxMove()
-    {
-        _tween = transform.DOLocalMove(maxPosition, moveTime).SetEase(ease);
-        _tween.OnComplete(() =>
-        {
-            _tween = null;
-            MaxMinMove();
-        });
-    }
-
-    private void MaxMinMove()
-    {
-        _tween = transform.DOLocalMove(minPosition, moveTime).SetEase(ease);
-        _tween.OnComplete(() =>
-        {
-            _tween = null;
-            StartLoopAnim();
-        });
+        _tween = transform.DOLocalMove(maxPosition, moveTime).SetEase(ease).SetLoops(-1, loopType);
     }
 }

@@ -11,7 +11,7 @@ public class BallBaseSettings : ScriptableObject
 }
 
 [System.Serializable]
-public class BallVisualSettings
+public struct BallVisualSettings
 {
     public Sprite defaultSprite;
     public Color firstParticleColor;

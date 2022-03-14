@@ -1403,7 +1403,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9730d6c808041f78b5151ae5b16d280, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  translationID: translation_error
+  translationID: locked_pack
   textWithValueParams:
     isTextWithValue: 0
     format: '{0}: {1}'

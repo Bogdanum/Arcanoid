@@ -50,7 +50,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9730d6c808041f78b5151ae5b16d280, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  translationID: translation_error
+  translationID: pause_title
   textWithValueParams:
     isTextWithValue: 0
     format: '{0}: {1}'
@@ -356,7 +356,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 20, y: 0, z: 20, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -374,7 +374,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9730d6c808041f78b5151ae5b16d280, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  translationID: translation_error
+  translationID: continue
   textWithValueParams:
     isTextWithValue: 0
     format: '{0}: {1}'
@@ -1384,7 +1384,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9730d6c808041f78b5151ae5b16d280, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  translationID: translation_error
+  translationID: restart
   textWithValueParams:
     isTextWithValue: 0
     format: '{0}: {1}'

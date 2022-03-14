@@ -4,7 +4,13 @@ using Zenject;
 
 public class GameStateController : MonoBehaviour, IGlobalGameStateHandler, IGameResultHandler
 {
-    [Inject] private PopupsManager _popupsManager;
+    private PopupsManager _popupsManager;
+
+    [Inject]
+    public void Init(PopupsManager popupsManager)
+    {
+        _popupsManager = popupsManager;
+    }
     
     private void OnEnable() => MessageBus.Subscribe(this);
     private void OnDisable() => MessageBus.Unsubscribe(this);

@@ -15,3 +15,6 @@ MonoBehaviour:
   initialVelocity: 3
   maxVelocity: 5
   velocityIncreaseStep: 0.1
+  minReboundAngle: 25
+  reboundAngleMultiplier: 15
+  maxNumberOfSharpRebounds: 2

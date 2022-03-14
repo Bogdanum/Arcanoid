@@ -1,25 +1,23 @@
-using System.Collections;
-using UnityEngine;
-using Zenject;
 
-public class GameResultController : MonoBehaviour, IGameResultHandler
+public class GameResultController : IGameResultHandler
 {
-    [Inject] private PopupsManager _popupsManager;
+    private readonly PopupsManager _popupsManager;
     
-    private void OnEnable() => MessageBus.Subscribe(this);
-    private void OnDisable() => MessageBus.Unsubscribe(this);
-
-    public void OnVictory() => StartCoroutine(Victory());
-
-    private IEnumerator Victory()
+    public GameResultController(PopupsManager popupsManager)
     {
-        yield return _popupsManager.Show<VictoryPopup>();
+        _popupsManager = popupsManager;
+        MessageBus.Subscribe(this);
     }
 
-    public void OnLose() => StartCoroutine(Lose());
+    ~GameResultController() => MessageBus.Unsubscribe(this);
 
-    private IEnumerator Lose()
+    public void OnVictory()
     {
-        yield return _popupsManager.Show<LosePopup>();
+        _popupsManager.StartCoroutine(_popupsManager.Show<VictoryPopup>());
+    }
+
+    public void OnLose()
+    {
+        _popupsManager.StartCoroutine(_popupsManager.Show<LosePopup>());
     }
 }

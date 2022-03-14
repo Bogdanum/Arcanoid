@@ -5082,6 +5082,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ballRigidbody: {fileID: 5379470801566010976}
+  ballPhysicsSettings: {fileID: 11400000, guid: 0a0ec3914d3f741c4993ddbdaa2cdc8b, type: 2}
 --- !u!50 &5379470801566010976
 Rigidbody2D:
   serializedVersion: 4
