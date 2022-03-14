@@ -24,7 +24,7 @@ public class SceneLoader : MonoBehaviour
         } 
         while (scene.progress < 0.9f);
         scene.allowSceneActivation = true;
-        FadeOut(loadingScreenPanel);
+        FadeOut(loadingScreenPanel, config.FadeOutDelay);
     }
 
     public void LoadScene(Scene scene)
@@ -32,7 +32,7 @@ public class SceneLoader : MonoBehaviour
         FadeIn(blackScreenPanel, () =>
         {
             SceneManager.LoadScene((int)scene);
-            FadeOut(blackScreenPanel);
+            FadeOut(blackScreenPanel, 0);
         });
     }
 
@@ -41,8 +41,8 @@ public class SceneLoader : MonoBehaviour
         panel.FadeIn(config.FadeinTime, config.FadingEase, config.FadeinDelay, onComplete);
     }
 
-    private void FadeOut(FadingPanel panel, Action onComplete = null)
+    private void FadeOut(FadingPanel panel, float delay, Action onComplete = null)
     {
-        panel.FadeOut(config.FadeOutTime, config.FadingEase, config.FadeOutDelay, onComplete);
+        panel.FadeOut(config.FadeOutTime, config.FadingEase, delay, onComplete);
     }
 }
