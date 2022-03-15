@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: FieldSettings
   m_EditorClassIdentifier: 
   headerOffset: 0.14
-  sideOffset: 0.05
+  sideOffset: 0.02
   cellsMargin: 0.05
   rectBlockAspect: 2

@@ -1,5 +1,13 @@
 {
 	"translation_error" : "Ошибка",
 	"play_button" : "Играть",
-	"loading" : "Загрузка..."
+	"loading" : "Загрузка...",
+	"level_GameScene":  "Уровень",
+	"lose_title" : "Мячи закончились",
+	"pause_title" : "Пауза",
+	"continue" : "Продолжить",
+	"restart" : "Заново",
+	"pause_second_chance" : "Второй шанс",
+	"locked_pack" : "???",
+	"training_pack" : "Тренировка от крипера"
 }

@@ -1,5 +1,13 @@
 {
 	"translation_error" : "Error",
 	"play_button" : "Play",
-	"loading" : "Loading..."
+	"loading" : "Loading...",
+	"level_GameScene":  "Level",
+	"lose_title" : "Game Over",
+	"pause_title" : "Pause",
+	"continue" : "Continue",
+	"restart" : "Restart",
+	"pause_second_chance" : "Second chance",
+	"locked_pack" : "???",
+	"training_pack" : "Creeper training"
 }

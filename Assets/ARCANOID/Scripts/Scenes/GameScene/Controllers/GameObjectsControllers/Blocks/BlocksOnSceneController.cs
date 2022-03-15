@@ -5,29 +5,23 @@ public class BlocksOnSceneController : MonoBehaviour, IBlockLifecycleHandler, IC
 {
     [SerializeField] private GridOfBlocks gridOfBlocks;
     [SerializeField] private ProgressSliderCounter progressSliderCounter;
-
-    [Inject] private PoolsManager _poolsManager;
-    private BlockSpawnerController _spawner;
+    private BlockSpawnerController _blockSpawnerController;
     private int _blocksOnSceneCount;
+    
+    [Inject]
+    public void Init(BlockSpawnerController blockSpawnerController)
+    {
+        _blockSpawnerController = blockSpawnerController;
+    }
 
     private void OnEnable() => MessageBus.Subscribe(this);
     private void OnDisable() => MessageBus.Unsubscribe(this);
-
-    private void Awake()
-    {
-        Init();
-    }
-
-    public void Init()
-    {
-        _spawner = new BlockSpawnerController(_poolsManager);
-    }
 
     public void OnDestructibleBlockSpawned() => _blocksOnSceneCount++;
 
     public void OnGetBlockParams(Vector3 position, Vector3 size, Transform parent, BlockProperties properties)
     {
-        var block = _spawner.GetSpawnedBlock(properties, position, size, parent);
+        var block = _blockSpawnerController.GetSpawnedBlock(properties, position, size, parent);
         gridOfBlocks.Add(position, block);
     }
 
@@ -51,13 +45,13 @@ public class BlocksOnSceneController : MonoBehaviour, IBlockLifecycleHandler, IC
     
     public void OnBlockDestroyed<T>(T block) where T : Block
     {
-        _spawner.DestroyConcreteBlock(block);
+        _blockSpawnerController.DestroyConcreteBlock(block);
         gridOfBlocks.Remove(block);
     }
 
     public void OnClearGameField()
     {
-        _spawner.ClearBlocks();
+        _blockSpawnerController.ClearBlocks();
         _blocksOnSceneCount = 0;
         progressSliderCounter.ResetProgressBar();
     }

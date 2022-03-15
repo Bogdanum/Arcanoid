@@ -4,16 +4,17 @@ using UnityEngine;
 
 public class PoolsManager : MonoBehaviour
 {
+    [SerializeField] private SpecificPoolsSettings settings;
     private Dictionary<Type, SpecificObjectPool> _allPools;
 
-    public void Init(SpecificPoolsSettings settings)
+    private void Awake()
     {
-        _allPools = new Dictionary<Type, SpecificObjectPool>();
-        CreatePools(settings);
+        CreatePools();
     }
 
-    private void CreatePools(SpecificPoolsSettings settings)
+    private void CreatePools()
     {
+        _allPools = new Dictionary<Type, SpecificObjectPool>();
         foreach (var poolSettings in settings.AllPoolsSettings)
         {
             var factoryPrefab = poolSettings.factory;

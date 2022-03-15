@@ -8,7 +8,7 @@ public class SceneLoaderInstaller : MonoInstaller
      public override void InstallBindings()
      {
           var sceneLoader = Container.InstantiatePrefabForComponent<SceneLoader>(sceneLoaderPrefab);
-          Container.Bind<SceneLoader>().FromInstance(sceneLoader).AsSingle().NonLazy();
+          Container.Bind<SceneLoader>().FromInstance(sceneLoader).AsSingle();
           sceneLoader.transform.SetAsLastSibling();
      }
 }

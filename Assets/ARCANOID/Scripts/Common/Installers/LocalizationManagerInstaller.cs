@@ -8,8 +8,8 @@ public class LocalizationManagerInstaller : MonoInstaller
     
     public override void InstallBindings()
     {
-        var localizationManagerInstance = Container.InstantiatePrefabForComponent<LocalizationManager>(localizationManager);
-        localizationManagerInstance.Init(languageParserConfig);
-        Container.Bind<LocalizationManager>().FromInstance(localizationManagerInstance).AsSingle().NonLazy();
+        Container.Bind<LocalizationManager>().FromInstance(localizationManager).AsSingle();
+        var storedDataManager = Container.Resolve<StoredDataManager>();
+        localizationManager.Init(languageParserConfig, storedDataManager);
     }
 }
