@@ -7,6 +7,7 @@ public class LevelPacksManager : MonoBehaviour
     private GameProgressProcessor _progressProcessor;
     private ProgressSaveProvider _saveProvider;
     private ILevelParser<LevelData<TileProperties>> _levelParser;
+    private bool _needDebugInit = true;
 
     public void Init(JsonTokens jsonTokens, TextAsset tilesetFile, CurrentSetOfPacksConfig config, StoredDataManager storedDataManager)
     {
@@ -19,8 +20,18 @@ public class LevelPacksManager : MonoBehaviour
 
     public LevelData<TileProperties> GetCurrentLevelData()
     {
+        #if UNITY_EDITOR
+
+            if (_config.gameMode == CurrentSetOfPacksConfig.GameMode.Debug && _needDebugInit)
+            {
+                SetupFirstPack();
+                _needDebugInit = false;
+            }
+
+        #endif
+        
         var level = _progressProcessor.GetCurrentLevel();
-        return _levelParser.ParseLevelFromString(level.text);
+       return _levelParser.ParseLevelFromString(level.text);
     }
 
     public bool IsFirsTimePlay() => !_saveProvider.IsSaveExistsOnStart;
