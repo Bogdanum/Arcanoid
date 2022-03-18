@@ -27,12 +27,13 @@ public class SceneLoader : MonoBehaviour
         FadeOut(loadingScreenPanel, config.FadeOutDelay);
     }
 
-    public void LoadScene(Scene scene)
+    public void LoadScene(Scene scene, Action onFadeInComplete = null, Action onFadeOutComplete = null)
     {
         FadeIn(blackScreenPanel, () =>
         {
             SceneManager.LoadScene((int)scene);
-            FadeOut(blackScreenPanel, 0);
+            onFadeInComplete?.Invoke();
+            FadeOut(blackScreenPanel, 0, onFadeOutComplete);
         });
     }
 

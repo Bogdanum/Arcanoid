@@ -4,32 +4,43 @@ using UnityEngine;
 
 public class BinaryDataStorage<T> : IDataStorage<T> where T : IStoredData
 {
-    private string _fileName;
-    private string _dataPath;
+    private readonly string _dataPath;
 
     public BinaryDataStorage()
     {
-        _fileName = $"{typeof(T)}.dat";
-        _dataPath = Path.Combine(Application.persistentDataPath, _fileName);
+        var fileName = $"{typeof(T)}.dat";
+        _dataPath = Path.Combine(Application.persistentDataPath, fileName);
     }
+
+    public bool SaveExists() => File.Exists(_dataPath);
 
     public void Save(T data)
     {
-        using (FileStream file = File.Create(_dataPath))
-        {
-            new BinaryFormatter().Serialize(file, data);
-        }
+        var binFormatter = new BinaryFormatter();
+        var file = File.Create(_dataPath);
+        binFormatter.Serialize(file, data);
+        file.Close();
     }
 
     public T Load(IStoredData defaultData)
     {
         if (File.Exists(_dataPath))
         {
-            using (FileStream file = File.Open(_dataPath, FileMode.Open))
-            {
-                return (T) new BinaryFormatter().Deserialize(file);
-            }
+            var binFormatter = new BinaryFormatter();
+            var file = File.Open(_dataPath, FileMode.Open);
+            var data = (T) binFormatter.Deserialize(file);
+            file.Close();
+            return data;
         }
         return (T)defaultData;
+    }
+
+    public void ResetData()
+    {
+        if (SaveExists())
+        {
+            File.Delete(_dataPath);
+            Debug.Log("Data reset complete!");
+        }
     }
 }

@@ -3,7 +3,7 @@ using UnityEngine.EventSystems;
 
 public abstract class AnimatedButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPointerEnterHandler, IPointerExitHandler
 {
-    protected bool Interactable = true;
+    public bool interactable = true;
     protected bool PointerEnter { get; private set; }
 
     public void OnPointerDown(PointerEventData eventData) => OnPointerDown();
@@ -20,7 +20,7 @@ public abstract class AnimatedButton : MonoBehaviour, IPointerDownHandler, IPoin
 
     public void SetInteractable(bool state)
     {
-        Interactable = state;
+        interactable = state;
     }
 
     protected abstract void OnPointerDown();
@@ -28,6 +28,7 @@ public abstract class AnimatedButton : MonoBehaviour, IPointerDownHandler, IPoin
     private void OnPointerUp()
     {
         ExecuteClickEvent();
+        ReturnToNormalAnim();
     }
 
     protected abstract void ReturnToNormalAnim();

@@ -9,5 +9,6 @@
 	"restart" : "Restart",
 	"pause_second_chance" : "Second chance",
 	"locked_pack" : "???",
-	"training_pack" : "Creeper training"
+	"training_pack" : "Creeper training",
+	"steve_pack" : "Challenge from Steve"
 }

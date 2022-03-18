@@ -116,7 +116,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c80a2d23d813407aa8ffe4d189876b8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 6849726732435864225, guid: 73d350b84e7bf4df89d0438697e08c78, type: 3}
 --- !u!114 &5833517898206396785
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -174,6 +173,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelPacksManager: {fileID: 5110031688463153, guid: 065f2025cfaf34870aa9f4c47feb30c9, type: 3}
+  config: {fileID: 11400000, guid: d2f09342e776b40688bf9dca393fb786, type: 2}
   tilesetFile: {fileID: 4900000, guid: cac766d15d6664e5182a6c889ba292a2, type: 3}
   jsonTokens: {fileID: 11400000, guid: 8f1be0d7e19dc423d93d76836eee1ab3, type: 2}
 --- !u!114 &-7395646722114261006

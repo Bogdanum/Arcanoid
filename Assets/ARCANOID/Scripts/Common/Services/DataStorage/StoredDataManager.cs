@@ -17,6 +17,21 @@ public class StoredDataManager : MonoBehaviour
         data.Language = language;
         SaveData(data);
     }
+
+    public void SaveProgress(StoredGameProgress progress)
+    {
+        SaveData(progress);
+    }
+
+    public bool SaveExists<T>() where T : IStoredData
+    {
+        return _storageProvider.GetStorage<T>().SaveExists();
+    }
+    
+    public void ResetData<T>() where T : IStoredData
+    {
+        _storageProvider.GetStorage<T>().ResetData();
+    }
     
     private T LoadData<T>(IStoredData defaultData) where T : IStoredData
     {

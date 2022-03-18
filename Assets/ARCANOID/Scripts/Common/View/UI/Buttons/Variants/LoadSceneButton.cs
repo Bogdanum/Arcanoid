@@ -20,7 +20,7 @@ public class LoadSceneButton : AnimatedButton
 
     protected override void ExecuteClickEvent()
     {
-        if (PointerEnter && Interactable)
+        if (PointerEnter && interactable)
         {
             onClick?.Invoke(targetScene);
         }

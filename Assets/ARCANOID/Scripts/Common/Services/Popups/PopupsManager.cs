@@ -47,4 +47,14 @@ public class PopupsManager : MonoBehaviour
         }
         _stackOfPopups.Clear();
     }
+
+    public void HideAllWithoutAnimation()
+    {
+        for (int i = 0; i < _stackOfPopups.Count; i++)
+        {
+            var popup = _stackOfPopups.Pop();
+            popup.gameObject.SetActive(false);
+        }
+        _stackOfPopups.Clear();
+    }
 }

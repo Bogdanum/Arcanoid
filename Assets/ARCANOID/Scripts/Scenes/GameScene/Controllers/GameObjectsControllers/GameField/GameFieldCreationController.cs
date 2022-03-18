@@ -3,7 +3,7 @@ using Zenject;
 
 public class GameFieldCreationController : MonoBehaviour, ILocalGameStateHandler
 {
-     [Inject] private LevelPacksManager levelPacksManager;
+     private LevelPacksManager _levelPacksManager;
      [SerializeField] private FieldBorders fieldBorders;
      [SerializeField] private Transform blocksContainer;
      [SerializeField] private FieldSizeController fieldSizeController;
@@ -14,14 +14,11 @@ public class GameFieldCreationController : MonoBehaviour, ILocalGameStateHandler
 
      private void OnEnable() => MessageBus.Subscribe(this);
      private void OnDisable() => MessageBus.Unsubscribe(this);
-
-     private void Awake()
+     
+     [Inject]
+     public void Init(LevelPacksManager levelPacksManager)
      {
-          Init();
-     }
-
-     public void Init()
-     {
+          _levelPacksManager = levelPacksManager;
           fieldSizeController.Init();
           _cellsGrid = new CellsGrid(fieldSizeController, cellsVisualization, blocksContainer);
           fieldBorders.Init();
@@ -29,7 +26,7 @@ public class GameFieldCreationController : MonoBehaviour, ILocalGameStateHandler
 
      public void OnPrepare()
      {
-          _cellsGrid.Create(levelPacksManager.GetCurrentLevelData());
+          _cellsGrid.Create(_levelPacksManager.GetCurrentLevelData());
           gridOfBlocks.Fill(_cellsGrid);
           _cellsGrid.SendCreateBlocksRequest();
      }

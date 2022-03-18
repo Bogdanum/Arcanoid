@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   headerOffset: 0.14
   sideOffset: 0.02
-  cellsMargin: 0.05
+  cellsMargin: 0
   rectBlockAspect: 2
