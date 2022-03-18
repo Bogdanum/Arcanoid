@@ -2,10 +2,12 @@
 public class GameResultController : IGameResultHandler
 {
     private readonly PopupsManager _popupsManager;
+    private readonly LevelPacksManager _levelPacksManager;
     
-    public GameResultController(PopupsManager popupsManager)
+    public GameResultController(PopupsManager popupsManager, LevelPacksManager levelPacksManager)
     {
         _popupsManager = popupsManager;
+        _levelPacksManager = levelPacksManager;
         MessageBus.Subscribe(this);
     }
 
@@ -13,6 +15,7 @@ public class GameResultController : IGameResultHandler
 
     public void OnVictory()
     {
+        _levelPacksManager.OnLevelComplete();
         _popupsManager.StartCoroutine(_popupsManager.Show<VictoryPopup>());
     }
 

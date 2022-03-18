@@ -9,13 +9,13 @@ public class ValueChangeAnimation : MonoBehaviour
 
      private bool _playing;
 
-     public void Play(float startValue, float endValue, Action<float> updateValue)
+     public void Play(float startValue, float endValue, Action<float> updateValue, TweenCallback onComplete = null)
      {
           Resume();
           DOVirtual.Float(startValue, endValue, duration, value =>
           {
                if (_playing) updateValue(value);
-          }).SetEase(ease);
+          }).SetEase(ease).onComplete += onComplete;
      }
 
      public void Stop() => _playing = false;

@@ -61,7 +61,7 @@ MonoBehaviour:
       accentColor: {r: 0.36862746, g: 0.2901961, b: 0.16862746, a: 1}
   - rendererParamsID: 10
     blockRendererParams:
-      mainSprite: {fileID: 21300000, guid: f1502b83e91424508ace1b41fde68b6e, type: 3}
+      mainSprite: {fileID: 21300000, guid: 8f8b0d1ac784b4d4fafaf5dc697ad311, type: 3}
       mainColor: {r: 0.8588236, g: 0.19215688, b: 0.10588236, a: 1}
       accentColor: {r: 0.7294118, g: 0.70980394, b: 0.7019608, a: 1}
   - rendererParamsID: 8

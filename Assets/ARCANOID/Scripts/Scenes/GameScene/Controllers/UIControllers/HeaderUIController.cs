@@ -7,11 +7,13 @@ public class HeaderUIController : MonoBehaviour, ILocalGameStateHandler
     [SerializeField] private Image currentPackIcon;
     [SerializeField] private LocalizedText currentLevel;
     private PauseController _pauseController;
+    private LevelPacksManager _levelPacksManager;
 
     [Inject]
-    public void Init(PauseController pauseController)
+    public void Init(PauseController pauseController, LevelPacksManager levelPacksManager)
     {
         _pauseController = pauseController;
+        _levelPacksManager = levelPacksManager;
     }
     
     private void OnEnable() => MessageBus.Subscribe(this);
@@ -24,9 +26,9 @@ public class HeaderUIController : MonoBehaviour, ILocalGameStateHandler
 
     public void OnPrepare()
     {
-        // set current pack values
-        currentPackIcon.sprite = currentPackIcon.sprite;
-        currentLevel.InsertNumber("1");
+        var packInfo = _levelPacksManager.GetCurrentPackInfo();
+        currentPackIcon.sprite = packInfo.Pack.Icon;
+        currentLevel.InsertNumber(packInfo.CurrentLevel.ToString());
     }
 
     public void OnStartGame() {}

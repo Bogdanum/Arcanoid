@@ -21,7 +21,7 @@ public class LanguageButton : AnimatedButton
 
     protected override void ExecuteClickEvent()
     {
-        if (PointerEnter && Interactable)
+        if (PointerEnter && interactable)
         {
             onSelectLanguage?.Invoke(language);
         }
