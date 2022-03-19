@@ -7,8 +7,7 @@ public class BallsOnSceneController : MonoBehaviour, IMainBallLifecycleHandler, 
 {
     [SerializeField] private Transform ballsContainer;
     [SerializeField] private BallPhysicsSettings ballPhysicsSettings;
-    [Inject] private PoolsManager _poolsManager;
-    
+    private PoolsManager _poolsManager;
     private List<Ball> _ballsList;
     private Ball _currentBallOnPlatform;
     private float _currentBallsVelocity;
@@ -17,13 +16,10 @@ public class BallsOnSceneController : MonoBehaviour, IMainBallLifecycleHandler, 
     private void OnEnable() => MessageBus.Subscribe(this);
     private void OnDisable() => MessageBus.Unsubscribe(this);
 
-    private void Awake()
+    [Inject]
+    public void Init(PoolsManager poolsManager)
     {
-        Init();
-    }
-
-    public void Init()
-    {
+        _poolsManager = poolsManager;
         _ballsList = new List<Ball>();
         _currentBallsVelocity = ballPhysicsSettings.InitialVelocity;
     }
@@ -62,13 +58,10 @@ public class BallsOnSceneController : MonoBehaviour, IMainBallLifecycleHandler, 
         _currentBallsVelocity += ballPhysicsSettings.VelocityIncreaseStep;
         SetBallsVelocity();
     }
-    
-    public void ExecuteMethodForAllBalls(Action<Ball> method)
+
+    private void ExecuteMethodForAllBalls(Action<Ball> method)
     {
-        foreach (var ball in _ballsList)
-        {
-            method.Invoke(ball);
-        }
+        _ballsList.ForEach(method.Invoke);
     }
     
     public void OnLaunchCommand()
@@ -96,10 +89,7 @@ public class BallsOnSceneController : MonoBehaviour, IMainBallLifecycleHandler, 
     
     private void RemoveAllBallsOnScene()
     {
-        foreach (var ball in _ballsList)
-        {
-            _poolsManager.ReturnItemToPool(ball);
-        }
+        _ballsList.ForEach(_poolsManager.ReturnItemToPool);
         _ballsList.Clear();
     }
 

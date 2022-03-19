@@ -33,3 +33,7 @@ MonoBehaviour:
     itemPrefab: {fileID: 4985601299984787262, guid: 598772188491543b99f7498dd6842302, type: 3}
     itemSettings: {fileID: 11400000, guid: 25cb4acadf0544c12824f223493ef361, type: 2}
     initialCount: 5
+  - factory: {fileID: 4163554346551027153, guid: f36af844dc11f4338a053be1370b19a5, type: 3}
+    itemPrefab: {fileID: 8837537083735948659, guid: 41b382ad35d144abcabd947231ca2e9e, type: 3}
+    itemSettings: {fileID: 11400000, guid: 65c9c980a7a9f477ea79d9e242067cbf, type: 2}
+    initialCount: 5

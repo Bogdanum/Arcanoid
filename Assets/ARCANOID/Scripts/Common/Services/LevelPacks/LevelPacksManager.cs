@@ -25,6 +25,7 @@ public class LevelPacksManager : MonoBehaviour
             if (_config.gameMode == CurrentSetOfPacksConfig.GameMode.Debug && _needDebugInit)
             {
                 SetupFirstPack();
+                MessageBus.RaiseEvent<IPackActionHandler>(handler => handler.OnChoosingAnotherPack());
                 _needDebugInit = false;
             }
 

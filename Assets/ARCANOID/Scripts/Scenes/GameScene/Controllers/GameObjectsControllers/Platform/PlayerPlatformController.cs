@@ -42,11 +42,11 @@ public class PlayerPlatformController : MonoBehaviour, ILocalGameStateHandler
         _prevPlatformSize = settings.InitialSize;
     }
 
-    public void IncreaseSize(float value)
+    public void ResizePerStep(float value)
     {
         float newSize = settings.InitialSize + value;
         valueAnim.Play(_prevPlatformSize, newSize, platform.SetNewSize);
-        _prevPlatformSize = settings.InitialSize;
+        _prevPlatformSize = newSize;
     }
 
     public void IncreaseSpeed(float value)

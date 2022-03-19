@@ -5,11 +5,13 @@ public class BlockCollider : MonoBehaviour
 {
     [SerializeField] protected BoxCollider2D targetCollider;
     public event Action onTriggerEnter;
+    public event Action<Collider2D> OnTriggerEnter;
     public event Action<Collider2D> onCollisionEnter;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         onTriggerEnter?.Invoke();
+        OnTriggerEnter?.Invoke(collision);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

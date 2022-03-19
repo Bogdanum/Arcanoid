@@ -25,5 +25,5 @@ MonoBehaviour:
     PropertyValue: value
     TypeName: blockType
     SpriteName: rendererId
-    BonusName: bonusType
+    BonusName: bonusId
     CustomHealthName: customHealth

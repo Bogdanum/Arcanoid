@@ -7,11 +7,11 @@ public class CellsGrid
     public int ColCount { get; private set; }
     public Vector2 CellSize { get; private set; }
     
-    private FieldSizeController _sizeController;
-    private CellsVisualization _cellsVisualization;
-    private Transform _blocksParent;
-    private Vector2 _startGridPos;
-    private float _margin;
+    private readonly FieldSizeController _sizeController;
+    private readonly CellsVisualization _cellsVisualization;
+    private readonly Transform _blocksParent;
+    private readonly Vector2 _startGridPos;
+    private readonly float _margin;
 
     public CellsGrid(FieldSizeController sizeController, CellsVisualization cellsVisualization, Transform blocksParent)
     {
@@ -62,7 +62,8 @@ public class CellsGrid
         (
             (BlockType)tileProperties.TileType, 
             (BlockRendererParamsID)tileProperties.TileRenderer,
-            tileProperties.CustomHealth
+            tileProperties.CustomHealth,
+            (BonusId)tileProperties.TileBonus
         );
     }
 

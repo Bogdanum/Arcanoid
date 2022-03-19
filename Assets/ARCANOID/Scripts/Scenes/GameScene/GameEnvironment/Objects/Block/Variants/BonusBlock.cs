@@ -1,18 +1,28 @@
+using System;
 using UnityEngine;
 
 public class BonusBlock : DestructibleBlock
 {
     [SerializeField] private SpriteComponent bonusSpriteComponent;
+    public event Action OnDestroyed;
 
-    public void SetBonusType(BlockType blockType)
+    public void SetBonusType(BlockType blockType, Sprite droppableBonusSprite)
     {
         Type = blockType;
+        bonusSpriteComponent.SetSprite(droppableBonusSprite);
     }
-    
+
     public override void Destroy()
     {
         base.Destroy();
         bonusSpriteComponent.Disable();
+        OnDestroyed?.Invoke();
+    }
+
+    public override void OnDespawned()
+    {
+        base.OnDespawned();
+        OnDestroyed = null;
     }
 
     protected override void OnCompleteDestroyParticles()

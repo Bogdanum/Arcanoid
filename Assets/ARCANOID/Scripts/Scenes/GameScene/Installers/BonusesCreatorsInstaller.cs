@@ -1,0 +1,25 @@
+using System.Collections.Generic;
+using UnityEngine;
+using Zenject;
+
+public class BonusesCreatorsInstaller : MonoInstaller
+{
+    [SerializeField] private DroppableBonusSettings droppableBonusSettings;
+    
+    public override void InstallBindings()
+    {
+        var poolsManager = Container.Resolve<PoolsManager>();
+        droppableBonusSettings.Init();
+        var effectReproducers = CreateReproducers();
+        Container.Bind<DroppableBonusSpawner>().FromNew().AsSingle().WithArguments(poolsManager, droppableBonusSettings, effectReproducers);
+    }
+
+    private Dictionary<BonusId, IBonusEffectReproducer> CreateReproducers()
+    {
+        return new Dictionary<BonusId, IBonusEffectReproducer>
+        {
+            { BonusId.PlatformSizeIncrease, new PlatformSizeBonusReproducer(BinaryBonusDirection.Increase) },
+            { BonusId.PlatformSizeDecrease, new PlatformSizeBonusReproducer(BinaryBonusDirection.Decrease) }
+        };
+    }
+}

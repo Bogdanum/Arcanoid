@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   packID: training_pack
   levels:
-  - {fileID: 4900000, guid: b889c8bbd982e4a1d981ac4d883885a6, type: 3}
+  - {fileID: 4900000, guid: 5d98478275a77430c97864bd8da8ddad, type: 3}
   - {fileID: 4900000, guid: 4a2f3efbd52ae42cf87d1f726a249fd8, type: 3}
   - {fileID: 4900000, guid: ddfda355dc88b49429f50f8a9e8bba4f, type: 3}
   icon: {fileID: 21300000, guid: aa16328ca1a1f465db44645d403e9f14, type: 3}

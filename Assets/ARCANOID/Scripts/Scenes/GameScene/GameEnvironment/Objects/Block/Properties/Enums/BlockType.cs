@@ -4,5 +4,5 @@ public enum BlockType
     Simple = 1,
     Bedrock = 2,
     Bonus = 3,
-    BonusSpawner = 4
+    FallingBonus = 4
 }
