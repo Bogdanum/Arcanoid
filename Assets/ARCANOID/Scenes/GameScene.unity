@@ -359,6 +359,7 @@ GameObject:
   - component: {fileID: 172711067}
   - component: {fileID: 172711068}
   - component: {fileID: 172711069}
+  - component: {fileID: 172711071}
   m_Layer: 5
   m_Name: HealthGrid
   m_TagString: Untagged
@@ -407,8 +408,8 @@ MonoBehaviour:
   m_StartAxis: 0
   m_CellSize: {x: 95, y: 95}
   m_Spacing: {x: 0, y: 0}
-  m_Constraint: 0
-  m_ConstraintCount: 2
+  m_Constraint: 2
+  m_ConstraintCount: 1
 --- !u!114 &172711069
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -422,6 +423,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grid: {fileID: 172711068}
+  parentLayoutGroup: {fileID: 1670365296}
+--- !u!222 &172711071
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 172711066}
+  m_CullTransparentMesh: 1
 --- !u!1 &176557467
 GameObject:
   m_ObjectHideFlags: 0
@@ -2531,8 +2541,8 @@ MonoBehaviour:
   m_Padding:
     m_Left: 30
     m_Right: 30
-    m_Top: 20
-    m_Bottom: 20
+    m_Top: 40
+    m_Bottom: 40
   m_ChildAlignment: 4
   m_Spacing: 250
   m_ChildForceExpandWidth: 1

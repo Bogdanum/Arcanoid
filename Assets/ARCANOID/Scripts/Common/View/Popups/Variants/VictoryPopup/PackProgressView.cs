@@ -9,6 +9,7 @@ public class PackProgressView : MonoBehaviour
     [SerializeField] private Image packIcon;
     [SerializeField] private TMP_Text progressInPercent;
     [SerializeField] private LocalizedTMPro packName;
+    [SerializeField] private LocalizedTMPro buttonText;
     [SerializeField] private ProgressSliderView progressSlider;
     [SerializeField] private ValueChangeAnimation progressAnimation;
     [SerializeField] private FadingPanel continueButtonFader;
@@ -25,6 +26,11 @@ public class PackProgressView : MonoBehaviour
     public void SetPackIcon(Sprite icon)
     {
         packIcon.sprite = icon;
+    }
+
+    public void UpdateButtonLevel(int level)
+    {
+        buttonText.InsertNumber(level.ToString());
     }
 
     public void InitProgressValues(int current, int max)

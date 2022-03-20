@@ -1,7 +1,9 @@
+using System;
 using UnityEngine;
 
 public class LocalizationManager : MonoBehaviour
 {
+    public event Action OnLanguageChanged;
     private ITranslationsStorage _translationsStorage;
 
     public void Init(LanguageParserConfig parserConfig, StoredDataManager storedDataManager)
@@ -38,6 +40,6 @@ public class LocalizationManager : MonoBehaviour
 
     private void RaiseUpdateLanguageEvent()
     {
-        MessageBus.RaiseEvent<ILanguageChangeListener>(listener => listener.OnLanguageChanged());
+        OnLanguageChanged?.Invoke();
     }
 }

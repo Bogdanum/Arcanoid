@@ -465,7 +465,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9730d6c808041f78b5151ae5b16d280, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  translationID: continue
+  translationID: pause_resume
   textWithValueParams:
     isTextWithValue: 0
     format: '{0}: {1}'
@@ -1025,6 +1025,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62050e793df34563a9e1a73839088c1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interactable: 1
   onClickScale: {x: 0.9, y: 0.9, z: 1}
   animationTime: 0.5
   scaler: {fileID: 4202335115493857062}
@@ -1145,6 +1146,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62050e793df34563a9e1a73839088c1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interactable: 1
   onClickScale: {x: 0.9, y: 0.9, z: 0}
   animationTime: 1
   scaler: {fileID: 3610157864560123249}
@@ -1326,6 +1328,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62050e793df34563a9e1a73839088c1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interactable: 1
   onClickScale: {x: 0.9, y: 0.9, z: 0}
   animationTime: 1
   scaler: {fileID: 3610157864560123249}
@@ -1446,6 +1449,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62050e793df34563a9e1a73839088c1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interactable: 1
   onClickScale: {x: 0.9, y: 0.9, z: 1}
   animationTime: 0.5
   scaler: {fileID: 7755244818156599318}

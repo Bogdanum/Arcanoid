@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initialVelocity: 5
   maxVelocity: 7
-  velocityIncreaseStep: 0.1
+  velocityIncreaseStep: 0.2
   minReboundAngle: 25
   reboundAngleMultiplier: 20
   maxNumberOfSharpRebounds: 2
