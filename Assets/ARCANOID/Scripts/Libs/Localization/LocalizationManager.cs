@@ -3,7 +3,7 @@ using UnityEngine;
 public class LocalizationManager : MonoBehaviour
 {
     private ITranslationsStorage _translationsStorage;
-    
+
     public void Init(LanguageParserConfig parserConfig, StoredDataManager storedDataManager)
     {
         _translationsStorage = new TranslationsStorage(parserConfig, storedDataManager);

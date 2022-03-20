@@ -4,16 +4,16 @@ using Zenject;
 
 public class BonusesEffectsInstaller : MonoInstaller
 {
-    [SerializeField] private PlatformBonusSettings platformBonusSettings;
+    [SerializeField] private PlatformBonusesSettings platformBonusesSettings;
     
     public override void InstallBindings()
     {
-        var platformSizeBonusStateController = platformBonusSettings.platformSizeBonusStateController;
-        platformSizeBonusStateController.Init(platformBonusSettings.platformController, platformBonusSettings.config);
+        var platformSizeBonusStateController = platformBonusesSettings.platformSizeBonusStateController;
+        platformSizeBonusStateController.Init(platformBonusesSettings.platformController, platformBonusesSettings.config);
     }
     
     [Serializable]
-    internal class PlatformBonusSettings
+    internal class PlatformBonusesSettings
     {
         public PlatformSizeBonusStateController platformSizeBonusStateController;
         public PlayerPlatformController platformController;
