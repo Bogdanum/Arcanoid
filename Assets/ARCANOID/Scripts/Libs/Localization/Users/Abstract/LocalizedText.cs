@@ -45,5 +45,10 @@ public abstract class LocalizedText : MonoBehaviour
         RefreshLabel();
     }
 
+    public void SetInsertNumberActive(bool state)
+    {
+        textWithValueParams.IsTextWithValue = state;
+    }
+
     protected abstract void RefreshLabel();
 }

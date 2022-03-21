@@ -1,6 +1,5 @@
 public enum BonusId
 {
-    Null = 0,
     SimpleBomb = 1,
     ChainColorBomb = 2,
     HorizontalBomb = 3,

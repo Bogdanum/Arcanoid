@@ -7,6 +7,7 @@
 	"pause_title" : "Пауза",
 	"pause_resume" :  "Продолжить",
 	"victoryPopupButton" : "Уровень",
+	"victoryPopupButton_next" : "Следующий пак",
 	"restart" : "Заново",
 	"pause_second_chance" : "Второй шанс",
 	"locked_pack" : "???",

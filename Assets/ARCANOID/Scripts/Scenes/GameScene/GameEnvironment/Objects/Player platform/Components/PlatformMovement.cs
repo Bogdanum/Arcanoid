@@ -74,7 +74,7 @@ public class PlatformMovement : MonoBehaviour, IPointerPositionHandler
         {
             var directionVector = target - (Vector2)transform.position;
             float velocity = directionVector.normalized.x * _speed;
-            target.x = _platformTransform.position.x + velocity * Time.deltaTime;
+            target.x = _platformTransform.position.x + velocity * Time.fixedDeltaTime;
             
             platformRigidbody.MovePosition(target);
         }

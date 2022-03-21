@@ -197,6 +197,9 @@ MonoBehaviour:
     buttonFadeInDuration: 1
     buttonFadeInDelay: 0.5
     buttonFadeInEase: 2
+  nextButtonTranslationID:
+    nextLevel: victoryPopupButton
+    nextPack: victoryPopupButton_next
 --- !u!114 &2298369898085777800
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -6,7 +6,7 @@ public class BlockProperties
     public int CustomHealth { get; }
     public BonusId BonusId { get; }
     
-    public BlockProperties(BlockType type, BlockRendererParamsID paramsID, int customHealth = 0, BonusId bonusId = BonusId.Null)
+    public BlockProperties(BlockType type, BlockRendererParamsID paramsID, int customHealth = 0, BonusId bonusId = BonusId.SimpleBomb)
     {
         Type = type;
         ParamsID = paramsID;

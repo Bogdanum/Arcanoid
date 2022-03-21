@@ -14,6 +14,7 @@ public class PackProgressView : MonoBehaviour
     [SerializeField] private ValueChangeAnimation progressAnimation;
     [SerializeField] private FadingPanel continueButtonFader;
     [SerializeField] private AnimationSettings animationSettings;
+    [SerializeField] private NextButtonTranslationID nextButtonTranslationID;
 
     private float _previousLevel;
     private float _levelsCount;
@@ -30,7 +31,16 @@ public class PackProgressView : MonoBehaviour
 
     public void UpdateButtonLevel(int level)
     {
-        buttonText.InsertNumber(level.ToString());
+        if (level > 1)
+        {
+            buttonText.SetInsertNumberActive(true);
+            buttonText.ChangeTranslationID(nextButtonTranslationID.nextLevel);
+            buttonText.InsertNumber(level.ToString());
+        } else
+        {
+            buttonText.SetInsertNumberActive(false);
+            buttonText.ChangeTranslationID(nextButtonTranslationID.nextPack);
+        }
     }
 
     public void InitProgressValues(int current, int max)
@@ -84,5 +94,12 @@ public class PackProgressView : MonoBehaviour
         public float buttonFadeInDuration;
         public float buttonFadeInDelay;
         public Ease buttonFadeInEase;
+    }
+    
+    [Serializable]
+    public struct NextButtonTranslationID
+    {
+        public string nextLevel;
+        public string nextPack;
     }
 }

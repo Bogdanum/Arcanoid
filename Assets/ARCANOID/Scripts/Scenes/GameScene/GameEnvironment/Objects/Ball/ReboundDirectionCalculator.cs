@@ -6,7 +6,6 @@ public class ReboundDirectionCalculator
      private readonly Transform _ballTransform;
      private readonly BallPhysicsSettings _ballPhysicsSettings;
      private float _velocity;
-     private int _reboundCounter = 0;
 
      public ReboundDirectionCalculator(Rigidbody2D rigidbody2D, Transform ballTransform, BallPhysicsSettings ballPhysicsSettings)
      {
@@ -21,22 +20,21 @@ public class ReboundDirectionCalculator
      {
           if (other.collider.TryGetComponent(out PlatformCollider _)) return;
           
-          CalculateReboundAngle(Vector2.up, true);
+          CalculateReboundAngle(Vector2.up, _ballPhysicsSettings.VerticalNormal , true);
           var reboundPerpendicular = _ballTransform.position.x < 0f ? Vector2.up : Vector2.right; 
-          CalculateReboundAngle(reboundPerpendicular, false);
+          CalculateReboundAngle(reboundPerpendicular, _ballPhysicsSettings.HorizontalNormal, false);
      }
 
-     private void CalculateReboundAngle(Vector2 reboundPerpendicular, bool verticalCalc)
+     private void CalculateReboundAngle(Vector2 reboundPerpendicular, BallPhysicsSettings.ReboundParams reboundParams , bool verticalCalc)
      {
           var perpendicular = verticalCalc ? Vector2.right : Vector2.up;
           float contactAngle = GetContactAngle(perpendicular, out float signX, out Vector3 outDirection);
-          if (contactAngle < _ballPhysicsSettings.MinReboundAngle)
+          if (contactAngle < reboundParams.minReboundAngle)
           {
-               if (++_reboundCounter > _ballPhysicsSettings.MaxNumberOfSharpRebounds)
-               {
-                    ChangeReboundDirection(reboundPerpendicular, outDirection, signX);
-                    _reboundCounter = 0;
-               }
+               var signY = Mathf.Sign(Vector2.Dot(outDirection, reboundPerpendicular));
+               var targetAngle = reboundParams.reboundAngleMultiplier * signX * signY;
+               var targetQuaternion = Quaternion.Euler(0f, 0f, targetAngle);
+               _rigidbody2D.velocity = targetQuaternion * outDirection * _velocity;
           }
      }
 
@@ -45,13 +43,5 @@ public class ReboundDirectionCalculator
           outDirection = _rigidbody2D.velocity.normalized;
           signX = Mathf.Sign(Vector2.Dot(outDirection, perpendicular));
           return Vector2.Angle(outDirection, perpendicular * signX);
-     }
-
-     private void ChangeReboundDirection(Vector2 bounceDirectionPerpendicular, Vector3 outDirection, float signX)
-     {
-          var signY = Mathf.Sign(Vector2.Dot(outDirection, bounceDirectionPerpendicular));
-          var targetAngle = _ballPhysicsSettings.ReboundAngleMultiplier * signX * signY;
-          var targetQuaternion = Quaternion.Euler(0f, 0f, targetAngle);
-          _rigidbody2D.velocity = targetQuaternion * outDirection * _velocity;
      }
 }
