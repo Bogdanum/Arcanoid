@@ -81,6 +81,7 @@ public class BallsOnSceneController : MonoBehaviour, IMainBallLifecycleHandler, 
         if (_ballsList.Count < 1)
         {
             MessageBus.RaiseEvent<IPlayerHealthChangeHandler>(handler => handler.OnRemoveHealth());
+            MessageBus.RaiseEvent<ILocalGameStateHandler>(handler => handler.OnContinueGame());
         }
     }
 

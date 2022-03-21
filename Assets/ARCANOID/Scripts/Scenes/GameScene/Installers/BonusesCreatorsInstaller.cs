@@ -21,7 +21,9 @@ public class BonusesCreatorsInstaller : MonoInstaller
             { BonusId.PlatformSizeIncrease, new PlatformSizeBonusReproducer(BinaryBonusDirection.Increase) },
             { BonusId.PlatformSizeDecrease, new PlatformSizeBonusReproducer(BinaryBonusDirection.Decrease) },
             { BonusId.PlatformAcceleration , new PlatformSpeedBonusReproducer(BinaryBonusDirection.Increase) },
-            { BonusId.PlatformDeceleration , new PlatformSpeedBonusReproducer(BinaryBonusDirection.Decrease) }
+            { BonusId.PlatformDeceleration , new PlatformSpeedBonusReproducer(BinaryBonusDirection.Decrease) },
+            { BonusId.SourceOfLife, new HealthBonusesReproducer(BinaryBonusDirection.Increase) },
+            { BonusId.BlackLabel, new HealthBonusesReproducer(BinaryBonusDirection.Decrease) },
         };
     }
 }
