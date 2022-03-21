@@ -19,7 +19,9 @@ public class BonusesCreatorsInstaller : MonoInstaller
         return new Dictionary<BonusId, IBonusEffectReproducer>
         {
             { BonusId.PlatformSizeIncrease, new PlatformSizeBonusReproducer(BinaryBonusDirection.Increase) },
-            { BonusId.PlatformSizeDecrease, new PlatformSizeBonusReproducer(BinaryBonusDirection.Decrease) }
+            { BonusId.PlatformSizeDecrease, new PlatformSizeBonusReproducer(BinaryBonusDirection.Decrease) },
+            { BonusId.PlatformAcceleration , new PlatformSpeedBonusReproducer(BinaryBonusDirection.Increase) },
+            { BonusId.PlatformDeceleration , new PlatformSpeedBonusReproducer(BinaryBonusDirection.Decrease) }
         };
     }
 }

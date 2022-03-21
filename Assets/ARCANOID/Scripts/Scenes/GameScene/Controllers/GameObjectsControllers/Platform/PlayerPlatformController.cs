@@ -49,7 +49,7 @@ public class PlayerPlatformController : MonoBehaviour, ILocalGameStateHandler
         _prevPlatformSize = newSize;
     }
 
-    public void IncreaseSpeed(float value)
+    public void ChangeSpeed(float value)
     {
         float newSpeed = settings.InitialSpeed + value;
         platform.SetNewSpeed(newSpeed);

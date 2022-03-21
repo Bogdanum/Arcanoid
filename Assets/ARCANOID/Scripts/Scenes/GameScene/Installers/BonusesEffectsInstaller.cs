@@ -8,15 +8,24 @@ public class BonusesEffectsInstaller : MonoInstaller
     
     public override void InstallBindings()
     {
-        var platformSizeBonusStateController = platformBonusesSettings.platformSizeBonusStateController;
-        platformSizeBonusStateController.Init(platformBonusesSettings.platformController, platformBonusesSettings.config);
+        InitPlatformBonusesControllers();
     }
-    
+
+    private void InitPlatformBonusesControllers()
+    {
+        var platformSizeBonusStateController = platformBonusesSettings.platformSizeBonusStateController;
+        platformSizeBonusStateController.Init(platformBonusesSettings.platformController, platformBonusesSettings.sizeConfig);
+        var platformSpeedBonusStateController = platformBonusesSettings.platformSpeedBonusStateController;
+        platformSpeedBonusStateController.Init(platformBonusesSettings.platformController, platformBonusesSettings.speedConfig);
+    }
+
     [Serializable]
     internal class PlatformBonusesSettings
     {
         public PlatformSizeBonusStateController platformSizeBonusStateController;
         public PlayerPlatformController platformController;
-        public BinaryBonusProcessorConfig config;
+        public BinaryBonusProcessorConfig sizeConfig;
+        public PlatformSpeedBonusStateController platformSpeedBonusStateController;
+        public BinaryBonusProcessorConfig speedConfig;
     }
 }
