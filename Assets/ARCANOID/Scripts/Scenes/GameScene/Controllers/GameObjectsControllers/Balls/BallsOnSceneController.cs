@@ -24,6 +24,8 @@ public class BallsOnSceneController : MonoBehaviour, IMainBallLifecycleHandler, 
         _currentBallsVelocity = ballPhysicsSettings.InitialVelocity;
     }
     
+    public List<Ball> GetBallsOnSceneList() => _ballsList;
+    
     public void OnCreateNewBallOnPlatform(Transform platform)
     {
         var ball = SpawnBallAtPosition(platform.position, platform);
@@ -41,7 +43,7 @@ public class BallsOnSceneController : MonoBehaviour, IMainBallLifecycleHandler, 
     private void SetBallsVelocity()
     {
         float velocity = _currentBallsVelocity + _additionalVelocity;
-        ExecuteMethodForAllBalls(ball => ball.SetVelocity(velocity));
+        _ballsList.ForEach(ball => ball.SetVelocity(velocity));
     }
 
     public void ChangeAdditionalVelocity(float additionalVelocity)
@@ -59,11 +61,6 @@ public class BallsOnSceneController : MonoBehaviour, IMainBallLifecycleHandler, 
         SetBallsVelocity();
     }
 
-    private void ExecuteMethodForAllBalls(Action<Ball> method)
-    {
-        _ballsList.ForEach(method.Invoke);
-    }
-    
     public void OnLaunchCommand()
     {
         if (_currentBallOnPlatform == null) return;

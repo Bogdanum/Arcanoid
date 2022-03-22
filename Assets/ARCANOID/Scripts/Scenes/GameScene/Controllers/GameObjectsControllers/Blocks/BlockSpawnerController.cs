@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class BlockSpawnerController
@@ -39,6 +40,16 @@ public class BlockSpawnerController
         _blocks[blockType].Remove(block);
     }
 
+    public List<T> GetBlocks<T>() where T : Block
+    {
+        var blockType = typeof(T);
+        if (_blocks.ContainsKey(blockType))
+        {
+            return _blocks[blockType].Select(block => block as T).ToList();
+        }
+        return null;
+    }
+    
     public void ClearBlocks()
     {
         foreach (var blockType in _blocks.Keys)

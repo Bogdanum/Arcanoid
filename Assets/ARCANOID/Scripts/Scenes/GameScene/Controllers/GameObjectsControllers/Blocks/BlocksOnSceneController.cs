@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 
@@ -18,6 +19,11 @@ public class BlocksOnSceneController : MonoBehaviour, IBlockLifecycleHandler, IC
     private void OnDisable() => MessageBus.Unsubscribe(this);
 
     public void OnDestructibleBlockSpawned() => _blocksOnSceneCount++;
+
+    public List<T> GetBlocksOnSceneList<T>() where T : Block
+    {
+        return _blockSpawnerController.GetBlocks<T>();
+    }
 
     public void OnGetBlockParams(Vector3 position, Vector3 size, Transform parent, BlockProperties properties)
     {

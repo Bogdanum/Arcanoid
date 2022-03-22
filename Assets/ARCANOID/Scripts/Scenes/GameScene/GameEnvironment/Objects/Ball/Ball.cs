@@ -4,7 +4,7 @@ public class Ball : PoolItem, IPauseHandler
 {
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private BallPhysics ballPhysics;
-    [SerializeField] private ParticleSystem ballParticleSystem;
+    [SerializeField] private BallParticleSystem ballParticleSystem;
 
     private BallBaseSettings _ballSettings;
     private float _velocity;
@@ -20,10 +20,10 @@ public class Ball : PoolItem, IPauseHandler
     {
         MessageBus.Subscribe(this);
         base.OnSpawned();
-        var visualSettings = _ballSettings.BallVisualSettings;
-        spriteRenderer.sprite = visualSettings.defaultSprite;
         Damage = _ballSettings.Damage;
-        SetupParticlesColor(visualSettings.firstParticleColor, visualSettings.secondParticleColor);
+        SetDefaultVisualParams();
+        var visualSettings = _ballSettings.BallVisualSettings;
+        ballParticleSystem.SetupParticlesColor(visualSettings.firstParticleColor, visualSettings.secondParticleColor);
     }
 
     public override void OnDespawned()
@@ -32,24 +32,19 @@ public class Ball : PoolItem, IPauseHandler
         base.OnDespawned();
         ballPhysics.DisablePhysics();
     }
-
-    private void SetupParticlesColor(Color first, Color second)
+    
+    public void SetDefaultVisualParams()
     {
-        var settings = ballParticleSystem.main;
-        var settingsStartColor = settings.startColor;
-        settingsStartColor.mode = ParticleSystemGradientMode.TwoColors;
-        settingsStartColor.colorMin = first;
-        settingsStartColor.colorMax = second;
-        settings.startColor = settingsStartColor;
+        spriteRenderer.sprite = _ballSettings.BallVisualSettings.defaultSprite;
+        ballParticleSystem.PlayNormalParticles();
     }
 
-    public void ChangeSprite(Sprite sprite)
+    public void SetRageVisualParams()
     {
-        spriteRenderer.sprite = sprite;
+        spriteRenderer.sprite = _ballSettings.BallVisualSettings.rageSprite;
+        ballParticleSystem.PlayRageParticles();
     }
-
-    public void ReturnToDefaultSprite() => ChangeSprite(_ballSettings.BallVisualSettings.defaultSprite);
-
+    
     public void SetVelocity(float velocity)
     {
         _velocity = velocity;

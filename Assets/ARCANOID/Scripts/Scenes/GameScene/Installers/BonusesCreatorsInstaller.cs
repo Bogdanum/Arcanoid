@@ -24,6 +24,7 @@ public class BonusesCreatorsInstaller : MonoInstaller
             { BonusId.PlatformDeceleration , new PlatformSpeedBonusReproducer(BinaryBonusDirection.Decrease) },
             { BonusId.SourceOfLife, new HealthBonusesReproducer(BinaryBonusDirection.Increase) },
             { BonusId.BlackLabel, new HealthBonusesReproducer(BinaryBonusDirection.Decrease) },
+            { BonusId.FireBall, new RageBallBonusReproducer() }
         };
     }
 }

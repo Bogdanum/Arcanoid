@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "BonusName", menuName = "GameObjectsConfiguration/Bonuses/Effects/Create New Effect config")]
+[CreateAssetMenu(fileName = "BonusName", menuName = "GameObjectsConfiguration/Bonuses/Effects/Create New BinaryEffect config")]
 public class BinaryBonusProcessorConfig : ScriptableObject
 {
     [SerializeField, Min(0)] private float bonusEffectTime = 3f;

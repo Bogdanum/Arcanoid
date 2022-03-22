@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ballVisualSettings:
     defaultSprite: {fileID: 21300000, guid: 6f4006321775248cbb5b88c82f613c8a, type: 3}
+    rageSprite: {fileID: 21300000, guid: 98c10c726690b49a3b0b6144fe0f2bc0, type: 3}
     firstParticleColor: {r: 1, g: 0.18196462, b: 0, a: 1}
     secondParticleColor: {r: 0, g: 0.30317068, b: 1, a: 1}
   damage: 10

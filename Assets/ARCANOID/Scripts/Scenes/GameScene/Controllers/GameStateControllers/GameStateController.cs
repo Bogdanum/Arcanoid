@@ -43,7 +43,7 @@ public class GameStateController : MonoBehaviour, IGlobalGameStateHandler, IGame
 
     public void OnContinue() => OnUseSecondChance();
 
-    public void OnUseSecondChance()
+    private void OnUseSecondChance()
     {
         MessageBus.RaiseEvent<IPlayerHealthChangeHandler>(handler => handler.OnAddHealth());
         MessageBus.RaiseEvent<ILocalGameStateHandler>(handler => handler.OnContinueGame());
