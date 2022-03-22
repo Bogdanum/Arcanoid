@@ -10,11 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b4c9f65c04ee4f0193352b1b7d551e40, type: 3}
-  m_Name: CreeperTraining
+  m_Name: CreeperTester
   m_EditorClassIdentifier: 
   packID: training_pack
   levels:
   - {fileID: 4900000, guid: 302a2023332cb4ad68b125c44e53fdd8, type: 3}
+  - {fileID: 4900000, guid: b36cfcc6211cd456fae5c92c3b7bdbde, type: 3}
   - {fileID: 4900000, guid: ca5c9f0677d18491db965fb5cfd1ef53, type: 3}
   - {fileID: 4900000, guid: 43e855cd87fee49d8bce15c8a028694b, type: 3}
   - {fileID: 4900000, guid: 5d98478275a77430c97864bd8da8ddad, type: 3}
