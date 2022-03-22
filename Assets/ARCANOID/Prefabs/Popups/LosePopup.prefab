@@ -89,7 +89,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_AspectMode: 4
-  m_AspectRatio: 1.4
+  m_AspectRatio: 1.5
 --- !u!1 &6032381256156563189
 GameObject:
   m_ObjectHideFlags: 0
@@ -314,6 +314,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62050e793df34563a9e1a73839088c1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interactable: 1
   onClickScale: {x: 0.9, y: 0.9, z: 0}
   animationTime: 1
   scaler: {fileID: 7582887934691713818}
@@ -422,6 +423,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62050e793df34563a9e1a73839088c1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interactable: 1
   onClickScale: {x: 0.9, y: 0.9, z: 0}
   animationTime: 1
   scaler: {fileID: 7582887934691713818}

@@ -41,7 +41,7 @@ public class VictoryPopup : BasePopup, IPackActionHandler
     public override void OnAppeared(Action onAppeared)
     {
         var currentPackInfo = _levelPacksManager.GetCurrentPackInfo();
-        int levelsCount = currentPackInfo.Pack.Count;
+        int levelsCount = _cachedPackInfo.Pack.Count;
         packProgressView.UpdateButtonLevel(currentPackInfo.CurrentLevel);
         if (_cachedPackInfo == currentPackInfo)
         {

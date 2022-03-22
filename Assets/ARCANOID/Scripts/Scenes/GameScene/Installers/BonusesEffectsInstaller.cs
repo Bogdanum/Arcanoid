@@ -25,6 +25,8 @@ public class BonusesEffectsInstaller : MonoInstaller
     {
         var rageBallBonusController = ballBonusesSettings.rageBallBonusStateController;
         rageBallBonusController.Init(ballBonusesSettings.ballsOnSceneController, ballBonusesSettings.blocksOnSceneController, ballBonusesSettings.rageBallConfig);
+        var ballSpeedBonusController = ballBonusesSettings.ballSpeedBonusStateController;
+        ballSpeedBonusController.Init(ballBonusesSettings.ballsOnSceneController, ballBonusesSettings.speedConfig);
     }
 
     [Serializable]
@@ -32,7 +34,9 @@ public class BonusesEffectsInstaller : MonoInstaller
     {
         public PlatformSizeBonusStateController platformSizeBonusStateController;
         public PlayerPlatformController platformController;
+        [Header("Size bonus")]
         public BinaryBonusProcessorConfig sizeConfig;
+        [Header("Speed bonus")]
         public PlatformSpeedBonusStateController platformSpeedBonusStateController;
         public BinaryBonusProcessorConfig speedConfig;
     }
@@ -42,7 +46,11 @@ public class BonusesEffectsInstaller : MonoInstaller
     {
         public BallsOnSceneController ballsOnSceneController;
         public BlocksOnSceneController blocksOnSceneController;
+        [Header("Rage bonus")]
         public RageBallBonusStateController rageBallBonusStateController;
         public SimpleTemporaryBonusConfig rageBallConfig;
+        [Header("Speed bonus")] 
+        public BallSpeedBonusStateController ballSpeedBonusStateController;
+        public BinaryBonusProcessorConfig speedConfig;
     }
 }

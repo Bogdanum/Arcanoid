@@ -6,10 +6,11 @@ public class BonusPhysics : MonoBehaviour, IPauseHandler
 
     public void Init(float gravityScale)
     {
+        MessageBus.Subscribe(this);
         bonusRigidbody.gravityScale = gravityScale;
+        OnGameResumed();
     }
-
-    private void OnEnable() => MessageBus.Subscribe(this);
+    
     private void OnDisable() => MessageBus.Unsubscribe(this);
 
     public void OnGamePaused()
