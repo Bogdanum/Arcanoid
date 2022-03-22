@@ -33,7 +33,7 @@ public abstract class DestructibleBlock : Block
     {
         base.OnSpawned();
         blockCollider.onCollisionEnter += OnHitByBall;
-        blockCollider.onTriggerEnter += Destroy;
+        blockCollider.OnTriggerEnter += OnOtherEnter;
     }
 
     public override void OnDespawned()
@@ -41,10 +41,10 @@ public abstract class DestructibleBlock : Block
         base.OnDespawned();
         DisableTriggerColliderState();
         blockCollider.onCollisionEnter -= OnHitByBall;
-        blockCollider.onTriggerEnter -= Destroy;
+        blockCollider.OnTriggerEnter -= OnOtherEnter;
     }
 
-    public void OnHitByBall(Collider2D other)
+    private void OnHitByBall(Collider2D other)
     {
         var parent = other.transform.parent;
         if (parent.TryGetComponent(out Ball ball))
@@ -52,8 +52,17 @@ public abstract class DestructibleBlock : Block
             TakeDamage(ball.Damage);
         }
     }
+
+    private void OnOtherEnter(Collider2D other)
+    {
+        var parent = other.transform.parent;
+        if (parent.TryGetComponent(out Ball _))
+        {
+            Destroy();
+        }
+    }
     
-    public void TakeDamage(int damage)
+    private void TakeDamage(int damage)
     {
         _healthPoints -= damage;
         if (_healthPoints < 1)

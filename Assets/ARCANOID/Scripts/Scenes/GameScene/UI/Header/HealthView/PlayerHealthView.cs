@@ -4,8 +4,10 @@ using UnityEngine.UI;
 public class PlayerHealthView : MonoBehaviour
 {
     [SerializeField] private GridLayoutGroup grid;
+    [SerializeField] private HorizontalLayoutGroup parentLayoutGroup;
     private HealthViewGridConfig _config;
     private BallUI[] _ballsIcons;
+    private Vector2 _containerSize;
 
     public void Init(HealthViewGridConfig config, PoolsManager poolsManager)
     {
@@ -21,9 +23,20 @@ public class PlayerHealthView : MonoBehaviour
             if (i < _config.InitHealthCount)
             {
                 _ballsIcons[i].Show();
+                _ballsIcons[i].transform.localScale = Vector3.one;
             }
         }
-        SetGridSize(_config.InitHealthCount);
+        _containerSize = GetContainerSize();
+        RefreshCellSizes(_config.InitHealthCount);
+    }
+
+    private Vector2 GetContainerSize()
+    {
+        var parentRect = (RectTransform) parentLayoutGroup.transform;
+        var parentSize = parentRect.rect.size;
+        parentSize.x -= parentLayoutGroup.spacing + parentLayoutGroup.padding.left + parentLayoutGroup.padding.right;
+        parentSize.y -= parentLayoutGroup.padding.top + parentLayoutGroup.padding.bottom;
+        return new Vector2(parentSize.x / 2, parentSize.y);
     }
 
     private void ReturnAllBallsToPool(PoolsManager poolsManager)
@@ -36,28 +49,24 @@ public class PlayerHealthView : MonoBehaviour
 
     public void AddHealth(int currentHeartID)
     {
-        SetGridSize(currentHeartID + 1);
+        RefreshCellSizes(currentHeartID + 1);
         _ballsIcons[currentHeartID].Show(_config.DurationOfAppearance);
     }
     
     public void RemoveHeart(int heartIdToRemove)
     {
-        _ballsIcons[heartIdToRemove].Hide(_config.DurationOfAppearance);
-        SetGridSize(heartIdToRemove);
-    }
-    
-    private void SetGridSize(int visibleHeartsCount)
-    {
-        var gridSizes = _config.GetGridSizes();
-        foreach (var kv in gridSizes)
+        _ballsIcons[heartIdToRemove].Hide(_config.DurationOfAppearance, () =>
         {
-            if (visibleHeartsCount < kv.Key)
-            {
-                grid.cellSize = new Vector2(gridSizes[kv.Key], gridSizes[kv.Key]);
-                return;
-            }
-        }
-        grid.cellSize = new Vector2(5, 5);
+            RefreshCellSizes(heartIdToRemove);
+        });
     }
 
+    private void RefreshCellSizes(int healthCount)
+    {
+        if (_ballsIcons.Length < 1) return;
+
+        float cellWidth = _containerSize.x / healthCount;
+        float side = cellWidth > _containerSize.y ? _containerSize.y : cellWidth;
+        grid.cellSize = new Vector2(side, side);
+    }
 }

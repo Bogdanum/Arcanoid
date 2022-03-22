@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using System.Linq;
-using UnityEngine;
 
 public class SpecificObjectPool
 {
@@ -17,7 +16,7 @@ public class SpecificObjectPool
      {
           for (int i = 0; i < initialQuantity; i++)
           {
-               var item = _factory.CreateItem<PoolItem>();
+               var item = _factory.CreateItem();
                item.OnDespawned();
                _objectsQueue.Enqueue(item);
           }

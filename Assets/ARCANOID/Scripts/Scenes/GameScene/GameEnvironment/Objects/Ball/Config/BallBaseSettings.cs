@@ -14,6 +14,7 @@ public class BallBaseSettings : ScriptableObject
 public struct BallVisualSettings
 {
     public Sprite defaultSprite;
+    public Sprite rageSprite;
     public Color firstParticleColor;
     public Color secondParticleColor;
 }

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class BallUI : PoolableUIEntity
@@ -23,9 +24,12 @@ public class BallUI : PoolableUIEntity
           scaler.DoScale(Vector3.one, duration);
      }
 
-     public void Hide(float duration)
+     public void Hide(float duration, Action onComplete = null)
      {
-          scaler.DoScale(Vector3.zero, duration, () => gameObject.SetActive(false));
+          scaler.DoScale(Vector3.zero, duration, () =>
+          {
+               gameObject.SetActive(false);
+               onComplete?.Invoke();
+          });
      }
-
 }

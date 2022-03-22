@@ -4,8 +4,11 @@ using Zenject;
 
 public class BlockSpawnerControllerInstaller : MonoInstaller
 {
+    [SerializeField] private DroppableBonusSettings droppableBonusSettings;
+    
     public override void InstallBindings()
     {
+        droppableBonusSettings.Init();
         var poolsManager = Container.TryResolve<PoolsManager>();
         if (poolsManager == null)
         {
@@ -16,11 +19,12 @@ public class BlockSpawnerControllerInstaller : MonoInstaller
     }
 
     private Dictionary<BlockType, IBlockSpawner> CreateSpawners(PoolsManager poolsManager)
-    { 
+    {
         return new Dictionary<BlockType, IBlockSpawner>
         {
             { BlockType.Simple, new SimpleBlockSpawner(poolsManager) },
-            { BlockType.Bedrock, new BedrockSpawner(poolsManager) }
+            { BlockType.Bedrock, new BedrockSpawner(poolsManager) },
+            { BlockType.FallingBonus, new FallingBonusBlockSpawner(poolsManager, droppableBonusSettings) }
         };
     }
 }

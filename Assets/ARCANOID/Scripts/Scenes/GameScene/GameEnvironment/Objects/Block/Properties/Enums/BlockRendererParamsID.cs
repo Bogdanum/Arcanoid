@@ -10,5 +10,7 @@ public enum BlockRendererParamsID
     IronOre = 7,
     RedstoneOre = 8,
     OakLog = 9,
-    Tnt = 10
+    Tnt = 10,
+    Furnace = 11,
+    Emerald = 12
 }

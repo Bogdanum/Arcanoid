@@ -8,6 +8,6 @@ public class TextWithValueParams
     [SerializeField] private bool isTextWithValue;
     [SerializeField] private string format = defaultFormat;
 
-    public bool IsTextWithValue => isTextWithValue;
+    public bool IsTextWithValue { get => isTextWithValue; set => isTextWithValue = value; }
     public string Format => format;
 }

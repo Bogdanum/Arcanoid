@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 006f14091a7747e889e73fccfada9448, type: 3}
+  m_Name: PoolsSettings
+  m_EditorClassIdentifier: 
+  allPoolsSettings:
+  - factory: {fileID: 8087574109970257729, guid: 073d7a02a092749de98657f9afa08a3d, type: 3}
+    itemPrefab: {fileID: 9129035573843370989, guid: 4d75b75c89a954d39856edc9bd310abb, type: 3}
+    itemSettings: {fileID: 11400000, guid: 8e1f2505279e3417fbdb902b4f258d77, type: 2}
+    initialCount: 5
+  - factory: {fileID: 5303593294072550162, guid: 6ec3fefd2764a4985b05523bd14d5622, type: 3}
+    itemPrefab: {fileID: 8449945311640313456, guid: 6f857f4f4288c4513a36dff3e3d70da8, type: 3}
+    itemSettings: {fileID: 11400000, guid: 4c6d8d934b70242f4807f097f906654f, type: 2}
+    initialCount: 30
+  - factory: {fileID: 5303593294072550162, guid: 6ec3fefd2764a4985b05523bd14d5622, type: 3}
+    itemPrefab: {fileID: 8812679514786229639, guid: 5866689130dfb41cebe6ff5103a2e59f, type: 3}
+    itemSettings: {fileID: 11400000, guid: 4c6d8d934b70242f4807f097f906654f, type: 2}
+    initialCount: 15
+  - factory: {fileID: 5303593294072550162, guid: 6ec3fefd2764a4985b05523bd14d5622, type: 3}
+    itemPrefab: {fileID: 2724526621621386500, guid: 3acf9d5b28e70413d97fbc3e56f16c6e, type: 3}
+    itemSettings: {fileID: 11400000, guid: 4c6d8d934b70242f4807f097f906654f, type: 2}
+    initialCount: 20
+  - factory: {fileID: 2240241413435544493, guid: c82352a77d4aa4516a5e628f56170a0b, type: 3}
+    itemPrefab: {fileID: 4985601299984787262, guid: 598772188491543b99f7498dd6842302, type: 3}
+    itemSettings: {fileID: 11400000, guid: 25cb4acadf0544c12824f223493ef361, type: 2}
+    initialCount: 5
+  - factory: {fileID: 4163554346551027153, guid: f36af844dc11f4338a053be1370b19a5, type: 3}
+    itemPrefab: {fileID: 8837537083735948659, guid: 41b382ad35d144abcabd947231ca2e9e, type: 3}
+    itemSettings: {fileID: 11400000, guid: 65c9c980a7a9f477ea79d9e242067cbf, type: 2}
+    initialCount: 8
