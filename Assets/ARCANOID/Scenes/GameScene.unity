@@ -1599,8 +1599,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 616349643a114211872dc1bc2ef39a85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ballsContainer: {fileID: 1173360908}
   ballPhysicsSettings: {fileID: 11400000, guid: 0a0ec3914d3f741c4993ddbdaa2cdc8b, type: 2}
+  _ballsContainer: {fileID: 1173360909}
 --- !u!1 &894737841
 GameObject:
   m_ObjectHideFlags: 0
@@ -1944,6 +1944,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1173360908}
+  - component: {fileID: 1173360909}
   m_Layer: 0
   m_Name: BallsContainer
   m_TagString: Untagged
@@ -1965,6 +1966,18 @@ Transform:
   m_Father: {fileID: 1835462858}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1173360909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1173360907}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd909b28c4314f38a74afd6f5283bd6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1174947508
 GameObject:
   m_ObjectHideFlags: 0
@@ -3197,6 +3210,7 @@ MonoBehaviour:
     rageBallConfig: {fileID: 11400000, guid: 8cf4e2e727d574c3f83963f597d41143, type: 2}
     ballSpeedBonusStateController: {fileID: 597565188}
     speedConfig: {fileID: 11400000, guid: f3c1d67bf18e8407a9d414a50cd0753d, type: 2}
+    hiddenBallBonusConfig: {fileID: 11400000, guid: f81ba6be271f34854b845ce250e9938a, type: 2}
 --- !u!1 &1835462857
 GameObject:
   m_ObjectHideFlags: 0

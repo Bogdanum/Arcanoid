@@ -1,100 +1,72 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 
-public class BallsOnSceneController : MonoBehaviour, IMainBallLifecycleHandler, ILaunchBallHandler, IComplexityIncreaseHandler, ILocalGameStateHandler, IClearGameFieldHandler
+public class BallsOnSceneController : MonoBehaviour, IMainBallLifecycleHandler, ILaunchBallHandler
 {
-    [SerializeField] private Transform ballsContainer;
     [SerializeField] private BallPhysicsSettings ballPhysicsSettings;
-    private PoolsManager _poolsManager;
-    private List<Ball> _ballsList;
-    private Ball _currentBallOnPlatform;
-    private float _currentBallsVelocity;
-    private float _additionalVelocity;
-
-    private void OnEnable() => MessageBus.Subscribe(this);
-    private void OnDisable() => MessageBus.Unsubscribe(this);
+    [SerializeField] private BallsOnSceneContainer _ballsContainer;
+    private BallsOnSceneVelocityController _velocityController;
+    private BallsSpawner _spawner;
+    private Ball _ballOnPlatform;
 
     [Inject]
     public void Init(PoolsManager poolsManager)
     {
-        _poolsManager = poolsManager;
-        _ballsList = new List<Ball>();
-        _currentBallsVelocity = ballPhysicsSettings.InitialVelocity;
+        _spawner = new BallsSpawner(poolsManager);
+        _ballsContainer.Init(_spawner);
+        _velocityController = new BallsOnSceneVelocityController(ballPhysicsSettings, _ballsContainer);
     }
     
-    public List<Ball> GetBallsOnSceneList() => _ballsList;
+    private void OnEnable() => MessageBus.Subscribe(this);
+    private void OnDisable() => MessageBus.Unsubscribe(this);
+
+    public List<Ball> GetBallsOnSceneList() => _ballsContainer.GetBallsOnSceneList();
     
     public void OnCreateNewBallOnPlatform(Transform platform)
     {
-        var ball = SpawnBallAtPosition(platform.position, platform);
+        SpawnBall(platform.position, platform);   
+        _velocityController.UpdateBallsVelocity();
+    }
+
+    public void CreateBallAtPositionAndPushInDirection(Vector2 position, Vector2 direction)
+    {
+        var ball = SpawnBall(position, _ballsContainer.transform);
+        _velocityController.UpdateBallsVelocity();
+        ball.PushBall(direction);
+    }
+
+    private Ball SpawnBall(Vector2 position, Transform parent = null)
+    {
+        var ball = _spawner.SpawnBallAtPosition(position, parent);
         MessageBus.RaiseEvent<ISpawnBallHandler>(handler => handler.OnSpawnBallOnScene(ball));
-        _currentBallOnPlatform = ball;
-        _ballsList.Add(ball);
-        SetBallsVelocity();
+        _ballOnPlatform = ball;
+        _ballsContainer.Add(ball);
+        return ball;
     }
-
-    private Ball SpawnBallAtPosition(Vector3 position, Transform parent)
-    {
-        return _poolsManager.GetItem<Ball>(position, parent);
-    }
-
-    private void SetBallsVelocity()
-    {
-        float velocity = _currentBallsVelocity + _additionalVelocity;
-        _ballsList.ForEach(ball => ball.SetVelocity(velocity));
-    }
-
+    
     public void ChangeAdditionalVelocity(float additionalVelocity)
     {
-        _additionalVelocity = additionalVelocity;
-        SetBallsVelocity();
-    }
-
-    
-    public void OnIncreasingComplexity()
-    {
-        if (_currentBallsVelocity >= ballPhysicsSettings.MaxVelocity) return;
-
-        _currentBallsVelocity += ballPhysicsSettings.VelocityIncreaseStep;
-        SetBallsVelocity();
+        _velocityController.ChangeAdditionalVelocity(additionalVelocity);
     }
 
     public void OnLaunchCommand()
     {
-        if (_currentBallOnPlatform == null) return;
+        if (_ballOnPlatform == null) return;
         
-        _currentBallOnPlatform.PushBall(Vector2.up);
-        _currentBallOnPlatform.transform.SetParent(ballsContainer);
-        _currentBallOnPlatform = null;
+        _ballOnPlatform.PushBall(Vector2.up);
+        _ballsContainer.Put(_ballOnPlatform.transform);
+        _ballOnPlatform = null;
     }
 
     public void OnDestroyBall(Ball ball)
     {
-        _poolsManager.ReturnItemToPool(ball);
-        _ballsList.Remove(ball);
+        _ballsContainer.Remove(ball);
 
-        if (_ballsList.Count < 1)
+        if (_ballsContainer.IsEmpty)
         {
             MessageBus.RaiseEvent<IPlayerHealthChangeHandler>(handler => handler.OnRemoveHealth());
             MessageBus.RaiseEvent<ILocalGameStateHandler>(handler => handler.OnContinueGame());
         }
     }
-
-    public void OnEndGame() => RemoveAllBallsOnScene();
-    public void OnClearGameField() => RemoveAllBallsOnScene();
-    
-    private void RemoveAllBallsOnScene()
-    {
-        _ballsList.ForEach(_poolsManager.ReturnItemToPool);
-        _ballsList.Clear();
-    }
-
-    public void OnPrepare()
-    {
-        _currentBallsVelocity = ballPhysicsSettings.InitialVelocity;
-    }
-    public void OnStartGame() {}
-    public void OnContinueGame() {}
 }

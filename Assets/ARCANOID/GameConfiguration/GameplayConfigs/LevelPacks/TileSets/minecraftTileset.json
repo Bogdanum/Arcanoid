@@ -354,7 +354,7 @@
                 {
                  "name":"blockType",
                  "type":"int",
-                 "value":4
+                 "value":3
                 }, 
                 {
                  "name":"bonusId",

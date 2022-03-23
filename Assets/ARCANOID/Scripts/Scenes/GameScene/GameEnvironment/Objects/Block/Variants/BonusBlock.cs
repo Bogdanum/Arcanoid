@@ -6,10 +6,13 @@ public class BonusBlock : DestructibleBlock
     [SerializeField] private SpriteComponent bonusSpriteComponent;
     public event Action OnDestroyed;
 
-    public void SetBonusType(BlockType blockType, Sprite droppableBonusSprite)
+    public void SetBonusType(BlockType blockType, Sprite droppableBonusSprite = null)
     {
         Type = blockType;
-        bonusSpriteComponent.SetSprite(droppableBonusSprite);
+        if (droppableBonusSprite != null)
+        {
+            bonusSpriteComponent.SetSprite(droppableBonusSprite);
+        }
     }
 
     public override void Destroy()
