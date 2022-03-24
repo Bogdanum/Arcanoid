@@ -79,3 +79,18 @@ MonoBehaviour:
       mainSprite: {fileID: 21300000, guid: 02e1f5f74121746bd811873226ff0c1f, type: 3}
       mainColor: {r: 0.5058824, g: 0.9686275, b: 0.6784314, a: 1}
       accentColor: {r: 0.1137255, g: 0.68235296, b: 0.20784315, a: 1}
+  - rendererParamsID: 13
+    blockRendererParams:
+      mainSprite: {fileID: 21300000, guid: 61500ecdfa33b4980bbae4fd69e05fe8, type: 3}
+      mainColor: {r: 0.8588236, g: 0.19215688, b: 0.10588236, a: 1}
+      accentColor: {r: 0.7294118, g: 0.70980394, b: 0.7019608, a: 1}
+  - rendererParamsID: 14
+    blockRendererParams:
+      mainSprite: {fileID: 21300000, guid: c8163a7ceabc3426791d6fdf5e867dc2, type: 3}
+      mainColor: {r: 0.8588236, g: 0.19215688, b: 0.10588236, a: 1}
+      accentColor: {r: 0.7294118, g: 0.70980394, b: 0.7019608, a: 1}
+  - rendererParamsID: 15
+    blockRendererParams:
+      mainSprite: {fileID: 21300000, guid: 4d3441507e3e946f3962c9beab585d90, type: 3}
+      mainColor: {r: 0.8588236, g: 0.19215688, b: 0.10588236, a: 1}
+      accentColor: {r: 0.22022964, g: 0.29748002, b: 0.9528302, a: 1}

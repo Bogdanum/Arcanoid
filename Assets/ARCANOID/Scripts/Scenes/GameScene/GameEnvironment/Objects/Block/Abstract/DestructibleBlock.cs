@@ -61,8 +61,10 @@ public abstract class DestructibleBlock : Block
             Destroy();
         }
     }
+
+    public bool DamageLessThanLife(int damage) => damage >= _healthPoints;
     
-    private void TakeDamage(int damage)
+    public void TakeDamage(int damage)
     {
         _healthPoints -= damage;
         if (_healthPoints < 1)

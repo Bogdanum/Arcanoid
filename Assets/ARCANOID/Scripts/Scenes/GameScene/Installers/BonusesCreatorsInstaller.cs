@@ -27,7 +27,8 @@ public class BonusesCreatorsInstaller : MonoInstaller
             { BonusId.FireBall, new RageBallBonusReproducer() },
             { BonusId.BallAcceleration, new BallSpeedBonusReproducer(BinaryBonusDirection.Increase) },
             { BonusId.BallDeceleration, new BallSpeedBonusReproducer(BinaryBonusDirection.Decrease) },
-            { BonusId.HiddenBall, new HiddenBallBonusReproducer() }
+            { BonusId.HiddenBall, new HiddenBallBonusReproducer() },
+            { BonusId.SimpleBomb, new SimpleBombBonusReproducer() }
         };
     }
 }

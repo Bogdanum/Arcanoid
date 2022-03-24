@@ -8,6 +8,7 @@ public class BlockSpawnerController
     private readonly PoolsManager _poolsManager;
     private readonly Dictionary<BlockType, IBlockSpawner> _spawners;
     private readonly Dictionary<Type, List<Block>> _blocks;
+    private Vector3 _currentBlockScale;
     
     public BlockSpawnerController(PoolsManager poolsManager, Dictionary<BlockType, IBlockSpawner> spawners)
     {
@@ -20,6 +21,7 @@ public class BlockSpawnerController
     {
         var block = _spawners[properties.Type].Spawn(properties, position, scale, parent);
         AddToDictionary(block);
+        _currentBlockScale = scale;
         return block;
     }
 
@@ -61,4 +63,6 @@ public class BlockSpawnerController
         }
         _blocks.Clear();
     }
+
+    public Vector3 GetCurrentBlockScale() => _currentBlockScale;
 }
