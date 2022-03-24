@@ -37,6 +37,9 @@ public class BonusesEffectsInstaller : MonoInstaller
         var simpleBombBonusStateController = bombsSettings.simpleBombBonusStateController;
         bombsSettings.simpleBombConfig.Init();
         simpleBombBonusStateController.Init(bombsSettings.gridOfBlocks, bombsSettings.simpleBombConfig);
+        var lineTntBonusStateController = bombsSettings.lineTntBonusStateController;
+        bombsSettings.lineBombConfig.Init();
+        lineTntBonusStateController.Init(bombsSettings.gridOfBlocks, bombsSettings.lineBombConfig);
     }
 
     [Serializable]
@@ -73,5 +76,8 @@ public class BonusesEffectsInstaller : MonoInstaller
         [Header("Simple Bomb")] 
         public SimpleBombBonusStateController simpleBombBonusStateController;
         public BombBonusConfig simpleBombConfig;
+        [Header("Line Bomb")] 
+        public LineTntBonusStateController lineTntBonusStateController;
+        public BombBonusConfig lineBombConfig;
     }
 }

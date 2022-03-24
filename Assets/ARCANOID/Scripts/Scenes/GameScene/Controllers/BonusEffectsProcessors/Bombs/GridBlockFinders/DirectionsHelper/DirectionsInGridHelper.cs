@@ -22,4 +22,27 @@ public static class DirectionsInGridHelper
         Vector2Int.right,
         Vector2Int.down
     };
+
+    public static Dictionary<Vector2Int, Vector2Int> GetInitialPositionDirectionMap(Vector2Int blockPosition, LineTntDirection lineDirection)
+    {
+        if (lineDirection == LineTntDirection.Vertical)
+        {
+            return new Dictionary<Vector2Int, Vector2Int>()
+            {
+                { blockPosition + Vector2Int.up, Vector2Int.up },
+                { blockPosition + Vector2Int.down, Vector2Int.down }
+            };
+        }
+        return new Dictionary<Vector2Int, Vector2Int>()
+        {
+                { blockPosition + Vector2Int.right, Vector2Int.right },
+                { blockPosition + Vector2Int.left, Vector2Int.left }
+        };
+    }
+}
+
+public enum LineTntDirection
+{
+    Vertical,
+    Horizontal
 }

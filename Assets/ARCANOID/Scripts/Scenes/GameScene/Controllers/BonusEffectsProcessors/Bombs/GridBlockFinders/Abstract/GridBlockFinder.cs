@@ -9,7 +9,7 @@ public abstract class GridBlockFinder
     private readonly GridOfBlocks _gridOfBlocks;
     private readonly int _colCount;
     private readonly int _rowCount;
-    protected bool HasNextBlocks { get; set; }
+    public virtual bool HasNextBlocks { get; protected set; }
 
     public GridBlockFinder(Vector2 bombPosition, GridOfBlocks gridOfBlocks)
     {

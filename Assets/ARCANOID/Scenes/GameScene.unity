@@ -1285,7 +1285,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 32
+  m_fontSize: 50
   m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -2639,6 +2639,63 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1515003955
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1515003958}
+  - component: {fileID: 1515003956}
+  - component: {fileID: 1515003957}
+  m_Layer: 0
+  m_Name: LineBombStateController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1515003956
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1515003955}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33619f528e7c4696a7c0e9014c86048a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explosionProcessor: {fileID: 1515003957}
+--- !u!114 &1515003957
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1515003955}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 929c5cf3e691429187ee4216d8d53902, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1515003958
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1515003955}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1984498436}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1545316419
 GameObject:
   m_ObjectHideFlags: 0
@@ -3304,6 +3361,8 @@ MonoBehaviour:
     gridOfBlocks: {fileID: 1786519321}
     simpleBombBonusStateController: {fileID: 1247494950}
     simpleBombConfig: {fileID: 11400000, guid: fbe57b41caf5646c381d46201da1c10c, type: 2}
+    lineTntBonusStateController: {fileID: 1515003956}
+    lineBombConfig: {fileID: 11400000, guid: e8cad1e26d0ff4fc59bab789845ba7b0, type: 2}
 --- !u!1 &1835462857
 GameObject:
   m_ObjectHideFlags: 0
@@ -3534,6 +3593,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1247494952}
+  - {fileID: 1515003958}
   m_Father: {fileID: 1901746304}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
