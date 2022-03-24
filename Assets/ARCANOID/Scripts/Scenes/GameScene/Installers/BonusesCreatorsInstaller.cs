@@ -30,7 +30,8 @@ public class BonusesCreatorsInstaller : MonoInstaller
             { BonusId.HiddenBall, new HiddenBallBonusReproducer() },
             { BonusId.SimpleBomb, new SimpleBombBonusReproducer() },
             { BonusId.VerticalBomb, new LineTntBonusReproducer(LineTntDirection.Vertical) },
-            { BonusId.HorizontalBomb, new LineTntBonusReproducer(LineTntDirection.Horizontal) }
+            { BonusId.HorizontalBomb, new LineTntBonusReproducer(LineTntDirection.Horizontal) },
+            { BonusId.ChainColorBomb, new ChainColorTntReproducer() }
         };
     }
 }

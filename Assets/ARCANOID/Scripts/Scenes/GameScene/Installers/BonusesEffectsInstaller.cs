@@ -40,6 +40,9 @@ public class BonusesEffectsInstaller : MonoInstaller
         var lineTntBonusStateController = bombsSettings.lineTntBonusStateController;
         bombsSettings.lineBombConfig.Init();
         lineTntBonusStateController.Init(bombsSettings.gridOfBlocks, bombsSettings.lineBombConfig);
+        var colorChainTntStateController = bombsSettings.colorChainTntStateController;
+        bombsSettings.colorBombConfig.Init();
+        colorChainTntStateController.Init(bombsSettings.colorBombConfig, bombsSettings.gridOfBlocks);
     }
 
     [Serializable]
@@ -79,5 +82,8 @@ public class BonusesEffectsInstaller : MonoInstaller
         [Header("Line Bomb")] 
         public LineTntBonusStateController lineTntBonusStateController;
         public BombBonusConfig lineBombConfig;
+        [Header("Color Chain Bomb")] 
+        public ColorChainTntStateController colorChainTntStateController;
+        public BombBonusConfig colorBombConfig;
     }
 }

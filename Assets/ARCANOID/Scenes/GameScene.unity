@@ -1285,7 +1285,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 50
+  m_fontSize: 32
   m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1434,6 +1434,63 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -4, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &656064911
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 656064912}
+  - component: {fileID: 656064914}
+  - component: {fileID: 656064913}
+  m_Layer: 0
+  m_Name: ColorChainBombStateController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &656064912
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 656064911}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1984498436}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &656064913
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 656064911}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 929c5cf3e691429187ee4216d8d53902, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &656064914
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 656064911}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e869ede02a84d929f2c9f06a9b0041e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explosionProcessor: {fileID: 656064913}
 --- !u!1 &663308570
 GameObject:
   m_ObjectHideFlags: 0
@@ -3363,6 +3420,8 @@ MonoBehaviour:
     simpleBombConfig: {fileID: 11400000, guid: fbe57b41caf5646c381d46201da1c10c, type: 2}
     lineTntBonusStateController: {fileID: 1515003956}
     lineBombConfig: {fileID: 11400000, guid: e8cad1e26d0ff4fc59bab789845ba7b0, type: 2}
+    colorChainTntStateController: {fileID: 656064914}
+    colorBombConfig: {fileID: 11400000, guid: 1e586aad1bd1c46ccacccdf6a9daba88, type: 2}
 --- !u!1 &1835462857
 GameObject:
   m_ObjectHideFlags: 0
@@ -3594,6 +3653,7 @@ Transform:
   m_Children:
   - {fileID: 1247494952}
   - {fileID: 1515003958}
+  - {fileID: 656064912}
   m_Father: {fileID: 1901746304}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
