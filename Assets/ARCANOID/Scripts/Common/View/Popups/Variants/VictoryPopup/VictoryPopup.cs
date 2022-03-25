@@ -46,29 +46,21 @@ public class VictoryPopup : BasePopup, IPackActionHandler
         if (_cachedPackInfo == currentPackInfo)
         {
             _lastOrRepassedPack = _cachedPackInfo.IsLast || _cachedPackInfo.IsRepassed;
-            if (_lastOrRepassedPack)
+            if (!_lastOrRepassedPack)
             {
                 packProgressView.UpdateProgressAnimate
-                    (
-                        levelsCount + 1, 
-                        null, 
-                        () => onAppeared?.Invoke()
-                    );
-            } else
-            {
-                packProgressView.UpdateProgressAnimate
-                    (
-                        currentPackInfo.CurrentLevel, 
-                        null, 
-                        () => onAppeared?.Invoke()
-                    );
-            }
+                (
+                    currentPackInfo.CurrentLevel, 
+                    null, 
+                    () => onAppeared?.Invoke()
+                );
+            } 
             return;
         }
         packProgressView.UpdateProgressAnimate
             (
                 levelsCount + 1, 
-                InitProgressView, 
+                null, 
                 () => onAppeared?.Invoke()
             );
     }

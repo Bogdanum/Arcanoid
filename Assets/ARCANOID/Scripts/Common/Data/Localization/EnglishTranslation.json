@@ -12,5 +12,9 @@
 	"pause_second_chance" : "Second chance",
 	"locked_pack" : "???",
 	"training_pack" : "Creeper training",
-	"steve_pack" : "Challenge from Steve"
+	"steve_pack" : "Challenge from Steve",
+	"bombs_pack" : "sss...BOOM!",
+	"ball_bonuses" : "Ball bonuses",
+	"platform_bonuses" : "Platform bonuses",
+	"bonus_mix" : "Bonus mix"
 }

@@ -1,18 +1,18 @@
 using UnityEngine;
 
-public class HiddenBallBonusProcessor : IHiddenBallBonusHandler
+public class HiddenBallBonusProcessor : MonoBehaviour, IHiddenBallBonusHandler
 {
-    private readonly HiddenBallBonusConfig _config;
-    private readonly BallsOnSceneController _ballsOnSceneController;
+    private HiddenBallBonusConfig _config;
+    private BallsOnSceneController _ballsOnSceneController;
 
-    public HiddenBallBonusProcessor(BallsOnSceneController ballsOnSceneController, HiddenBallBonusConfig config)
+    public void Init(BallsOnSceneController ballsOnSceneController, HiddenBallBonusConfig config)
     {
         MessageBus.Subscribe(this);
         _ballsOnSceneController = ballsOnSceneController;
         _config = config;
     }
 
-    ~HiddenBallBonusProcessor() => MessageBus.Unsubscribe(this);
+    private void OnDisable() => MessageBus.Unsubscribe(this);
     
     public void OnActivateHiddenBallBonus(Vector2 bonusPosition)
     {

@@ -1520,6 +1520,7 @@ Transform:
   m_Children:
   - {fileID: 243354195}
   - {fileID: 597565190}
+  - {fileID: 1740556924}
   m_Father: {fileID: 1901746304}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1657,7 +1658,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ballPhysicsSettings: {fileID: 11400000, guid: 0a0ec3914d3f741c4993ddbdaa2cdc8b, type: 2}
-  _ballsContainer: {fileID: 1173360909}
+  ballsContainer: {fileID: 1173360909}
 --- !u!1 &869676776
 GameObject:
   m_ObjectHideFlags: 0
@@ -2987,6 +2988,49 @@ Transform:
   m_Father: {fileID: 1424274767}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1740556923
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1740556924}
+  - component: {fileID: 1740556925}
+  m_Layer: 0
+  m_Name: HiddenBallBonusProcessor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1740556924
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1740556923}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 663308571}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1740556925
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1740556923}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50b86405753647edb681efef94e12d12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1748428576
 GameObject:
   m_ObjectHideFlags: 0
@@ -3413,6 +3457,7 @@ MonoBehaviour:
     rageBallConfig: {fileID: 11400000, guid: 8cf4e2e727d574c3f83963f597d41143, type: 2}
     ballSpeedBonusStateController: {fileID: 597565188}
     speedConfig: {fileID: 11400000, guid: f3c1d67bf18e8407a9d414a50cd0753d, type: 2}
+    hiddenBallBonusProcessor: {fileID: 1740556925}
     hiddenBallBonusConfig: {fileID: 11400000, guid: f81ba6be271f34854b845ce250e9938a, type: 2}
   bombsSettings:
     gridOfBlocks: {fileID: 1786519321}

@@ -29,7 +29,8 @@ public class BonusesEffectsInstaller : MonoInstaller
         rageBallBonusController.Init(ballBonusesSettings.ballsOnSceneController, ballBonusesSettings.blocksOnSceneController, ballBonusesSettings.rageBallConfig);
         var ballSpeedBonusController = ballBonusesSettings.ballSpeedBonusStateController;
         ballSpeedBonusController.Init(ballBonusesSettings.ballsOnSceneController, ballBonusesSettings.speedConfig);
-        Container.Bind<HiddenBallBonusProcessor>().FromNew().AsSingle().WithArguments(ballBonusesSettings.ballsOnSceneController, ballBonusesSettings.hiddenBallBonusConfig).NonLazy();
+        var hiddenBallBonusProcessor = ballBonusesSettings.hiddenBallBonusProcessor;
+        hiddenBallBonusProcessor.Init(ballBonusesSettings.ballsOnSceneController, ballBonusesSettings.hiddenBallBonusConfig);
     }
     
     private void InitBombsControllers()
@@ -69,6 +70,7 @@ public class BonusesEffectsInstaller : MonoInstaller
         public BallSpeedBonusStateController ballSpeedBonusStateController;
         public BinaryBonusProcessorConfig speedConfig;
         [Header("HiddenBall bonus")] 
+        public HiddenBallBonusProcessor hiddenBallBonusProcessor;
         public HiddenBallBonusConfig hiddenBallBonusConfig;
     }
     

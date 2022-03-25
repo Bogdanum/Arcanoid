@@ -5,7 +5,7 @@ using Zenject;
 public class BallsOnSceneController : MonoBehaviour, IMainBallLifecycleHandler, ILaunchBallHandler
 {
     [SerializeField] private BallPhysicsSettings ballPhysicsSettings;
-    [SerializeField] private BallsOnSceneContainer _ballsContainer;
+    [SerializeField] private BallsOnSceneContainer ballsContainer;
     private BallsOnSceneVelocityController _velocityController;
     private BallsSpawner _spawner;
     private Ball _ballOnPlatform;
@@ -14,14 +14,14 @@ public class BallsOnSceneController : MonoBehaviour, IMainBallLifecycleHandler, 
     public void Init(PoolsManager poolsManager)
     {
         _spawner = new BallsSpawner(poolsManager);
-        _ballsContainer.Init(_spawner);
-        _velocityController = new BallsOnSceneVelocityController(ballPhysicsSettings, _ballsContainer);
+        ballsContainer.Init(_spawner);
+        _velocityController = new BallsOnSceneVelocityController(ballPhysicsSettings, ballsContainer);
     }
     
     private void OnEnable() => MessageBus.Subscribe(this);
     private void OnDisable() => MessageBus.Unsubscribe(this);
 
-    public List<Ball> GetBallsOnSceneList() => _ballsContainer.GetBallsOnSceneList();
+    public List<Ball> GetBallsOnSceneList() => ballsContainer.GetBallsOnSceneList();
     
     public void OnCreateNewBallOnPlatform(Transform platform)
     {
@@ -31,7 +31,7 @@ public class BallsOnSceneController : MonoBehaviour, IMainBallLifecycleHandler, 
 
     public void CreateBallAtPositionAndPushInDirection(Vector2 position, Vector2 direction)
     {
-        var ball = SpawnBall(position, _ballsContainer.transform);
+        var ball = SpawnBall(position, ballsContainer.transform);
         _velocityController.UpdateBallsVelocity();
         ball.PushBall(direction);
     }
@@ -41,7 +41,7 @@ public class BallsOnSceneController : MonoBehaviour, IMainBallLifecycleHandler, 
         var ball = _spawner.SpawnBallAtPosition(position, parent);
         MessageBus.RaiseEvent<ISpawnBallHandler>(handler => handler.OnSpawnBallOnScene(ball));
         _ballOnPlatform = ball;
-        _ballsContainer.Add(ball);
+        ballsContainer.Add(ball);
         return ball;
     }
     
@@ -55,15 +55,15 @@ public class BallsOnSceneController : MonoBehaviour, IMainBallLifecycleHandler, 
         if (_ballOnPlatform == null) return;
         
         _ballOnPlatform.PushBall(Vector2.up);
-        _ballsContainer.Put(_ballOnPlatform.transform);
+        ballsContainer.Put(_ballOnPlatform.transform);
         _ballOnPlatform = null;
     }
 
     public void OnDestroyBall(Ball ball)
     {
-        _ballsContainer.Remove(ball);
+        ballsContainer.Remove(ball);
 
-        if (_ballsContainer.IsEmpty)
+        if (ballsContainer.IsEmpty)
         {
             MessageBus.RaiseEvent<IPlayerHealthChangeHandler>(handler => handler.OnRemoveHealth());
             MessageBus.RaiseEvent<ILocalGameStateHandler>(handler => handler.OnContinueGame());
