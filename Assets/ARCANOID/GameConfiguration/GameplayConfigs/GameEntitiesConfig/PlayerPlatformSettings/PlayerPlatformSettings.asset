@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initialSize: 0.3
   initialSpeed: 10
-  targetPositionAccuracy: 0.08
+  targetPositionAccuracy: 0.4

@@ -31,6 +31,7 @@ public class Ball : PoolItem, IPauseHandler
         MessageBus.Unsubscribe(this);
         base.OnDespawned();
         ballPhysics.DisablePhysics();
+        ballPhysics.OnDespawned();
     }
     
     public void SetDefaultVisualParams()

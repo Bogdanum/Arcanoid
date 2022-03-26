@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 using Zenject;
 
@@ -19,26 +18,27 @@ public class GameStateController : MonoBehaviour, IGlobalGameStateHandler, IGame
 
     private void Start()
     {
-        StartCoroutine(ClearFieldAndStart());
+        ClearFieldAndStart();
     }
 
-    private IEnumerator ClearFieldAndStart()
+    private void ClearFieldAndStart()
     {
         MessageBus.RaiseEvent<IClearGameFieldHandler>(handler => handler.OnClearGameField());
         MessageBus.RaiseEvent<ILocalGameStateHandler>(handler => handler.OnPrepare());
         MessageBus.RaiseEvent<ILocalGameStateHandler>(handler => handler.OnStartGame());
-        yield return _popupsManager.HideAll();
+        MessageBus.RaiseEvent<IPauseHandler>(handler => handler.OnGameResumed());
+        _popupsManager.HideAll();
         MessageBus.RaiseEvent<IInputBlockingHandler>(handler => handler.OnInputActivation());
     }
     
     public void OnStartGame()
     {
-        StartCoroutine(ClearFieldAndStart());
+        ClearFieldAndStart();
     }
 
     public void OnRestartGame()
     {
-        StartCoroutine(ClearFieldAndStart());
+        ClearFieldAndStart();
     }
 
     public void OnContinue() => OnUseSecondChance();
@@ -56,7 +56,7 @@ public class GameStateController : MonoBehaviour, IGlobalGameStateHandler, IGame
     public void OnVictory() => GameOver();
     public void OnLose() => GameOver();
 
-    public void GameOver()
+    private void GameOver()
     {
         MessageBus.RaiseEvent<ILocalGameStateHandler>(handler => handler.OnEndGame());
         MessageBus.RaiseEvent<IInputBlockingHandler>(handler => handler.OnInputBlock());

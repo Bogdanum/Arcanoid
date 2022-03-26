@@ -32,7 +32,7 @@ public class PlayerHealthController : MonoBehaviour, IPlayerHealthChangeHandler,
         }
     }
 
-    public void OnRemoveHealth()
+    public void OnRemoveHealth(bool isBallDestroyed)
     {
         if (_currentHeartID >= 0)
         {
@@ -40,7 +40,10 @@ public class PlayerHealthController : MonoBehaviour, IPlayerHealthChangeHandler,
             _currentHeartID--;
             return;
         }
-        GameOver();
+        if (isBallDestroyed)
+        {
+            GameOver();   
+        }
     }
 
     private void GameOver()

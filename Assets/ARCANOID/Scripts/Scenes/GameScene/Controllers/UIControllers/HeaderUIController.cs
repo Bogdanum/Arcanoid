@@ -18,6 +18,7 @@ public class HeaderUIController : MonoBehaviour, ILocalGameStateHandler
     
     private void OnEnable() => MessageBus.Subscribe(this);
     private void OnDisable() => MessageBus.Unsubscribe(this);
+    private void OnApplicationPause(bool pauseStatus) => OpenPauseView();
 
     public void OpenPauseView()
     {

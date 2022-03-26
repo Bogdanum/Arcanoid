@@ -683,7 +683,7 @@ MonoBehaviour:
   onClickScale: {x: 0.9, y: 0.9, z: 1}
   animationTime: 0.5
   scaler: {fileID: 1085463223}
-  targetScene: 0
+  targetScene: 1
   onClick:
     m_PersistentCalls:
       m_Calls:

@@ -18,6 +18,7 @@ public class BasePopupAnimation : PopupAnimationController
 
     public override IEnumerator ShowAnimation()
     {
+        fader.Refresh();
         fader.FadeIn(config.FadeInDuration, config.FadeInEase, _fadeInDelay);
         yield return fader.FadeTween.WaitForCompletion();
     }

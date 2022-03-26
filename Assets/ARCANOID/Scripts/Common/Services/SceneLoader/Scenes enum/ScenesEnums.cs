@@ -1,7 +1,7 @@
 public enum Scene
 {
-     MenuScene = 0,
-     LevelSelection = 1,
-     GameScene = 2
+     MenuScene = 1,
+     LevelSelection = 2,
+     GameScene = 3
 }
 

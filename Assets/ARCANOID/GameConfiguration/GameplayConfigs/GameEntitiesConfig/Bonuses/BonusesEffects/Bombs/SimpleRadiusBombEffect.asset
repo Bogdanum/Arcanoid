@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 209728674044466dabc579951ab4d1e8, type: 3}
   m_Name: SimpleRadiusBombEffect
   m_EditorClassIdentifier: 
-  delay: 0.4
+  delay: 0.1
   damage: 1
   destroyableBlocks: 01000000020000000300000004000000

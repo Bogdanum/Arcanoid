@@ -15,21 +15,18 @@ public class PausePopup : BasePopup
 
     public void OnResumeClicked()
     {
-        MessageBus.RaiseEvent<IResumeButtonHandler>(handler => handler.OnResumeButtonClicked());
+        MessageBus.RaiseEvent<IPausePopupButtonsHandler>(handler => handler.OnResumeButtonClicked());
     }
 
     public void OnRestartClicked()
     {
-        MessageBus.RaiseEvent<IGlobalGameStateHandler>(handler => handler.OnRestartGame());
+        MessageBus.RaiseEvent<IPausePopupButtonsHandler>(handler => handler.OnRestartButtonClicked());
     }
 
     public void BackToLevelsMap()
     {
         MessageBus.RaiseEvent<IClearGameFieldHandler>(handler => handler.OnClearGameField());
-        _sceneLoader.LoadScene(Scene.LevelSelection, () =>
-        {
-            StartCoroutine(Hide());
-        });
+        _sceneLoader.LoadScene(Scene.LevelSelection, Hide);
     }
     
     public void LockRestartButton()

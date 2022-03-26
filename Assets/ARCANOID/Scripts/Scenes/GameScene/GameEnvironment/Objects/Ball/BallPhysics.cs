@@ -26,6 +26,8 @@ public class BallPhysics : MonoBehaviour
           ballRigidbody.simulated = true;
      }
 
+     public void OnDespawned() => IsMoving = false;
+
      public void StartMovement(Vector2 velocityVector)
      {
           IsMoving = true;

@@ -18,8 +18,8 @@ public class VictoryPopup : BasePopup, IPackActionHandler
         _sceneLoader = sceneLoader;
         InitProgressView();
     }
-    
-    public override void PrepareToShow()
+
+    protected override void PrepareToShow()
     {
         packProgressView.OnPrepareView();
     }
@@ -37,32 +37,28 @@ public class VictoryPopup : BasePopup, IPackActionHandler
         packProgressView.SetNextPackName(_cachedPackInfo.Pack.PackID);
         packProgressView.InitProgressValues(_cachedPackInfo.CurrentLevel , _cachedPackInfo.Pack.Count + 1);
     }
-    
-    public override void OnAppeared(Action onAppeared)
+
+    protected override void OnAppeared(Action onAppeared = null)
     {
+        MessageBus.RaiseEvent<IPauseHandler>(handler => handler.OnGamePaused());
+        MessageBus.RaiseEvent<IInputBlockingHandler>(handler => handler.OnInputBlock());
+        
         var currentPackInfo = _levelPacksManager.GetCurrentPackInfo();
         int levelsCount = _cachedPackInfo.Pack.Count;
         packProgressView.UpdateButtonLevel(currentPackInfo.CurrentLevel);
         if (_cachedPackInfo == currentPackInfo)
         {
             _lastOrRepassedPack = _cachedPackInfo.IsLast || _cachedPackInfo.IsRepassed;
-            if (!_lastOrRepassedPack)
+            if (_lastOrRepassedPack)
             {
-                packProgressView.UpdateProgressAnimate
-                (
-                    currentPackInfo.CurrentLevel, 
-                    null, 
-                    () => onAppeared?.Invoke()
-                );
+                packProgressView.UpdateProgressAnimate(levelsCount + 1, null);
+            } else
+            {
+                packProgressView.UpdateProgressAnimate(currentPackInfo.CurrentLevel, null);
             } 
             return;
         }
-        packProgressView.UpdateProgressAnimate
-            (
-                levelsCount + 1, 
-                null, 
-                () => onAppeared?.Invoke()
-            );
+        packProgressView.UpdateProgressAnimate(levelsCount + 1, InitProgressView);
     }
 
     public void OnContinueButtonClicked()

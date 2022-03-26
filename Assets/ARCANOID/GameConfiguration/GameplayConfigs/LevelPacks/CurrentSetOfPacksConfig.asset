@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1c0e0f9fbca437a8602078932386e8f, type: 3}
   m_Name: CurrentSetOfPacksConfig
   m_EditorClassIdentifier: 
-  gameMode: 0
+  gameMode: 1
   currentSetOfPacks: {fileID: 11400000, guid: b5dddf276d8e04752ad15bf83f7c0db0, type: 2}

@@ -16,11 +16,12 @@ public class GameResultController : IGameResultHandler
     public void OnVictory()
     {
         _levelPacksManager.OnLevelComplete();
-        _popupsManager.StartCoroutine(_popupsManager.Show<VictoryPopup>());
+        _popupsManager.HideAll();
+        _popupsManager.Show<VictoryPopup>();
     }
 
     public void OnLose()
     {
-        _popupsManager.StartCoroutine(_popupsManager.Show<LosePopup>());
+        _popupsManager.Show<LosePopup>();
     }
 }

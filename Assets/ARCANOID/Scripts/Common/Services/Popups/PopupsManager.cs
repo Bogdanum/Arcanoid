@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -14,12 +13,12 @@ public class PopupsManager : MonoBehaviour
         _stackOfPopups = new Stack<BasePopup>();
     }
 
-    public IEnumerator Show<T>(Action onComplete = null) where T : BasePopup
+    public void Show<T>(Action onComplete = null) where T : BasePopup
     {
         var popup = GetPopup<T>();
         popup.transform.SetAsLastSibling();
         _stackOfPopups.Push(popup);
-        yield return popup.Show(onComplete);
+        popup.Show(onComplete);
     }
     
     private BasePopup GetPopup<T>() where T : BasePopup
@@ -32,20 +31,20 @@ public class PopupsManager : MonoBehaviour
         return _container.PopupsStorage[popupType];
     }
     
-    public IEnumerator HideLast()
-    {
-        var last = _stackOfPopups.Pop();
-        yield return last.Hide();
-    }
-
-    public IEnumerator HideAll()
+    public void HideAll()
     {
         for (int i = 0; i < _stackOfPopups.Count; i++)
         {
-            var popup = _stackOfPopups.Pop();
-            yield return popup.Hide();
+            HideLast();
         }
         _stackOfPopups.Clear();
+    }
+    
+    public void HideLast()
+    {
+        if (_stackOfPopups.Count < 1) return;
+        var last = _stackOfPopups.Pop();
+        last.Hide();
     }
 
     public void HideAllWithoutAnimation()

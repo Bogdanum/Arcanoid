@@ -65,7 +65,7 @@ public class BallsOnSceneController : MonoBehaviour, IMainBallLifecycleHandler, 
 
         if (ballsContainer.IsEmpty)
         {
-            MessageBus.RaiseEvent<IPlayerHealthChangeHandler>(handler => handler.OnRemoveHealth());
+            MessageBus.RaiseEvent<IPlayerHealthChangeHandler>(handler => handler.OnRemoveHealth(true));
             MessageBus.RaiseEvent<ILocalGameStateHandler>(handler => handler.OnContinueGame());
         }
     }

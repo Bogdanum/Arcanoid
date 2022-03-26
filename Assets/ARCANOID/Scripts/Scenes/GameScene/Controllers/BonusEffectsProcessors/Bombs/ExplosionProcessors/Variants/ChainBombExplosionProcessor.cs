@@ -1,14 +1,18 @@
 using System.Collections;
 using UnityEngine;
 
-public class ChainBombExplosionProcessor : MonoBehaviour, IExplosionProcessor
+public class ChainBombExplosionProcessor : MonoBehaviour, IExplosionProcessor, IPauseHandler
 {
     private BombBonusConfig _config;
+    private bool _isPaused;
 
     public void Init(BombBonusConfig config)
     {
+        MessageBus.Subscribe(this);
         _config = config;
     }
+    
+    private void OnDisable() => MessageBus.Unsubscribe(this);
     
     public void LaunchExplosion(GridBlockFinder gridBlockFinder)
     {
@@ -19,6 +23,8 @@ public class ChainBombExplosionProcessor : MonoBehaviour, IExplosionProcessor
     {
         while (gridBlockFinder.HasNextBlocks)
         {
+            while (_isPaused) yield return new WaitForEndOfFrame();
+            
             yield return new WaitForSeconds(_config.Delay);
             
             foreach (var block in gridBlockFinder.GetNextSetToDestroy())
@@ -30,8 +36,10 @@ public class ChainBombExplosionProcessor : MonoBehaviour, IExplosionProcessor
             }
         } 
     }
-    
+
     public void OnPrepare() => StopAllCoroutines();
+    public void OnGamePaused() => _isPaused = true;
+    public void OnGameResumed() => _isPaused = false;
     public void OnStartGame(){}
     public void OnContinueGame(){}
     public void OnEndGame(){}

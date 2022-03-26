@@ -12,7 +12,7 @@ public class HealthBonusStateController : MonoBehaviour, IHealthBonusHandler
             MessageBus.RaiseEvent<IPlayerHealthChangeHandler>(handler => handler.OnAddHealth());
         } else
         {
-            MessageBus.RaiseEvent<IPlayerHealthChangeHandler>(handler => handler.OnRemoveHealth());
+            MessageBus.RaiseEvent<IPlayerHealthChangeHandler>(handler => handler.OnRemoveHealth(false));
         }
     }
 }

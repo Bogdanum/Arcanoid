@@ -23,11 +23,15 @@ public abstract class BasePopup : MonoBehaviour
         rect.RefreshScaleAndPosition();
     }
 
-    public IEnumerator Show(Action onComplete)
+    public void Show(Action onComplete = null)
     {
         gameObject.SetActive(true);
-        PrepareToShow();
+        StartCoroutine(ShowAnimate(onComplete));
+    }
 
+    private IEnumerator ShowAnimate(Action onComplete = null)
+    {
+        PrepareToShow();
         if (animationController != null)
         {
             yield return animationController.ShowAnimation();
@@ -35,7 +39,12 @@ public abstract class BasePopup : MonoBehaviour
         OnAppeared(onComplete);
     }
 
-    public IEnumerator Hide()
+    public void Hide()
+    {
+        StartCoroutine(HideAnimate());
+    }
+
+    private IEnumerator HideAnimate()
     {
         if (animationController != null)
         {
@@ -43,7 +52,7 @@ public abstract class BasePopup : MonoBehaviour
         }
         gameObject.SetActive(false);
     }
-    
-    public virtual void PrepareToShow() {}
-    public virtual void OnAppeared(Action onAppeared) {}
+
+    protected virtual void PrepareToShow() {}
+    protected virtual void OnAppeared(Action onAppeared = null) {}
 }
