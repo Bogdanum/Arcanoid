@@ -40,4 +40,4 @@ MonoBehaviour:
   - factory: {fileID: 6053849322995302068, guid: e051865e0921b4325b8c240e8254fdeb, type: 3}
     itemPrefab: {fileID: 7603462569976118688, guid: 2bbbe4a766fb44336a31f7135540a71e, type: 3}
     itemSettings: {fileID: 11400000, guid: 25cb4acadf0544c12824f223493ef361, type: 2}
-    initialCount: 10
+    initialCount: 20

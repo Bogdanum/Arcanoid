@@ -3548,6 +3548,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   container: {fileID: 1963949361}
+  settings:
+    simpleTntExplosionColor: {r: 0.9150943, g: 0.06474723, b: 0.06474723, a: 1}
+    chainTntExplosionColor: {r: 0.73526824, g: 0.047058802, b: 0.8980392, a: 1}
 --- !u!1 &1901746303
 GameObject:
   m_ObjectHideFlags: 0

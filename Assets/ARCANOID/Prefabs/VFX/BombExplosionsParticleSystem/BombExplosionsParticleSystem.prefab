@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 3877713632868918918}
   - component: {fileID: 7603462569976118688}
-  - component: {fileID: 3795275534102133224}
-  - component: {fileID: 9188339174905041717}
+  - component: {fileID: 3395120450473128705}
+  - component: {fileID: 2527687917904723495}
   m_Layer: 9
-  m_Name: TntParticles
+  m_Name: BombExplosionsParticleSystem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -45,8 +45,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84dee4a06aab4ba9a572ce6ec627c11b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosionParticles: {fileID: 3795275534102133224}
---- !u!198 &3795275534102133224
+  explosionParticles: {fileID: 3395120450473128705}
+--- !u!198 &3395120450473128705
 ParticleSystem:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -245,7 +245,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 1, b: 1, a: 1}
+      maxColor: {r: 1, g: 0, b: 0, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -4819,7 +4819,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
---- !u!199 &9188339174905041717
+--- !u!199 &2527687917904723495
 ParticleSystemRenderer:
   serializedVersion: 6
   m_ObjectHideFlags: 0

@@ -1,11 +1,11 @@
 using System;
-using System.Collections;
+using DG.Tweening;
 using UnityEngine;
 
 public class PlatformMovement : MonoBehaviour, IPointerPositionHandler
 {
     [SerializeField] private Rigidbody2D platformRigidbody;
-
+    private BackToInitPositionSettings _backToInitPositionSettings;
     private Transform _platformTransform;
     private Vector3 _startPosition;
     private Vector2 _targetPosition;
@@ -18,14 +18,16 @@ public class PlatformMovement : MonoBehaviour, IPointerPositionHandler
     private float _targetPosAccuracy;
     private double _absDistanceToTarget;
     private bool _controlLock;
+    private bool _isHolding;
     
     private void OnEnable() => MessageBus.Subscribe(this);
     private void OnDisable() => MessageBus.Unsubscribe(this);
     public void LockControl() => _controlLock = true;
     public void UnlockControl() => _controlLock = false;
 
-    public void Init(float targetPosAccuracy, float gameBoundarySize)
+    public void Init(float targetPosAccuracy, float gameBoundarySize, BackToInitPositionSettings backToInitPositionSettings)
     {
+        _backToInitPositionSettings = backToInitPositionSettings;
         _platformTransform = transform;
         _startPosition = _platformTransform.position;
         _targetPosition = _startPosition;
@@ -57,7 +59,9 @@ public class PlatformMovement : MonoBehaviour, IPointerPositionHandler
 
         _targetPosition = CalculateTargetMovePosition(position);
     }
-    
+
+    public void OnUpdateHoldingState(bool isHolding) => _isHolding = isHolding;
+
     private Vector3 CalculateTargetMovePosition(Vector3 pointerPos)
     {
         pointerPos.y = _platformTransform.position.y;
@@ -72,6 +76,13 @@ public class PlatformMovement : MonoBehaviour, IPointerPositionHandler
 
     private void FixedUpdate()
     {
+        if (_controlLock) return;
+
+        if (!_isHolding)
+        {
+            _targetPosition = platformRigidbody.position;
+        }
+        
         _absDistanceToTarget = Math.Round(Mathf.Abs(platformRigidbody.position.x - _targetPosition.x), 2);
 
         _direction = _targetPosition - platformRigidbody.position;
@@ -86,15 +97,13 @@ public class PlatformMovement : MonoBehaviour, IPointerPositionHandler
         platformRigidbody.velocity = _velocity;
     }
     
-    public IEnumerator BackToInitialPosition(Action onComplete = null)
+    public void BackToInitialPosition(Action onComplete = null)
     {
         LockControl();
-        _targetPosition = _startPosition;
-        while (_absDistanceToTarget > _targetPosAccuracy)
+        transform.DOMove(_startPosition, _backToInitPositionSettings.duration).SetEase(_backToInitPositionSettings.ease).OnComplete(() =>
         {
-            yield return new WaitForEndOfFrame();
-        }
-        UnlockControl();
-        onComplete?.Invoke();
+            UnlockControl();
+            onComplete?.Invoke(); 
+        });
     }
 }

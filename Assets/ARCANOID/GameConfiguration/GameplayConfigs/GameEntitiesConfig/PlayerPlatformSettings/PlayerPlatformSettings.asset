@@ -15,3 +15,6 @@ MonoBehaviour:
   initialSize: 0.3
   initialSpeed: 10
   targetPositionAccuracy: 0.4
+  backToInitPositionSettings:
+    duration: 0.5
+    ease: 2

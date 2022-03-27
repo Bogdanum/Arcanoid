@@ -15,11 +15,14 @@ public class BombExplosionParticles : PoolItem, IPauseHandler
     }
 
     public void OnGameResumed() => Play();
-    
+
+    public void SetColor(Color color)
+    {
+        var settings = explosionParticles.main;
+        settings.startColor = color;
+    }
     public void Play()
     {
         explosionParticles.Play();
     }
-
-   
 }

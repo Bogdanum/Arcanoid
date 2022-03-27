@@ -31,6 +31,7 @@ public class ChainBombExplosionProcessor : MonoBehaviour, IExplosionProcessor, I
             {
                 if (_config.CanBeDestroyed(block.Type))
                 {
+                    MessageBus.RaiseEvent<IDestroyedBlockInChainHandler>(handler => handler.OnBlockDestroyedOnPosition(block.Position()));
                     block.Destroy();
                 }
             }

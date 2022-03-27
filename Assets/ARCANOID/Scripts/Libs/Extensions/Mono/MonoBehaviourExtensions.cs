@@ -6,4 +6,9 @@ public static class MonoBehaviourExtensions
      {
           mono.gameObject.SetActive(state);
      }
+
+     public static Vector3 Position(this MonoBehaviour mono)
+     {
+          return mono.transform.position;
+     }
 }
