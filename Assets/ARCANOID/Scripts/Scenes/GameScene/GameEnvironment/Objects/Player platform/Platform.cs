@@ -11,9 +11,9 @@ public class Platform : MonoBehaviour, IPauseHandler
     private float _gameBoundarySize;
     public Transform SpawnPoint => spawnPoint;
 
-    public void Init(float targetPosAccuracy, float gameBoundarySize)
+    public void Init(float targetPosAccuracy, float gameBoundarySize, BackToInitPositionSettings backToInitPositionSettings)
     {
-        platformMovement.Init(targetPosAccuracy, gameBoundarySize);
+        platformMovement.Init(targetPosAccuracy, gameBoundarySize, backToInitPositionSettings);
         platformCollider.Init();
         _gameBoundarySize = gameBoundarySize;
     }
@@ -42,7 +42,7 @@ public class Platform : MonoBehaviour, IPauseHandler
 
     public void BackToInitialPosition(Action onComplete = null)
     {
-        StartCoroutine(platformMovement.BackToInitialPosition(onComplete));
+        platformMovement.BackToInitialPosition(onComplete);
     }
 
     public void LockControl() => platformMovement.LockControl();

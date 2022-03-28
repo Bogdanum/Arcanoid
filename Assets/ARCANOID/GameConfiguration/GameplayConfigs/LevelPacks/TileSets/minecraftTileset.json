@@ -8,7 +8,7 @@
  "margin":0,
  "name":"minecraftTileset",
  "spacing":0,
- "tilecount":16,
+ "tilecount":19,
  "tiledversion":"1.8.2",
  "tileheight":160,
  "tiles":[
@@ -271,19 +271,24 @@
         }, 
         {
          "id":9,
-         "image":"Mine Arcanoid\/MinecraftBlocks\/TntBase.png",
+         "image":"Mine Arcanoid\/MinecraftBlocks\/Tnt.png",
          "imageheight":160,
          "imagewidth":160,
          "properties":[
                 {
                  "name":"blockType",
                  "type":"int",
+                 "value":3
+                }, 
+                {
+                 "name":"bonusId",
+                 "type":"int",
                  "value":1
                 }, 
                 {
                  "name":"customHealth",
                  "type":"int",
-                 "value":2
+                 "value":1
                 }, 
                 {
                  "name":"rendererId",
@@ -354,7 +359,7 @@
                 {
                  "name":"blockType",
                  "type":"int",
-                 "value":4
+                 "value":3
                 }, 
                 {
                  "name":"bonusId",
@@ -397,6 +402,87 @@
                  "name":"rendererId",
                  "type":"int",
                  "value":3
+                }]
+        }, 
+        {
+         "id":16,
+         "image":"Mine Arcanoid\/MinecraftBlocks\/HorizontalTnt.png",
+         "imageheight":160,
+         "imagewidth":160,
+         "properties":[
+                {
+                 "name":"blockType",
+                 "type":"int",
+                 "value":3
+                }, 
+                {
+                 "name":"bonusId",
+                 "type":"int",
+                 "value":3
+                }, 
+                {
+                 "name":"customHealth",
+                 "type":"int",
+                 "value":1
+                }, 
+                {
+                 "name":"rendererId",
+                 "type":"int",
+                 "value":13
+                }]
+        }, 
+        {
+         "id":17,
+         "image":"Mine Arcanoid\/MinecraftBlocks\/VerticalTnt.png",
+         "imageheight":160,
+         "imagewidth":160,
+         "properties":[
+                {
+                 "name":"blockType",
+                 "type":"int",
+                 "value":3
+                }, 
+                {
+                 "name":"bonusId",
+                 "type":"int",
+                 "value":4
+                }, 
+                {
+                 "name":"customHealth",
+                 "type":"int",
+                 "value":1
+                }, 
+                {
+                 "name":"rendererId",
+                 "type":"int",
+                 "value":14
+                }]
+        }, 
+        {
+         "id":18,
+         "image":"Mine Arcanoid\/MinecraftBlocks\/ColorTNT.png",
+         "imageheight":160,
+         "imagewidth":160,
+         "properties":[
+                {
+                 "name":"blockType",
+                 "type":"int",
+                 "value":3
+                }, 
+                {
+                 "name":"bonusId",
+                 "type":"int",
+                 "value":2
+                }, 
+                {
+                 "name":"customHealth",
+                 "type":"int",
+                 "value":1
+                }, 
+                {
+                 "name":"rendererId",
+                 "type":"int",
+                 "value":15
                 }]
         }],
  "tilewidth":160,

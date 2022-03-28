@@ -7,22 +7,51 @@ public class LevelsMapUIController : MonoBehaviour
     private SceneLoader _sceneLoader;
     private LevelPacksManager _levelPacksManager;
     private PopupsManager _popupsManager;
-    private bool isLoading;
+    private EnergyManager _energyManager;
+    private int _energyToStart;
+    private bool _isLoading;
 
     [Inject]
-    public void Init(SceneLoader sceneLoader, LevelPacksManager levelPacksManager, PopupsManager popupsManager)
+    public void Init(SceneLoader sceneLoader, LevelPacksManager levelPacksManager, PopupsManager popupsManager, EnergyManager energyManager)
     {
         _sceneLoader = sceneLoader;
         _levelPacksManager = levelPacksManager;
         _popupsManager = popupsManager;
+        _energyManager = energyManager;
     }
 
-    public void Start()
+    public void Awake()
     {
         _popupsManager.HideAllWithoutAnimation();
         var packInfos = _levelPacksManager.GetPackInfos();
         packsContainer.RefreshContainer(packInfos);
-        isLoading = false;
+        SetupLockers();
+        _isLoading = false;
+    }
+
+    private void OnEnable()
+    {
+        _energyManager.OnEnergyChanged += UpdateLockers;
+        UpdateLockers();
+    }
+
+    private void OnDisable() => _energyManager.OnEnergyChanged -= UpdateLockers;
+
+    private void SetupLockers()
+    {
+        _energyToStart = _energyManager.GetEnergyActionValue(ActionWithEnergy.StartGame);
+        packsContainer.SetupLockers(_energyToStart);
+    }
+
+    private void UpdateLockers()
+    {
+        if (_energyManager.IsEnoughEnergy(_energyToStart))
+        {
+            packsContainer.UnlockButtons();
+            return;
+        }
+        var packInfos = _levelPacksManager.GetPackInfos();
+        packsContainer.LockButtons(packInfos);
     }
 
     public void OpenScene(Scene scene)
@@ -32,11 +61,12 @@ public class LevelsMapUIController : MonoBehaviour
 
     public void OnPackClicked(string packID)
     {
-        if (isLoading) return;
+        if (_isLoading) return;
         
         _levelPacksManager.SetCurrentPack(packID);
         MessageBus.RaiseEvent<IPackActionHandler>(handler => handler.OnChoosingAnotherPack());
+        _energyManager.RemoveEnergy(ActionWithEnergy.StartGame);
         _sceneLoader.LoadSceneAsync(Scene.GameScene);
-        isLoading = true;
+        _isLoading = true;
     }
 }

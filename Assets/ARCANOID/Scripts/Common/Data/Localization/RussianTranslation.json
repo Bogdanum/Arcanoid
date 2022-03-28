@@ -12,5 +12,10 @@
 	"pause_second_chance" : "Второй шанс",
 	"locked_pack" : "???",
 	"training_pack" : "Тренировка от крипера",
-	"steve_pack" : "Челлендж от Стива"
+	"steve_pack" : "Челлендж от Стива",
+	"bombs_pack" : "Много взрывов не бывает",
+	"ball_bonuses" : "Шаробонусы",
+	"platform_bonuses" : "Бонусы платформы",
+	"bonus_mix" : "Микс бонусов",
+	"secondChance" : "Второй шанс"
 }

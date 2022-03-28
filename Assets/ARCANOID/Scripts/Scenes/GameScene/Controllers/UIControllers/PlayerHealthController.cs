@@ -32,15 +32,19 @@ public class PlayerHealthController : MonoBehaviour, IPlayerHealthChangeHandler,
         }
     }
 
-    public void OnRemoveHealth()
+    public void OnRemoveHealth(bool isBallDestroyed)
     {
         if (_currentHeartID >= 0)
         {
             view.RemoveHeart(_currentHeartID);
             _currentHeartID--;
+            MessageBus.RaiseEvent<ILocalGameStateHandler>(handler => handler.OnContinueGame());
             return;
         }
-        GameOver();
+        if (isBallDestroyed)
+        {
+            GameOver();   
+        }
     }
 
     private void GameOver()

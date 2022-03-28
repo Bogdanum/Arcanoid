@@ -24,7 +24,8 @@ public class BlockSpawnerControllerInstaller : MonoInstaller
         {
             { BlockType.Simple, new SimpleBlockSpawner(poolsManager) },
             { BlockType.Bedrock, new BedrockSpawner(poolsManager) },
-            { BlockType.FallingBonus, new FallingBonusBlockSpawner(poolsManager, droppableBonusSettings) }
+            { BlockType.FallingBonus, new FallingBonusBlockSpawner(poolsManager, droppableBonusSettings) },
+            { BlockType.IntrablockBonus, new IntrablockBonusSpawner(poolsManager) },
         };
     }
 }

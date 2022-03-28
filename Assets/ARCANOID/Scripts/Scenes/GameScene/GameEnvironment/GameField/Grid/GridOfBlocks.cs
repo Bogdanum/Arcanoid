@@ -35,4 +35,6 @@ public class GridOfBlocks : MonoBehaviour
     }
 
     public Block[,] GetGrid() => _grid;
+
+    public Vector2Int GetNormalizedBlockPosition(Vector2 blockPosition) => _normalizedBlockLayouts[blockPosition];
 }

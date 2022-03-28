@@ -22,7 +22,6 @@ public class MobileInputListener : MonoBehaviour, IInputBlockingHandler
             _isHolding = true;
             return;
         }
-
         if (_isHolding && Input.GetMouseButtonUp(0))
         {
             if (InPermittedArea())
@@ -32,11 +31,11 @@ public class MobileInputListener : MonoBehaviour, IInputBlockingHandler
             _isHolding = false;
             return;
         }
-
         if (_isHolding)
         {
             SendCurrentPointerPosition();
         }
+        MessageBus.RaiseEvent<IPointerPositionHandler>(handler => handler.OnUpdateHoldingState(_isHolding));
     }
 
     private void SendCurrentPointerPosition()

@@ -37,4 +37,31 @@ public class UIPacksContainer : MonoBehaviour
             _packButtons.Add(id, packButton);
         }
     }
+
+    public void SetupLockers(int cost)
+    {
+        foreach (var id in _packButtons.Keys)
+        {
+            _packButtons[id].SetupLocker(cost);
+        }
+    }
+
+    public void LockButtons(Dictionary<string, LevelPackInfo> packInfos)
+    {
+        foreach (var id in packInfos.Keys)
+        {
+            if (packInfos[id].IsOpened)
+            {
+                _packButtons[id].Lock();   
+            }
+        }
+    }
+
+    public void UnlockButtons()
+    {
+        foreach (var id in _packButtons.Keys)
+        {
+            _packButtons[id].Unlock();
+        }
+    }
 }

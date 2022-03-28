@@ -7,19 +7,21 @@ public class VictoryPopup : BasePopup, IPackActionHandler
     [SerializeField] private PackProgressView packProgressView;
     private LevelPacksManager _levelPacksManager;
     private SceneLoader _sceneLoader;
+    private EnergyManager _energyManager;
     private LevelPackInfo _cachedPackInfo;
     private bool _lastOrRepassedPack;
 
     [Inject]
-    public void Initialize(LevelPacksManager levelPacksManager, SceneLoader sceneLoader)
+    public void Initialize(LevelPacksManager levelPacksManager, SceneLoader sceneLoader, EnergyManager energyManager)
     {
         MessageBus.Subscribe(this);
         _levelPacksManager = levelPacksManager;
         _sceneLoader = sceneLoader;
+        _energyManager = energyManager;
         InitProgressView();
     }
-    
-    public override void PrepareToShow()
+
+    protected override void PrepareToShow()
     {
         packProgressView.OnPrepareView();
     }
@@ -37,9 +39,13 @@ public class VictoryPopup : BasePopup, IPackActionHandler
         packProgressView.SetNextPackName(_cachedPackInfo.Pack.PackID);
         packProgressView.InitProgressValues(_cachedPackInfo.CurrentLevel , _cachedPackInfo.Pack.Count + 1);
     }
-    
-    public override void OnAppeared(Action onAppeared)
+
+    protected override void OnAppeared(Action onAppeared = null)
     {
+        MessageBus.RaiseEvent<IPauseHandler>(handler => handler.OnGamePaused());
+        MessageBus.RaiseEvent<IInputBlockingHandler>(handler => handler.OnInputBlock());
+        onAppeared?.Invoke();
+        
         var currentPackInfo = _levelPacksManager.GetCurrentPackInfo();
         int levelsCount = _cachedPackInfo.Pack.Count;
         packProgressView.UpdateButtonLevel(currentPackInfo.CurrentLevel);
@@ -48,29 +54,14 @@ public class VictoryPopup : BasePopup, IPackActionHandler
             _lastOrRepassedPack = _cachedPackInfo.IsLast || _cachedPackInfo.IsRepassed;
             if (_lastOrRepassedPack)
             {
-                packProgressView.UpdateProgressAnimate
-                    (
-                        levelsCount + 1, 
-                        null, 
-                        () => onAppeared?.Invoke()
-                    );
+                packProgressView.UpdateProgressAnimate(levelsCount + 1, null);
             } else
             {
-                packProgressView.UpdateProgressAnimate
-                    (
-                        currentPackInfo.CurrentLevel, 
-                        null, 
-                        () => onAppeared?.Invoke()
-                    );
-            }
+                packProgressView.UpdateProgressAnimate(currentPackInfo.CurrentLevel, null);
+            } 
             return;
         }
-        packProgressView.UpdateProgressAnimate
-            (
-                levelsCount + 1, 
-                InitProgressView, 
-                () => onAppeared?.Invoke()
-            );
+        packProgressView.UpdateProgressAnimate(levelsCount + 1, InitProgressView);
     }
 
     public void OnContinueButtonClicked()
@@ -81,6 +72,7 @@ public class VictoryPopup : BasePopup, IPackActionHandler
             _sceneLoader.LoadScene(Scene.LevelSelection);
         } else
         {
+            _energyManager.RemoveEnergy(ActionWithEnergy.StartGame);
             MessageBus.RaiseEvent<IGlobalGameStateHandler>(handler => handler.OnStartGame());
         }
     }

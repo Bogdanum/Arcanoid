@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fadeInDuration: 0.3
   fadeOutDuration: 0.3
-  fadeInEase: 1
-  fadeOutEase: 1
-  fadeInDelay: 1
+  fadeInEase: 2
+  fadeOutEase: 2
+  fadeInDelay: 0.6

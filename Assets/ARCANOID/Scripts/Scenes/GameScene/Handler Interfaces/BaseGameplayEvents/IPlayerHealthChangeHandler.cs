@@ -2,5 +2,5 @@
 public interface IPlayerHealthChangeHandler : ISubscriber
 {
     void OnAddHealth();
-    void OnRemoveHealth();
+    void OnRemoveHealth(bool isBallDestroyed);
 }

@@ -59,7 +59,7 @@ public class PackProgressView : MonoBehaviour
         continueButtonFader.Refresh();
     }
 
-    public void UpdateProgressAnimate(float nextLevel, TweenCallback onNextPack, Action onComplete)
+    public void UpdateProgressAnimate(float nextLevel, TweenCallback onNextPack)
     {
         progressAnimation.Play(_previousLevel, nextLevel, UpdateProgressBarWithPercent, () =>
         {
@@ -69,8 +69,7 @@ public class PackProgressView : MonoBehaviour
             (
                 animationSettings.buttonFadeInDuration, 
                 animationSettings.buttonFadeInEase, 
-                animationSettings.buttonFadeInDelay,
-                onComplete
+                animationSettings.buttonFadeInDelay
             );
         });
     }

@@ -3,44 +3,58 @@ using Zenject;
 
 public class PausePopup : BasePopup
 {
-    [SerializeField] private UniversalButton restartButton;
-    [SerializeField] private GameObject restartButtonLocker;
+    [SerializeField] private UniversalButtonWithEnergy restartButton;
     private SceneLoader _sceneLoader;
+    private EnergyManager _energyManager;
 
     [Inject]
-    public void Init(SceneLoader sceneLoader)
+    public void Init(SceneLoader sceneLoader, EnergyManager energyManager)
     {
         _sceneLoader = sceneLoader;
+        _energyManager = energyManager;
+        SetRestartCost();
     }
 
+    private void OnEnable()
+    {
+        _energyManager.OnEnergyChanged += CheckEnergy;
+        CheckEnergy();
+    }
+
+    private void OnDisable() => _energyManager.OnEnergyChanged -= CheckEnergy;
+
+    private void SetRestartCost()
+    {
+        var cost = _energyManager.GetEnergyActionValue(ActionWithEnergy.RestartGame);
+        restartButton.SetCost(cost);
+    }
+    
+    private void CheckEnergy()
+    {
+        var energyToRestart = _energyManager.GetEnergyActionValue(ActionWithEnergy.RestartGame);
+        if (_energyManager.IsEnoughEnergy(energyToRestart))
+        {
+            restartButton.Unlock();
+        }
+        else
+        {
+            restartButton.Lock();
+        }
+    }
+    
     public void OnResumeClicked()
     {
-        MessageBus.RaiseEvent<IResumeButtonHandler>(handler => handler.OnResumeButtonClicked());
+        MessageBus.RaiseEvent<IPausePopupButtonsHandler>(handler => handler.OnResumeButtonClicked());
     }
 
     public void OnRestartClicked()
     {
-        MessageBus.RaiseEvent<IGlobalGameStateHandler>(handler => handler.OnRestartGame());
+        MessageBus.RaiseEvent<IPausePopupButtonsHandler>(handler => handler.OnRestartButtonClicked());
     }
 
     public void BackToLevelsMap()
     {
         MessageBus.RaiseEvent<IClearGameFieldHandler>(handler => handler.OnClearGameField());
-        _sceneLoader.LoadScene(Scene.LevelSelection, () =>
-        {
-            StartCoroutine(Hide());
-        });
-    }
-    
-    public void LockRestartButton()
-    {
-        restartButton.SetActive(false);
-        restartButtonLocker.SetActive(true);
-    }
-
-    public void UnlockRestartButton()
-    {
-        restartButtonLocker.SetActive(false);
-        restartButton.SetActive(true);
+        _sceneLoader.LoadScene(Scene.LevelSelection, Hide);
     }
 }

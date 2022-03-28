@@ -19,7 +19,7 @@ public class PlayerPlatformController : MonoBehaviour, ILocalGameStateHandler
 
     private void Init()
     {
-        platform.Init(settings.TargetPositionAccuracy, gameBounds.GetGameBoundarySizeX());
+        platform.Init(settings.TargetPositionAccuracy, gameBounds.GetGameBoundarySizeX(), settings.BackToInitPositionSettings);
         platform.RefreshParameters(settings.InitialSpeed, settings.InitialSize);
     }
 

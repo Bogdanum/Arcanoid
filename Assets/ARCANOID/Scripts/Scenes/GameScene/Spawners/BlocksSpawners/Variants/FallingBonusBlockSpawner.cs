@@ -18,7 +18,7 @@ public class FallingBonusBlockSpawner : IBlockSpawner
         block.SetInitialParams(properties.ParamsID, properties.CustomHealth);
         block.SetBonusType(properties.Type, _droppableBonusSettings.GetSprite(properties.BonusId));
         block.OnDestroyed += () => MessageBus.RaiseEvent<IBonusLifecycleHandler>(handler =>
-                handler.SpawnBonusObject(properties.BonusId, position));
+                handler.SpawnDroppableBonus(properties.BonusId, position));
         return block;
     }
 }

@@ -1,4 +1,3 @@
-
 public enum BlockRendererParamsID
 {
     Bedrock = 0,
@@ -12,5 +11,8 @@ public enum BlockRendererParamsID
     OakLog = 9,
     Tnt = 10,
     Furnace = 11,
-    Emerald = 12
+    Emerald = 12,
+    HorizontalTnt = 13,
+    VerticalTnt = 14,
+    RgbTnt = 15
 }
