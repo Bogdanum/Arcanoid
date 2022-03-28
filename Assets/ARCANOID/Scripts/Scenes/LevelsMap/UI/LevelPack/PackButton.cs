@@ -1,8 +1,11 @@
+using TMPro;
 using UnityEngine;
 
 public class PackButton : PoolItem
 {
     [SerializeField] private PackButtonView view;
+    [SerializeField] private GameObject energyLocker;
+    [SerializeField] private TMP_Text energyText;
     private DefaultPackButtonVisualParams _defaultParams;
     private LevelsMapUIController _uiController;
 
@@ -27,6 +30,10 @@ public class PackButton : PoolItem
             view.SetCallback(() => OnPressed(packParams.PackID));
         }
     }
+
+    public void SetupLocker(int cost) => energyText.text = cost.ToString();
+    public void Lock() => energyLocker.SetActive(true);
+    public void Unlock() => energyLocker.SetActive(false);
 
     private void OnPressed(string packID)
     {

@@ -7,15 +7,17 @@ public class VictoryPopup : BasePopup, IPackActionHandler
     [SerializeField] private PackProgressView packProgressView;
     private LevelPacksManager _levelPacksManager;
     private SceneLoader _sceneLoader;
+    private EnergyManager _energyManager;
     private LevelPackInfo _cachedPackInfo;
     private bool _lastOrRepassedPack;
 
     [Inject]
-    public void Initialize(LevelPacksManager levelPacksManager, SceneLoader sceneLoader)
+    public void Initialize(LevelPacksManager levelPacksManager, SceneLoader sceneLoader, EnergyManager energyManager)
     {
         MessageBus.Subscribe(this);
         _levelPacksManager = levelPacksManager;
         _sceneLoader = sceneLoader;
+        _energyManager = energyManager;
         InitProgressView();
     }
 
@@ -42,6 +44,7 @@ public class VictoryPopup : BasePopup, IPackActionHandler
     {
         MessageBus.RaiseEvent<IPauseHandler>(handler => handler.OnGamePaused());
         MessageBus.RaiseEvent<IInputBlockingHandler>(handler => handler.OnInputBlock());
+        onAppeared?.Invoke();
         
         var currentPackInfo = _levelPacksManager.GetCurrentPackInfo();
         int levelsCount = _cachedPackInfo.Pack.Count;
@@ -69,6 +72,7 @@ public class VictoryPopup : BasePopup, IPackActionHandler
             _sceneLoader.LoadScene(Scene.LevelSelection);
         } else
         {
+            _energyManager.RemoveEnergy(ActionWithEnergy.StartGame);
             MessageBus.RaiseEvent<IGlobalGameStateHandler>(handler => handler.OnStartGame());
         }
     }

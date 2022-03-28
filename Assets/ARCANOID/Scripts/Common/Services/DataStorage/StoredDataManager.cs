@@ -23,6 +23,11 @@ public class StoredDataManager : MonoBehaviour
         SaveData(progress);
     }
 
+    public void SaveEnergyProgress(SavedEnergyProgress energyProgress)
+    {
+        SaveData(energyProgress);
+    }
+
     public bool SaveExists<T>() where T : IStoredData
     {
         return _storageProvider.GetStorage<T>().SaveExists();

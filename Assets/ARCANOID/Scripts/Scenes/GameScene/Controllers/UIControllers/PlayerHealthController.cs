@@ -38,6 +38,7 @@ public class PlayerHealthController : MonoBehaviour, IPlayerHealthChangeHandler,
         {
             view.RemoveHeart(_currentHeartID);
             _currentHeartID--;
+            MessageBus.RaiseEvent<ILocalGameStateHandler>(handler => handler.OnContinueGame());
             return;
         }
         if (isBallDestroyed)

@@ -1,10 +1,12 @@
 public class PauseController : IPausePopupButtonsHandler
 {
     private readonly PopupsManager _popupsManager;
+    private readonly EnergyManager _energyManager;
     
-    public PauseController(PopupsManager popupsManager)
+    public PauseController(PopupsManager popupsManager, EnergyManager energyManager)
     {
         _popupsManager = popupsManager;
+        _energyManager = energyManager;
         MessageBus.Subscribe(this);
     }
     
@@ -26,6 +28,7 @@ public class PauseController : IPausePopupButtonsHandler
 
     public void OnRestartButtonClicked()
     {
+        _energyManager.RemoveEnergy(ActionWithEnergy.RestartGame);
         _popupsManager.HideLast();
         MessageBus.RaiseEvent<IPauseHandler>(handler => handler.OnGameResumed());
         MessageBus.RaiseEvent<IGlobalGameStateHandler>(handler => handler.OnRestartGame());
