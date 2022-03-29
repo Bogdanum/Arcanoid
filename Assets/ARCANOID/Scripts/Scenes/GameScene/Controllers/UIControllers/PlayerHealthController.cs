@@ -38,7 +38,10 @@ public class PlayerHealthController : MonoBehaviour, IPlayerHealthChangeHandler,
         {
             view.RemoveHeart(_currentHeartID);
             _currentHeartID--;
-            MessageBus.RaiseEvent<ILocalGameStateHandler>(handler => handler.OnContinueGame());
+            if (isBallDestroyed)
+            {
+                MessageBus.RaiseEvent<ILocalGameStateHandler>(handler => handler.OnContinueGame());   
+            }
             return;
         }
         if (isBallDestroyed)
@@ -52,7 +55,7 @@ public class PlayerHealthController : MonoBehaviour, IPlayerHealthChangeHandler,
         MessageBus.RaiseEvent<IGameResultHandler>(handler => handler.OnLose());
     }
 
-    public bool IsFull()
+    private bool IsFull()
     {
         return config.MaxHealthCount == _currentHeartID + 1;
     }
