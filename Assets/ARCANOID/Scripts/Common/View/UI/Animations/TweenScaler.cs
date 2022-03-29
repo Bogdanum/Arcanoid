@@ -17,10 +17,10 @@ public class TweenScaler : MonoBehaviour
         _tween.onComplete += onEnd;
     }
 
-    public void DoScale(Vector3 endValue, float duration)
+    public void DoScale(Vector3 endValue, float duration, float delay = 0, Ease ease = Ease.Unset)
     {
         CheckTween();
-        _tween = transform.DOScale(endValue, duration);
+        _tween = transform.DOScale(endValue, duration).SetDelay(delay).SetEase(ease);
     }
 
     private void CheckTween()

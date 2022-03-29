@@ -4,7 +4,7 @@ using Zenject;
 
 public class VictoryPopup : BasePopup, IPackActionHandler
 {
-    [SerializeField] private PackProgressView packProgressView;
+    [SerializeField] private PackProgressViewController packProgressViewController;
     private LevelPacksManager _levelPacksManager;
     private SceneLoader _sceneLoader;
     private EnergyManager _energyManager;
@@ -23,9 +23,11 @@ public class VictoryPopup : BasePopup, IPackActionHandler
 
     protected override void PrepareToShow()
     {
-        packProgressView.OnPrepareView();
+        packProgressViewController.OnPrepareView();
     }
-    
+
+    private void OnDisable() => InitProgressView();
+
     public void OnChoosingAnotherPack()
     {
         InitProgressView();
@@ -35,9 +37,9 @@ public class VictoryPopup : BasePopup, IPackActionHandler
     {
         _cachedPackInfo = _levelPacksManager.GetCurrentPackInfo();
         if (_cachedPackInfo == null) return;
-        packProgressView.SetPackIcon(_cachedPackInfo.Pack.Icon);
-        packProgressView.SetNextPackName(_cachedPackInfo.Pack.PackID);
-        packProgressView.InitProgressValues(_cachedPackInfo.CurrentLevel , _cachedPackInfo.Pack.Count + 1);
+        packProgressViewController.SetPackIcon(_cachedPackInfo.Pack.Icon);
+        packProgressViewController.SetNextPackName(_cachedPackInfo.Pack.PackID);
+        packProgressViewController.InitProgressValues(_cachedPackInfo.CurrentLevel , _cachedPackInfo.Pack.Count + 1);
     }
 
     protected override void OnAppeared(Action onAppeared = null)
@@ -48,20 +50,30 @@ public class VictoryPopup : BasePopup, IPackActionHandler
         
         var currentPackInfo = _levelPacksManager.GetCurrentPackInfo();
         int levelsCount = _cachedPackInfo.Pack.Count;
-        packProgressView.UpdateButtonLevel(currentPackInfo.CurrentLevel);
+        packProgressViewController.UpdateButtonLevel(currentPackInfo.CurrentLevel);
         if (_cachedPackInfo == currentPackInfo)
         {
             _lastOrRepassedPack = _cachedPackInfo.IsLast || _cachedPackInfo.IsRepassed;
             if (_lastOrRepassedPack)
             {
-                packProgressView.UpdateProgressAnimate(levelsCount + 1, null);
+                packProgressViewController.UpdateProgressAnimate(levelsCount + 1, AnimatePackIcon);
             } else
             {
-                packProgressView.UpdateProgressAnimate(currentPackInfo.CurrentLevel, null);
+                packProgressViewController.UpdateProgressAnimate(currentPackInfo.CurrentLevel, AddEnergyForWinning);
             } 
             return;
         }
-        packProgressView.UpdateProgressAnimate(levelsCount + 1, InitProgressView);
+        packProgressViewController.UpdateProgressAnimate(levelsCount + 1, AnimatePackIcon);
+    }
+
+    private void AnimatePackIcon()
+    {
+        packProgressViewController.PlayCompletePackAnimation(AddEnergyForWinning);
+    }
+
+    private void AddEnergyForWinning()
+    {
+        _energyManager.AddEnergyForAction(ActionWithEnergy.Victory);
     }
 
     public void OnContinueButtonClicked()

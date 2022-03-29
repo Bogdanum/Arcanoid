@@ -111,6 +111,12 @@ public class EnergyManager : MonoBehaviour
     {
         _energyContainer.AddOverLimit(30);
     }
+    
+    [EditorButton("Remove 30 energy")]
+    public void RemoveEnergy()
+    {
+        _energyContainer.Remove(30);
+    }
 
     #endif
 }
