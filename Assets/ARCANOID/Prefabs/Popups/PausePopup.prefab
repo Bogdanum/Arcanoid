@@ -1376,9 +1376,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animationController: {fileID: 4828472567364724123}
   restartButton: {fileID: 7095550532898965810}
-  restartButtonLocker: {fileID: 6255075891866789908}
-  restartButtonCost: {fileID: 8539181395457988158}
-  lockerButtonCost: {fileID: 8394973268102319200}
 --- !u!114 &4828472567364724123
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1541,8 +1538,6 @@ GameObject:
   - component: {fileID: 4194405578542261735}
   - component: {fileID: 4464727450865348244}
   - component: {fileID: 670192467097308716}
-  - component: {fileID: 7976664391234320972}
-  - component: {fileID: 984249047035278844}
   m_Layer: 5
   m_Name: Locker
   m_TagString: Untagged
@@ -1583,7 +1578,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.3962264, g: 0.3962264, b: 0.3962264, a: 0.83137256}
+  m_Color: {r: 0.3962264, g: 0.3962264, b: 0.3962264, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1608,37 +1603,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6255075891866789908}
   m_CullTransparentMesh: 1
---- !u!114 &7976664391234320972
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6255075891866789908}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62050e793df34563a9e1a73839088c1c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  interactable: 1
-  onClickScale: {x: 0.9, y: 0.9, z: 0}
-  animationTime: 1
-  scaler: {fileID: 3610157864560123249}
-  onClick:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!114 &984249047035278844
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6255075891866789908}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01f9ad8fd99a4023917713dccc816b72, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &6573000716455324003
 GameObject:
   m_ObjectHideFlags: 0
