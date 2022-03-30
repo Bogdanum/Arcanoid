@@ -8,7 +8,7 @@
  "margin":0,
  "name":"minecraftTileset",
  "spacing":0,
- "tilecount":19,
+ "tilecount":22,
  "tiledversion":"1.8.2",
  "tileheight":160,
  "tiles":[
@@ -483,6 +483,67 @@
                  "name":"rendererId",
                  "type":"int",
                  "value":15
+                }]
+        }, 
+        {
+         "id":19,
+         "image":"Mine Arcanoid\/MinecraftBlocks\/grass.png",
+         "imageheight":160,
+         "imagewidth":160,
+         "properties":[
+                {
+                 "name":"blockType",
+                 "type":"int",
+                 "value":1
+                }, 
+                {
+                 "name":"customHealth",
+                 "type":"int",
+                 "value":1
+                }, 
+                {
+                 "name":"rendererId",
+                 "type":"int",
+                 "value":16
+                }]
+        }, 
+        {
+         "id":20,
+         "image":"Mine Arcanoid\/MinecraftBlocks\/oakLogVertical.png",
+         "imageheight":160,
+         "imagewidth":160,
+         "properties":[
+                {
+                 "name":"blockType",
+                 "type":"int",
+                 "value":1
+                }, 
+                {
+                 "name":"rendererId",
+                 "type":"int",
+                 "value":18
+                }]
+        }, 
+        {
+         "id":21,
+         "image":"Mine Arcanoid\/MinecraftBlocks\/leaves.png",
+         "imageheight":160,
+         "imagewidth":160,
+         "properties":[
+                {
+                 "name":"blockType",
+                 "type":"int",
+                 "value":1
+                }, 
+                {
+                 "name":"customHealth",
+                 "type":"int",
+                 "value":1
+                }, 
+                {
+                 "name":"rendererId",
+                 "type":"int",
+                 "value":17
                 }]
         }],
  "tilewidth":160,

@@ -14,5 +14,8 @@ public enum BlockRendererParamsID
     Emerald = 12,
     HorizontalTnt = 13,
     VerticalTnt = 14,
-    RgbTnt = 15
+    RgbTnt = 15,
+    Grass = 16,
+    Leaves = 17,
+    OakLogVertical = 18
 }

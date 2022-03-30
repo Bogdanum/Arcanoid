@@ -8,16 +8,18 @@ public class LosePopup : BasePopup, ILocalGameStateHandler
     [SerializeField] private UniversalButtonWithEnergy restartButton;
     [SerializeField] private UniversalButtonWithEnergy secondChanceButton;
     private EnergyManager _energyManager;
+    private SceneLoader _sceneLoader;
     private int _energyToRestart;
     private int _energyToSecondChance;
     private bool _isSecondChanceUsed;
     private bool _isPlayingAnimation;
 
     [Inject]
-    public void Init(EnergyManager energyManager)
+    public void Init(EnergyManager energyManager, SceneLoader sceneLoader)
     {
         MessageBus.Subscribe(this);
         _energyManager = energyManager;
+        _sceneLoader = sceneLoader;
         InitButtonsCost();
     }
 
@@ -29,6 +31,12 @@ public class LosePopup : BasePopup, ILocalGameStateHandler
     }
 
     private void OnDisable() => _energyManager.OnEnergyChanged -= CheckEnergy;
+    
+    protected override void OnAppeared(Action onAppeared = null)
+    {
+        MessageBus.RaiseEvent<IPauseHandler>(handler => handler.OnGamePaused());
+        MessageBus.RaiseEvent<IInputBlockingHandler>(handler => handler.OnInputBlock());
+    }
 
     
     private void InitButtonsCost()
@@ -94,11 +102,11 @@ public class LosePopup : BasePopup, ILocalGameStateHandler
             MessageBus.RaiseEvent<IGlobalGameStateHandler>(handler => handler.OnContinue()); 
         });
     }
-
-    protected override void OnAppeared(Action onAppeared = null)
+    
+    public void BackToLevelsMap()
     {
-        MessageBus.RaiseEvent<IPauseHandler>(handler => handler.OnGamePaused());
-        MessageBus.RaiseEvent<IInputBlockingHandler>(handler => handler.OnInputBlock());
+        MessageBus.RaiseEvent<IClearGameFieldHandler>(handler => handler.OnClearGameField());
+        _sceneLoader.LoadScene(Scene.LevelSelection, Hide);
     }
 
     public void OnStartGame() => _isSecondChanceUsed = false;

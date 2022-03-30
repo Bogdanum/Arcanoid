@@ -32,7 +32,7 @@ public class EnergyViewWithSliderController : EnergyViewController
         slider.UpdateProgress(energy);
         int currentEnergy = (int)energy;
         energyProgress.text = $"{currentEnergy.ToString()}/{_previousEnergyState.Max.ToString()}";
-        _isRestoreProcessActive = !_previousEnergyState.IsFull;
+        _isRestoreProcessActive = currentEnergy < _previousEnergyState.Max;
         timer.SetActive(_isRestoreProcessActive);
     }
     

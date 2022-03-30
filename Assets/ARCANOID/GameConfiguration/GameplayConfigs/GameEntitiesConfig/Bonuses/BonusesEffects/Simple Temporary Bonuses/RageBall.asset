@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8d8cfbe98c7498e8807535a5356dde8, type: 3}
   m_Name: RageBall
   m_EditorClassIdentifier: 
-  effectTime: 5
+  effectTime: 7

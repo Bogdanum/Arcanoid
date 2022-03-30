@@ -2,12 +2,13 @@ using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
 
-public class HeaderUIController : MonoBehaviour, ILocalGameStateHandler
+public class HeaderUIController : MonoBehaviour, ILocalGameStateHandler, IPauseHandler
 {
     [SerializeField] private Image currentPackIcon;
     [SerializeField] private LocalizedText currentLevel;
     private PauseController _pauseController;
     private LevelPacksManager _levelPacksManager;
+    private bool _gamePaused;
 
     [Inject]
     public void Init(PauseController pauseController, LevelPacksManager levelPacksManager)
@@ -22,6 +23,8 @@ public class HeaderUIController : MonoBehaviour, ILocalGameStateHandler
 
     public void OpenPauseView()
     {
+        if (_gamePaused) return;
+        
         _pauseController.Pause();
     }
 
@@ -31,10 +34,9 @@ public class HeaderUIController : MonoBehaviour, ILocalGameStateHandler
         currentPackIcon.sprite = packInfo.Pack.Icon;
         currentLevel.InsertNumber(packInfo.CurrentLevel.ToString());
     }
-
+    public void OnGamePaused() => _gamePaused = true;
+    public void OnGameResumed() => _gamePaused = false;
     public void OnStartGame() {}
-
     public void OnContinueGame() {}
-
     public void OnEndGame() {}
 }

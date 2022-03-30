@@ -70,7 +70,9 @@ public abstract class DestructibleBlock : Block
         if (_healthPoints < 1)
         {
             Destroy();
+            return;
         }
+        blockParticleSystem.PlayHit();
         cracksRenderer.ShowCracksByHealth(_healthPoints);
     }
     
@@ -86,7 +88,7 @@ public abstract class DestructibleBlock : Block
     private IEnumerator PlayParticlesAndDestroy()
     {
         DisableView();
-        yield return blockParticleSystem.Play();
+        yield return blockParticleSystem.PlayDestruction();
         OnCompleteDestroyParticles();
     }
 
