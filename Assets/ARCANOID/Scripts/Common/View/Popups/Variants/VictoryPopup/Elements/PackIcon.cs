@@ -51,15 +51,14 @@ public class PackIcon : MonoBehaviour
           packIcon.sprite = icon;
      }
 
-     public void PlayCompleteAnimation(float duration, Vector3 targetScale, TweenCallback onComplete)
+     public void PlayCompleteAnimation(float duration, Vector3 targetScale, Sprite nextPackIcon, TweenCallback onComplete)
      {
           Vector3 rotation = new Vector3(0, 360, 0);
           transform.DORotate(rotation,duration, RotateMode.FastBeyond360);
           transform.DOScale(targetScale, duration / 2).SetEase(Ease.InCubic).OnComplete(() =>
           {
-               transform.DOScale(Vector3.one, duration / 2)
-                        .SetDelay(duration / 2)
-                        .SetEase(Ease.OutElastic).onComplete += onComplete;  
+               packIcon.sprite = nextPackIcon;
+               transform.DOScale(Vector3.one, duration / 2).SetDelay(duration / 2).SetEase(Ease.OutElastic).onComplete += onComplete;  
           });
      }
 }

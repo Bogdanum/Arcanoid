@@ -17,5 +17,6 @@
 	"ball_bonuses" : "Шаробонусы",
 	"platform_bonuses" : "Бонусы платформы",
 	"bonus_mix" : "Микс бонусов",
-	"secondChance" : "Второй шанс"
+	"secondChance" : "Второй шанс",
+	"pack_selection" : "Выбор пака"
 }

@@ -17,5 +17,6 @@
 	"ball_bonuses" : "Ball bonuses",
 	"platform_bonuses" : "Platform bonuses",
 	"bonus_mix" : "Bonus mix",
-	"secondChance" : "Second chance"
+	"secondChance" : "Second chance",
+	"pack_selection" : "Pack selection"
 }

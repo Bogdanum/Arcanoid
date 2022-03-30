@@ -709,7 +709,8 @@ MonoBehaviour:
     buttonScaleEase: 27
   nextButtonTranslationID:
     nextLevel: victoryPopupButton
-    nextPack: victoryPopupButton_next
+    play: play_button
+    packSelection: pack_selection
 --- !u!114 &2635596604677002576
 MonoBehaviour:
   m_ObjectHideFlags: 0

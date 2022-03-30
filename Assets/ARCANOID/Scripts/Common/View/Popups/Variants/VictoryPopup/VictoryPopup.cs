@@ -50,25 +50,30 @@ public class VictoryPopup : BasePopup, IPackActionHandler
         
         var currentPackInfo = _levelPacksManager.GetCurrentPackInfo();
         int levelsCount = _cachedPackInfo.Pack.Count;
-        packProgressViewController.UpdateButtonLevel(currentPackInfo.CurrentLevel);
+        _lastOrRepassedPack = _cachedPackInfo.IsLast || _cachedPackInfo.IsRepassed;
+        packProgressViewController.UpdateButtonLevel(currentPackInfo.CurrentLevel, _lastOrRepassedPack);
         if (_cachedPackInfo == currentPackInfo)
         {
-            _lastOrRepassedPack = _cachedPackInfo.IsLast || _cachedPackInfo.IsRepassed;
             if (_lastOrRepassedPack)
             {
-                packProgressViewController.UpdateProgressAnimate(levelsCount + 1, AnimatePackIcon);
+                packProgressViewController.UpdateProgressAnimate(levelsCount + 1, PlayCompletePackAnimation);
             } else
             {
                 packProgressViewController.UpdateProgressAnimate(currentPackInfo.CurrentLevel, PlayAnimationOfGettingApples);
             } 
             return;
         }
-        packProgressViewController.UpdateProgressAnimate(levelsCount + 1, AnimatePackIcon);
+        packProgressViewController.UpdateProgressAnimate(levelsCount + 1, PlayCompletePackAnimation);
     }
 
-    private void AnimatePackIcon()
+    private void PlayCompletePackAnimation()
     {
-        packProgressViewController.PlayCompletePackAnimation(AddEnergyForWinning);
+        _cachedPackInfo = _levelPacksManager.GetCurrentPackInfo();
+        packProgressViewController.PlayCompletePackAnimation(_cachedPackInfo.Pack.Icon, () =>
+        {
+            packProgressViewController.SetNextPackName(_cachedPackInfo.Pack.PackID);
+            AddEnergyForWinning();
+        });
     }
 
     private void PlayAnimationOfGettingApples()

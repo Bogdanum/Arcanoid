@@ -58,23 +58,24 @@ public class PackProgressViewController : MonoBehaviour
         );
     }
 
-    public void PlayCompletePackAnimation(TweenCallback onComplete)
+    public void PlayCompletePackAnimation(Sprite nextPackIcon,TweenCallback onComplete)
     {
-        packIcon.PlayCompleteAnimation(packIconAnimationSettings.duration, packIconAnimationSettings.targetScale,onComplete);
+        packIcon.PlayCompleteAnimation(packIconAnimationSettings.duration, packIconAnimationSettings.targetScale, nextPackIcon, onComplete);
     }
 
-    public void UpdateButtonLevel(int level)
+    public void UpdateButtonLevel(int level, bool isLastOrRepassed)
     {
         if (level > 1)
         {
             buttonText.SetInsertNumberActive(true);
             buttonText.ChangeTranslationID(nextButtonTranslationID.nextLevel);
             buttonText.InsertNumber(level.ToString());
-        } else
-        {
-            buttonText.SetInsertNumberActive(false);
-            buttonText.ChangeTranslationID(nextButtonTranslationID.nextPack);
+            return;
         }
+        
+        buttonText.SetInsertNumberActive(false);
+        string translationID = isLastOrRepassed ? nextButtonTranslationID.packSelection : nextButtonTranslationID.play;
+        buttonText.ChangeTranslationID(translationID);
     }
 
     [Serializable]
@@ -96,6 +97,7 @@ public class PackProgressViewController : MonoBehaviour
     internal struct NextButtonTranslationID
     {
         public string nextLevel;
-        public string nextPack;
+        public string play;
+        public string packSelection;
     }
 }
