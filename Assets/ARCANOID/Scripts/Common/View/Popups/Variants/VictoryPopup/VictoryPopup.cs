@@ -59,7 +59,7 @@ public class VictoryPopup : BasePopup, IPackActionHandler
                 packProgressViewController.UpdateProgressAnimate(levelsCount + 1, AnimatePackIcon);
             } else
             {
-                packProgressViewController.UpdateProgressAnimate(currentPackInfo.CurrentLevel, AddEnergyForWinning);
+                packProgressViewController.UpdateProgressAnimate(currentPackInfo.CurrentLevel, PlayAnimationOfGettingApples);
             } 
             return;
         }
@@ -69,6 +69,11 @@ public class VictoryPopup : BasePopup, IPackActionHandler
     private void AnimatePackIcon()
     {
         packProgressViewController.PlayCompletePackAnimation(AddEnergyForWinning);
+    }
+
+    private void PlayAnimationOfGettingApples()
+    {
+        packProgressViewController.PlayAnimationOfGettingApples(AddEnergyForWinning);
     }
 
     private void AddEnergyForWinning()

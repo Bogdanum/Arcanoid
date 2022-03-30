@@ -5,13 +5,15 @@ using UnityEngine;
 public class PackProgressViewController : MonoBehaviour
 {
     [SerializeField] private PackIcon packIcon;
+    [SerializeField] private EnergyFxAnimator energyFxAnimator;
+    [SerializeField] private Transform fxStartPoint;
     [SerializeField] private LocalizedTMPro packName;
     [SerializeField] private LocalizedTMPro buttonText;
     [SerializeField] private TweenScaler continueButtonScaler;
     [SerializeField] private PackIconAnimationSettings packIconAnimationSettings;
     [SerializeField] private ButtonAnimationSettings buttonAnimationSettings;
     [SerializeField] private NextButtonTranslationID nextButtonTranslationID;
-    
+
     public void SetNextPackName(string packID)
     {
         packName.ChangeTranslationID(packID);
@@ -36,14 +38,24 @@ public class PackProgressViewController : MonoBehaviour
     {
         packIcon.UpdateProgressAnimate(nextLevel, onNextPack, () =>
         {
-            continueButtonScaler.DoScale
-            (
-                Vector3.one,
-                buttonAnimationSettings.buttonScaleDuration,
-                buttonAnimationSettings.buttonAnimDelay,
-                buttonAnimationSettings.buttonScaleEase
-            );
+            PlayAnimationOfGettingApples(PlayContinueButtonAnimation);
         });
+    }
+
+    public void PlayAnimationOfGettingApples(TweenCallback onComplete = null)
+    {
+        energyFxAnimator.Play(fxStartPoint.localPosition, onComplete);
+    }
+
+    private void PlayContinueButtonAnimation()
+    {
+        continueButtonScaler.DoScale
+        (
+            Vector3.one,
+            buttonAnimationSettings.buttonScaleDuration,
+            buttonAnimationSettings.buttonAnimDelay,
+            buttonAnimationSettings.buttonScaleEase
+        );
     }
 
     public void PlayCompletePackAnimation(TweenCallback onComplete)

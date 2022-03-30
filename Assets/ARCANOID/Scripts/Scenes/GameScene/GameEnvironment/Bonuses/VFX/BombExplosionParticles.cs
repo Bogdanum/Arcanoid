@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class BombExplosionParticles : PoolItem, IPauseHandler
+public class BombExplosionParticles : PoolableUIEntity, IPauseHandler
 {
     [SerializeField] private ParticleSystem explosionParticles;
     public Action OnComplete;
