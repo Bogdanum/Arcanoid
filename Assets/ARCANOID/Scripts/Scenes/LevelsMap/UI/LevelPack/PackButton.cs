@@ -19,7 +19,7 @@ public class PackButton : PoolItem
     {
         var packParams = packInfo.Pack;
         view.SetInteractable(!isDefault);
-        view.SetBackgroundImage(isDefault ? _defaultParams.background : packParams.Background);
+        view.SetBackgroundImage(isDefault ? _defaultParams.background : packParams.PackButtonBackground);
         view.SetPackIcon(isDefault ? _defaultParams.icon : packParams.Icon);
         view.SetFontColor(isDefault ? _defaultParams.fontColor : packParams.FontColor);
         view.SetBackgroundColor(isDefault ? _defaultParams.bgColor : Color.white);
