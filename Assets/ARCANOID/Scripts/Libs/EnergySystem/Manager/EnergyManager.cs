@@ -40,7 +40,7 @@ public class EnergyManager : MonoBehaviour
         var defaultEnergyProgress = new SavedEnergyProgress()
         {
             SaveTime = DateTime.Now,
-            RecoveryProgress = _config.MaxEnergy
+            Energy = _config.MaxEnergy
         };
         _savedEnergyProgress = _storedDataManager.GetSavedData<SavedEnergyProgress>(defaultEnergyProgress);
     }
