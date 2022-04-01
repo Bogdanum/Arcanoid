@@ -40,7 +40,7 @@ public class EnergyManager : MonoBehaviour
         var defaultEnergyProgress = new SavedEnergyProgress()
         {
             SaveTime = DateTime.Now,
-            RecoveryProgress = _config.MaxEnergy
+            Energy = _config.MaxEnergy
         };
         _savedEnergyProgress = _storedDataManager.GetSavedData<SavedEnergyProgress>(defaultEnergyProgress);
     }
@@ -106,10 +106,16 @@ public class EnergyManager : MonoBehaviour
     
     #if UNITY_EDITOR
     
-    [EditorButton("Add 30 energy")]
+    [EditorButton("Add 3 energy")]
     public void AddEnergy()
     {
-        _energyContainer.AddOverLimit(30);
+        _energyContainer.AddOverLimit(3);
+    }
+    
+    [EditorButton("Remove 3 energy")]
+    public void RemoveEnergy()
+    {
+        _energyContainer.Remove(3);
     }
 
     #endif

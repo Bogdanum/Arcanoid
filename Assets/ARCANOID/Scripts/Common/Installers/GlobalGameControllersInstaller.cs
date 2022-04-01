@@ -13,6 +13,6 @@ public class GlobalGameControllersInstaller : MonoInstaller
         var levelPacksManager = Container.Resolve<LevelPacksManager>();
         var energyManager = Container.Resolve<EnergyManager>();
         Container.Bind<PauseController>().FromNew().AsSingle().WithArguments(popupsManager, energyManager);
-        Container.Bind<GameResultController>().FromNew().AsSingle().WithArguments(popupsManager, levelPacksManager, energyManager).NonLazy();
+        Container.Bind<GameResultController>().FromNew().AsSingle().WithArguments(popupsManager, levelPacksManager).NonLazy();
     }
 }

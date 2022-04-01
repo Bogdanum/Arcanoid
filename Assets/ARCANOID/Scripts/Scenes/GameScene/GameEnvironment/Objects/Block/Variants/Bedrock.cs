@@ -34,7 +34,7 @@ public class Bedrock : Block
     private IEnumerator PlayParticlesAndDestroy(Action onComplete = null)
     {
         mainSpriteRenderer.Disable();
-        yield return blockParticleSystem.Play();
+        yield return blockParticleSystem.PlayDestruction();
         onComplete?.Invoke();
     }
 }

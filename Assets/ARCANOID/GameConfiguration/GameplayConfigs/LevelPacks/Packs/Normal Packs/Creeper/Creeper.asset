@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4c9f65c04ee4f0193352b1b7d551e40, type: 3}
+  m_Name: Creeper
+  m_EditorClassIdentifier: 
+  packID: creeper
+  levels:
+  - {fileID: 4900000, guid: 2d1d6235253c24cb6a7ee815a91ce06d, type: 3}
+  - {fileID: 4900000, guid: 2407d108c625344aba5d91ad1344ab76, type: 3}
+  - {fileID: 4900000, guid: d110a5e5af1c048c2b9321d0a8b2c9f1, type: 3}
+  - {fileID: 4900000, guid: e13501079e8f64db686f2a8088dbd3fe, type: 3}
+  icon: {fileID: 21300000, guid: aa16328ca1a1f465db44645d403e9f14, type: 3}
+  gameBackground: {fileID: 21300000, guid: 63907ba2ee10048df8887731525f5f71, type: 3}
+  packButtonBackground: {fileID: 21300000, guid: 37bf8ef9061284cedb8c5b93ef0207b2, type: 3}
+  fontColor: {r: 0, g: 0, b: 0, a: 1}

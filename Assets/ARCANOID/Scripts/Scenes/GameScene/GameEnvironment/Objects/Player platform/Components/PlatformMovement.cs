@@ -19,11 +19,6 @@ public class PlatformMovement : MonoBehaviour, IPointerPositionHandler
     private double _absDistanceToTarget;
     private bool _controlLock;
     private bool _isHolding;
-    
-    private void OnEnable() => MessageBus.Subscribe(this);
-    private void OnDisable() => MessageBus.Unsubscribe(this);
-    public void LockControl() => _controlLock = true;
-    public void UnlockControl() => _controlLock = false;
 
     public void Init(float targetPosAccuracy, float gameBoundarySize, BackToInitPositionSettings backToInitPositionSettings)
     {
@@ -35,6 +30,9 @@ public class PlatformMovement : MonoBehaviour, IPointerPositionHandler
         _gameBoundarySize = gameBoundarySize;
         _boundX = _gameBoundarySize / 2;
     }
+    
+    private void OnEnable() => MessageBus.Subscribe(this);
+    private void OnDisable() => MessageBus.Unsubscribe(this);
 
     public void RefreshParameters()
     {
@@ -102,8 +100,11 @@ public class PlatformMovement : MonoBehaviour, IPointerPositionHandler
         LockControl();
         transform.DOMove(_startPosition, _backToInitPositionSettings.duration).SetEase(_backToInitPositionSettings.ease).OnComplete(() =>
         {
-            UnlockControl();
-            onComplete?.Invoke(); 
+            platformRigidbody.velocity = Vector2.zero;
+            onComplete?.Invoke();
         });
     }
+    
+    public void LockControl() => _controlLock = true;
+    public void UnlockControl() => _controlLock = false;
 }

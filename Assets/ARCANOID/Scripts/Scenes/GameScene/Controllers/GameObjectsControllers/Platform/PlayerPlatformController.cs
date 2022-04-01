@@ -33,6 +33,7 @@ public class PlayerPlatformController : MonoBehaviour, ILocalGameStateHandler
     private void SpawnBall()
     {
         MessageBus.RaiseEvent<IMainBallLifecycleHandler>(handler => handler.OnCreateNewBallOnPlatform(platform.SpawnPoint));
+        platform.UnlockControl();
     }
 
     public void OnPrepare()
@@ -57,7 +58,7 @@ public class PlayerPlatformController : MonoBehaviour, ILocalGameStateHandler
 
     public void OnEndGame()
     {
-        platform.BackToInitialPosition(() => platform.LockControl());
+        platform.BackToInitialPosition();
         valueAnim.Stop();
     }
 }

@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4c9f65c04ee4f0193352b1b7d551e40, type: 3}
+  m_Name: BonusMixPack
+  m_EditorClassIdentifier: 
+  packID: bonus_mix
+  levels:
+  - {fileID: 4900000, guid: 9c6a0e87787064fd5802cff67fe6f418, type: 3}
+  - {fileID: 4900000, guid: 2b0b8f2e1a71041a08ec82ecf4818531, type: 3}
+  icon: {fileID: 21300000, guid: 1b21982bca22549e59b7eba1358c3ed6, type: 3}
+  gameBackground: {fileID: 21300000, guid: b339a2e1ebcec4b81a93ad5424dda987, type: 3}
+  packButtonBackground: {fileID: 21300000, guid: f1f35db51b52a40119d0a1546919c101, type: 3}
+  fontColor: {r: 1, g: 1, b: 1, a: 1}

@@ -7,6 +7,7 @@ public class EnergyRestoreProcessor : MonoBehaviour
     public event Action OnRestoreComplete;
     private EnergySystemConfig _config;
     private DateTime _nextRestoreTime;
+    private bool _hasOfflineProgress;
     private bool _isRestoreActive;
 
     public void Init(EnergySystemConfig config)
@@ -24,8 +25,17 @@ public class EnergyRestoreProcessor : MonoBehaviour
     private IEnumerator RestoreProcess()
     {
         _isRestoreActive = true;
-        _nextRestoreTime = DateTime.Now.AddSeconds(_config.TimeToRestoreStep);
-        
+
+        if (_nextRestoreTime != default && _hasOfflineProgress)
+        {
+            _nextRestoreTime = _nextRestoreTime.AddSeconds(_config.TimeToRestoreStep);
+            _hasOfflineProgress = false;
+        }
+        else
+        {
+            _nextRestoreTime = DateTime.Now.AddSeconds(_config.TimeToRestoreStep);
+        }
+
         yield return new WaitWhile(() => GetCurrentRestoreInterval().TotalSeconds > 0);
         
         _isRestoreActive = false;
@@ -51,8 +61,11 @@ public class EnergyRestoreProcessor : MonoBehaviour
     public int GetOfflineEnergy(SavedEnergyProgress savedEnergyProgress)
     {
         var timeIntervalAfterSaving = DateTime.Now.Subtract(savedEnergyProgress.SaveTime);
-        var elapsedTimeAfterSaving = timeIntervalAfterSaving.TotalSeconds + savedEnergyProgress.RecoveryProgress * _config.TimeToRestoreStep;
+        var remainingTimerSeconds = savedEnergyProgress.RecoveryProgress * _config.TimeToRestoreStep;
+        var elapsedTimeAfterSaving = timeIntervalAfterSaving.TotalSeconds + remainingTimerSeconds;
         int energyValue = (int)(_config.EnergyPerStep * (int)elapsedTimeAfterSaving / _config.TimeToRestoreStep);
+        _nextRestoreTime = DateTime.Now.AddSeconds(remainingTimerSeconds - _config.TimeToRestoreStep);
+        _hasOfflineProgress = true;
         return energyValue;
     }
 }

@@ -44,9 +44,10 @@ public class Platform : MonoBehaviour, IPauseHandler
     {
         platformMovement.BackToInitialPosition(onComplete);
     }
+    
+    public void OnGamePaused() => LockControl();
+    public void OnGameResumed() => UnlockControl();
 
     public void LockControl() => platformMovement.LockControl();
-    public void OnGamePaused() => LockControl();
-
-    public void OnGameResumed() => platformMovement.UnlockControl();
+    public void UnlockControl() => platformMovement.UnlockControl();
 }

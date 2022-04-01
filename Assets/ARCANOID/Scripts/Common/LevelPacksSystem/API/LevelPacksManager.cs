@@ -7,7 +7,9 @@ public class LevelPacksManager : MonoBehaviour
     private GameProgressProcessor _progressProcessor;
     private ProgressSaveProvider _saveProvider;
     private ILevelParser<LevelData<TileProperties>> _levelParser;
+#if  UNITY_EDITOR
     private bool _needDebugInit = true;
+#endif
 
     public void Init(JsonTokens jsonTokens, TextAsset tilesetFile, CurrentSetOfPacksConfig config, StoredDataManager storedDataManager)
     {

@@ -9,7 +9,9 @@ public class BonusBlock : DestructibleBlock
     public void SetBonusType(BlockType blockType, Sprite droppableBonusSprite = null)
     {
         Type = blockType;
-        if (droppableBonusSprite != null)
+        bool hasDroppableBonusSprite = droppableBonusSprite != null;
+        bonusSpriteComponent.SetActive(hasDroppableBonusSprite);
+        if (hasDroppableBonusSprite)
         {
             bonusSpriteComponent.SetSprite(droppableBonusSprite);
         }
