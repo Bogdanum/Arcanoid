@@ -1,0 +1,32 @@
+{ "compressionlevel":-1,
+ "height":7,
+ "infinite":false,
+ "layers":[
+        {
+         "data":[14, 14, 9, 21, 23, 23, 21, 9, 0, 0, 0, 0, 0, 0, 14, 14, 9, 21, 23, 23, 21, 9, 0, 0, 0, 0, 0, 2, 14, 14, 9, 21, 21, 21, 21, 9, 0, 0, 0, 0, 2, 8, 20, 20, 20, 20, 20, 20, 20, 20, 20, 19, 0, 11, 16, 2, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 2, 10, 2, 7, 2, 2, 2, 5, 2, 10, 6, 2, 2, 2, 2, 12, 2, 7, 2, 5, 2, 2, 2, 2, 2, 6, 2, 2],
+         "height":7,
+         "id":1,
+         "name":"Tile Layer 1",
+         "opacity":1,
+         "type":"tilelayer",
+         "visible":true,
+         "width":14,
+         "x":0,
+         "y":0
+        }],
+ "nextlayerid":2,
+ "nextobjectid":1,
+ "orientation":"orthogonal",
+ "renderorder":"right-down",
+ "tiledversion":"1.8.2",
+ "tileheight":160,
+ "tilesets":[
+        {
+         "firstgid":1,
+         "source":"..\/minecraftTileset.json"
+        }],
+ "tilewidth":160,
+ "type":"map",
+ "version":"1.8",
+ "width":14
+}

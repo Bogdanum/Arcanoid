@@ -18,5 +18,11 @@
 	"platform_bonuses" : "Бонусы платформы",
 	"bonus_mix" : "Микс бонусов",
 	"secondChance" : "Второй шанс",
-	"pack_selection" : "Выбор пака"
+	"pack_selection" : "Выбор пака",
+	"creeper" : "Крипер",
+	"pig" : "Свинья",
+	"fox" : "Лиса",
+	"steve" : "Стив",
+	"skeleton" : "Скелет",
+	"enderman" : "Странник Края"
 }

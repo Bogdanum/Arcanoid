@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4c9f65c04ee4f0193352b1b7d551e40, type: 3}
+  m_Name: Pig
+  m_EditorClassIdentifier: 
+  packID: pig
+  levels:
+  - {fileID: 4900000, guid: 50b9e5b904f78408595e7183cbdecd6f, type: 3}
+  - {fileID: 4900000, guid: 402f0df5fce6b46f889122141c3a5b0f, type: 3}
+  - {fileID: 4900000, guid: 9e9c87209de1b4ed693e8fd0d94cf850, type: 3}
+  icon: {fileID: 21300000, guid: 057a398c81ba04ec585e295c313dc339, type: 3}
+  gameBackground: {fileID: 21300000, guid: 0c964d5fd7a2c4cc1993cf3cd0b4044a, type: 3}
+  packButtonBackground: {fileID: 21300000, guid: 9b49f0d4d11784b31ad9b3de13521c60, type: 3}
+  fontColor: {r: 1, g: 1, b: 1, a: 1}

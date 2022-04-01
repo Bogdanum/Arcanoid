@@ -27,8 +27,8 @@ public class HiddenBallBonusProcessor : MonoBehaviour, IHiddenBallBonusHandler
     {
         if (!_config.RandomBallsDirection) return _config.DefaultDirection;
 
-        float x = Random.Range(-1f, 1f);
-        float y = Random.Range(-1f, 1f);
+        int x = Random.Range(-1, 1);
+        int y = Random.Range(-1, 1);
         var direction = new Vector2(x, y);
         return direction == Vector2.zero ? _config.DefaultDirection : direction;
     }
