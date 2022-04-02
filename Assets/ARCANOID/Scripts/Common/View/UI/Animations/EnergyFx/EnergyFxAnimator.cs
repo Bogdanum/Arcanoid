@@ -27,16 +27,28 @@ public class EnergyFxAnimator : MonoBehaviour
         {
             yield return new WaitForSeconds(energyFxConfig.DelayBetweenEntities);
 
-            var fxEntity = _poolsManager.GetItem<AppleFxEntity>(startPosition);
+            var randomStartPosition = GetRandomStartPosition(startPosition);
+            var fxEntity = _poolsManager.GetItem<AppleFxEntity>(randomStartPosition);
             if (fxEntity == null) continue;
             
-            fxEntity.SetRectParams(startPosition, energyFxConfig.FxEntitySize, fxContainer);
+            fxEntity.SetRectParams(randomStartPosition, energyFxConfig.FxEntitySize, fxContainer);
             fxEntity.Play(target, energyFxConfig.EntityFlightDuration, energyFxConfig.MoveEaseType, () =>
             {
                 ReturnToPool(fxEntity);
             });
         }
         onComplete?.Invoke();
+    }
+
+    private Vector2 GetRandomStartPosition(Vector2 startPosition)
+    {
+        var maxDistance = energyFxConfig.MaxDistanceBetweenEntities;
+        var distance = new Vector2
+        (
+            Random.Range(-maxDistance, maxDistance),
+            Random.Range(-maxDistance, maxDistance)
+        );
+        return startPosition + distance;
     }
 
     private void ReturnToPool(AppleFxEntity fxEntity)

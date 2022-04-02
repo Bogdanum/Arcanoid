@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class SimpleBlockSpawner : IBlockSpawner
 {
-    public BlockType BlockType => BlockType.Simple;
     private readonly PoolsManager _poolsManager;
     
     public SimpleBlockSpawner(PoolsManager poolsManager)

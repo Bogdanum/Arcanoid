@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class BedrockSpawner : IBlockSpawner
 {
-    public BlockType BlockType => BlockType.Bedrock;
     private readonly PoolsManager _poolsManager;
     
     public BedrockSpawner(PoolsManager poolsManager)

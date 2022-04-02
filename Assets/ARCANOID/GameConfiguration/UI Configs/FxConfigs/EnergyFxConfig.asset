@@ -17,3 +17,4 @@ MonoBehaviour:
   entityFlightDuration: 1
   entitiesCount: 5
   delayBetweenEntities: 0.1
+  maxDistanceBetweenEntities: 100

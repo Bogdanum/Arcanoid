@@ -28,7 +28,8 @@ public class GameFieldCreationController : MonoBehaviour, ILocalGameStateHandler
      {
           _cellsGrid.Create(_levelPacksManager.GetCurrentLevelData());
           gridOfBlocks.Fill(_cellsGrid);
-          _cellsGrid.SendCreateBlocksRequest();
+          var blocksCreatorProvider = new BlocksCreatorProvider(_cellsGrid);
+          blocksCreatorProvider.SendCreateBlocksRequest();
      }
 
      public void OnStartGame() {}

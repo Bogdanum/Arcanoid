@@ -9,10 +9,12 @@ public class EnergyFxConfig : ScriptableObject
     [SerializeField] private float entityFlightDuration;
     [SerializeField] private int entitiesCount;
     [SerializeField] private float delayBetweenEntities;
+    [SerializeField] private float maxDistanceBetweenEntities;
 
     public Vector2 FxEntitySize => fxEntitySize;
     public Ease MoveEaseType => moveEaseType;
     public float EntityFlightDuration => entityFlightDuration;
     public int EntitiesCount => entitiesCount;
     public float DelayBetweenEntities => delayBetweenEntities;
+    public float MaxDistanceBetweenEntities => maxDistanceBetweenEntities;
 }

@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class FallingBonusBlockSpawner : IBlockSpawner
 {
-    public BlockType BlockType => BlockType.FallingBonus;
     private readonly PoolsManager _poolsManager;
     private readonly DroppableBonusSettings _droppableBonusSettings;
 

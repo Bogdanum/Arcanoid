@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class IntrablockBonusSpawner : IBlockSpawner
 {
-    public BlockType BlockType => BlockType.IntrablockBonus;
     private readonly PoolsManager _poolsManager;
 
     public IntrablockBonusSpawner(PoolsManager poolsManager)
