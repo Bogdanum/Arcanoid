@@ -2,33 +2,25 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-public abstract class BasePopup : MonoBehaviour
+public class BaseAnimatedPopup : BasePopup
 {
     [SerializeField] private PopupAnimationController animationController;
-    
-    public void Init()
+
+    public override void Initialize()
     {
-        SetupScaleAndPosition();
-        gameObject.SetActive(false);
-        
+        base.Initialize();
         if (animationController != null)
         {
             animationController.Init();
         }
     }
 
-    private void SetupScaleAndPosition()
-    {
-        var rect = (RectTransform) transform;
-        rect.RefreshScaleAndPosition();
-    }
-
-    public void Show(Action onComplete = null)
+    public override void Show(Action onComplete = null)
     {
         gameObject.SetActive(true);
         StartCoroutine(ShowAnimate(onComplete));
     }
-
+    
     private IEnumerator ShowAnimate(Action onComplete = null)
     {
         PrepareToShow();
@@ -39,11 +31,11 @@ public abstract class BasePopup : MonoBehaviour
         OnAppeared(onComplete);
     }
 
-    public void Hide()
+    public override void Hide()
     {
         StartCoroutine(HideAnimate());
     }
-
+    
     private IEnumerator HideAnimate()
     {
         if (animationController != null)
@@ -52,7 +44,4 @@ public abstract class BasePopup : MonoBehaviour
         }
         gameObject.SetActive(false);
     }
-
-    protected virtual void PrepareToShow() {}
-    protected virtual void OnAppeared(Action onAppeared = null) {}
 }

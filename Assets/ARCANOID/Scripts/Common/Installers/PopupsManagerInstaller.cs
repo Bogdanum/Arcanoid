@@ -16,7 +16,7 @@ public class PopupsManagerInstaller : MonoInstaller
         for (int i = 0; i < popups.Length; i++)
         { 
             var popup = Container.InstantiatePrefabForComponent<BasePopup>(popups[i], container.transform);
-            popup.Init();
+            popup.Initialize();
             popupsList.Add(popup.GetType(), popup);
         }
         container.Init(popupsList);

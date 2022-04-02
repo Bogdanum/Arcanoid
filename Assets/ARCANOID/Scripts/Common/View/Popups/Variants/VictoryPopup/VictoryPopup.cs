@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using Zenject;
 
-public class VictoryPopup : BasePopup, IPackActionHandler
+public class VictoryPopup : BaseAnimatedPopup, IPackActionHandler
 {
     [SerializeField] private PackProgressViewController packProgressViewController;
     private LevelPacksManager _levelPacksManager;

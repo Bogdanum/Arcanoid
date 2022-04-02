@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using Zenject;
 
-public class LosePopup : BasePopup, ILocalGameStateHandler
+public class LosePopup : BaseAnimatedPopup, ILocalGameStateHandler
 {
     [SerializeField] private EnergyViewWithSliderController energyViewController;
     [SerializeField] private UniversalButtonWithEnergy restartButton;

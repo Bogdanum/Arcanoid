@@ -1,7 +1,7 @@
 using UnityEngine;
 using Zenject;
 
-public class PausePopup : BasePopup
+public class PausePopup : BaseAnimatedPopup
 {
     [SerializeField] private UniversalButtonWithEnergy restartButton;
     private SceneLoader _sceneLoader;
