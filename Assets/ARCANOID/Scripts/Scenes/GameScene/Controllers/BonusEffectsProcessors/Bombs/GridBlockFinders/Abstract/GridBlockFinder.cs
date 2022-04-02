@@ -3,22 +3,20 @@ using UnityEngine;
 
 public abstract class GridBlockFinder
 {
-    protected readonly Block[,] _blocksGrid;
-    protected readonly Vector2Int _normalizedBombPosition;
+    protected readonly Block[,] BlocksGrid;
+    protected readonly Vector2Int NormalizedBombPosition;
     private HashSet<Block> _blocksToDestroy;
-    private readonly GridOfBlocks _gridOfBlocks;
     private readonly int _colCount;
     private readonly int _rowCount;
-    public virtual bool HasNextBlocks { get; protected set; }
+    public virtual bool HasNextBlocks { get; protected set; } = true;
 
-    public GridBlockFinder(Vector2 bombPosition, GridOfBlocks gridOfBlocks)
+    protected GridBlockFinder(Vector2 bombPosition, GridOfBlocks gridOfBlocks)
     {
-        HasNextBlocks = true;
-        _gridOfBlocks = gridOfBlocks;
-        _blocksGrid = _gridOfBlocks.GetGrid();
-        _colCount = _blocksGrid.GetUpperBound(1);
-        _rowCount = _blocksGrid.GetUpperBound(0);
-        _normalizedBombPosition = _gridOfBlocks.GetNormalizedBlockPosition(bombPosition);
+        var blocksOnScene = gridOfBlocks;
+        BlocksGrid = blocksOnScene.GetGrid();
+        _colCount = BlocksGrid.GetUpperBound(1);
+        _rowCount = BlocksGrid.GetUpperBound(0);
+        NormalizedBombPosition = blocksOnScene.GetNormalizedBlockPosition(bombPosition);
     }
     
     protected bool IsInGridRange(Vector2Int position)
@@ -38,7 +36,6 @@ public abstract class GridBlockFinder
     protected void AddToDestroySet(Block block)
     {
         _blocksToDestroy.Add(block);
-        _gridOfBlocks.Remove(block);
     }
 
     protected abstract void FillBlocksToDestroySet();

@@ -17,6 +17,7 @@ public class LineTntBonusStateController : MonoBehaviour, ILineTntBonusHandler
     public void OnExplode(Vector2 tntPosition, LineTntDirection lineDirection)
     {
         var linearChainBlockFinder = new LinearChainFinder(tntPosition, _gridOfBlocks, lineDirection);
+        MessageBus.RaiseEvent<IDestroyedBlockInChainHandler>(handler => handler.OnBlockDestroyedOnPosition(tntPosition));
         explosionProcessor.LaunchExplosion(linearChainBlockFinder);
     }
 }

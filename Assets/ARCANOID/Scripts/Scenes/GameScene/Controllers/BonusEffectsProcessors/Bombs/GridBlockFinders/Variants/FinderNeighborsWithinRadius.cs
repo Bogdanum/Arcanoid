@@ -6,12 +6,12 @@ public class FinderNeighborsWithinRadius : GridBlockFinder
 
     protected override void FillBlocksToDestroySet()
     {
-        foreach (var direction in DirectionsInGridHelper._allDirections)
+        foreach (var direction in DirectionsInGridHelper.AllDirections)
         {
-            var currentPosition = _normalizedBombPosition + direction;
+            var currentPosition = NormalizedBombPosition + direction;
             if (IsInGridRange(currentPosition))
             {
-                var block = _blocksGrid[currentPosition.x, currentPosition.y];
+                var block = BlocksGrid[currentPosition.x, currentPosition.y];
                 if (block != null)
                 {
                     AddToDestroySet(block);

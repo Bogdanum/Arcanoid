@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5557983525571887044}
   - component: {fileID: 6140164867451967933}
   - component: {fileID: 1142802503496916849}
-  m_Layer: 7
+  m_Layer: 12
   m_Name: DestructionParticles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4872,7 +4872,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6655255597928517506}
   - component: {fileID: 5507673077613454664}
-  m_Layer: 7
+  m_Layer: 12
   m_Name: ParticleSystem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4920,7 +4920,7 @@ GameObject:
   - component: {fileID: 7871150146933336749}
   - component: {fileID: 2018450171774263918}
   - component: {fileID: 2264729734670565939}
-  m_Layer: 7
+  m_Layer: 12
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5011,7 +5011,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6655255599009907350}
   - component: {fileID: 8812679514786229639}
-  m_Layer: 7
+  m_Layer: 12
   m_Name: BedrockBlock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5061,7 +5061,7 @@ GameObject:
   - component: {fileID: 6655255599865684717}
   - component: {fileID: 6343618040766818946}
   - component: {fileID: 8559668890734105905}
-  m_Layer: 7
+  m_Layer: 12
   m_Name: Renderer
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -79,14 +79,14 @@ public class PackProgressViewController : MonoBehaviour
     }
 
     [Serializable]
-    internal class PackIconAnimationSettings
+    private class PackIconAnimationSettings
     {
         public Vector3 targetScale;
         public float duration;
     }
     
     [Serializable]
-    internal class ButtonAnimationSettings
+    private class ButtonAnimationSettings
     {
         public float buttonScaleDuration;
         public float buttonAnimDelay;
@@ -94,7 +94,7 @@ public class PackProgressViewController : MonoBehaviour
     }
     
     [Serializable]
-    internal struct NextButtonTranslationID
+    private struct NextButtonTranslationID
     {
         public string nextLevel;
         public string play;

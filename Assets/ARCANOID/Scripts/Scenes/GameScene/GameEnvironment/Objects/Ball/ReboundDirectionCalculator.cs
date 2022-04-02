@@ -3,14 +3,12 @@ using UnityEngine;
 public class ReboundDirectionCalculator
 {
      private readonly Rigidbody2D _rigidbody2D;
-     private readonly Transform _ballTransform;
      private readonly BallPhysicsSettings _ballPhysicsSettings;
      private float _velocity;
 
-     public ReboundDirectionCalculator(Rigidbody2D rigidbody2D, Transform ballTransform, BallPhysicsSettings ballPhysicsSettings)
+     public ReboundDirectionCalculator(Rigidbody2D rigidbody2D, BallPhysicsSettings ballPhysicsSettings)
      {
           _rigidbody2D = rigidbody2D;
-          _ballTransform = ballTransform;
           _ballPhysicsSettings = ballPhysicsSettings;
      }
 
@@ -21,8 +19,7 @@ public class ReboundDirectionCalculator
           if (other.collider.TryGetComponent(out PlatformCollider _)) return;
           
           CalculateReboundAngle(Vector2.up, _ballPhysicsSettings.VerticalNormal , true);
-          var reboundPerpendicular = _ballTransform.position.x < 0f ? Vector2.up : Vector2.right; 
-          CalculateReboundAngle(reboundPerpendicular, _ballPhysicsSettings.HorizontalNormal, false);
+          CalculateReboundAngle(Vector2.right, _ballPhysicsSettings.HorizontalNormal, false);
      }
 
      private void CalculateReboundAngle(Vector2 reboundPerpendicular, BallPhysicsSettings.ReboundParams reboundParams , bool verticalCalc)

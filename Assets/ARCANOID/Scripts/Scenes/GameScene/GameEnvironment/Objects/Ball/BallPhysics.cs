@@ -5,14 +5,13 @@ public class BallPhysics : MonoBehaviour
      [SerializeField] private Rigidbody2D ballRigidbody;
      [SerializeField] private BallPhysicsSettings ballPhysicsSettings;
      private ReboundDirectionCalculator _reboundDirectionCalculator;
-
      private float _velocity;
      public bool IsMoving { get; private set; }
 
      public void SetVelocity(float velocity)
      {
           _velocity = velocity;
-          _reboundDirectionCalculator = new ReboundDirectionCalculator(ballRigidbody, transform, ballPhysicsSettings);
+          _reboundDirectionCalculator = new ReboundDirectionCalculator(ballRigidbody, ballPhysicsSettings);
           _reboundDirectionCalculator.UpdateVelocity(velocity);
      }
 

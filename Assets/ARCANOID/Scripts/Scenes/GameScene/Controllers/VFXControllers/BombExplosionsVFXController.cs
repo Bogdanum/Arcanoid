@@ -43,7 +43,7 @@ public class BombExplosionsVFXController : MonoBehaviour, ISimpleBombBonusHandle
     }
     
     [Serializable]
-    internal class Settings
+    private class Settings
     {
         public Color simpleTntExplosionColor;
         public Color chainTntExplosionColor;

@@ -9,7 +9,7 @@ public class SimpleBombBonusStateController : MonoBehaviour, ISimpleBombBonusHan
     {
         MessageBus.Subscribe(this);
         _gridOfBlocks = gridOfBlocks;
-        explosionProcessor.Init(_gridOfBlocks, config);
+        explosionProcessor.Init(config);
     }
 
     private void OnDisable() => MessageBus.Unsubscribe(this);

@@ -18,9 +18,9 @@ public class ColorChainFinder : GridBlockFinder
 
     private void InitCollections()
     {
-        _directions = DirectionsInGridHelper._wasdDirections;
+        _directions = DirectionsInGridHelper.WasdDirections;
         _positionsPreviousChain = new List<Vector2Int>();
-        _positionsPreviousChain.Add(_normalizedBombPosition);
+        _positionsPreviousChain.Add(NormalizedBombPosition);
         _setOfBlocksById = new Dictionary<BlockRendererParamsID, List<SimpleBlock>>();
         _blocksPositions = new Dictionary<SimpleBlock, Vector2Int>();
     }
@@ -30,7 +30,7 @@ public class ColorChainFinder : GridBlockFinder
         var availableBlocks = new Dictionary<Vector2Int, BlockRendererParamsID>();
         foreach (var direction in _directions)
         {
-            var currentBlockPosition = _normalizedBombPosition + direction;
+            var currentBlockPosition = NormalizedBombPosition + direction;
             if (IsInGridRange(currentBlockPosition))
             {
                 var block = GetBlockOnPosition(currentBlockPosition);
@@ -48,7 +48,7 @@ public class ColorChainFinder : GridBlockFinder
     
     private SimpleBlock GetBlockOnPosition(Vector2Int currentBlockPosition)
     {
-        return _blocksGrid[currentBlockPosition.x, currentBlockPosition.y] as SimpleBlock;
+        return BlocksGrid[currentBlockPosition.x, currentBlockPosition.y] as SimpleBlock;
     }
     
     private void AddBlockToDictionary(SimpleBlock block, Vector2Int currentBlockPosition)
@@ -96,7 +96,7 @@ public class ColorChainFinder : GridBlockFinder
         foreach (var block in _setOfBlocksById[bestId])
         {
             var blockPosition = _blocksPositions[block];
-            var blockOnPosition = _blocksGrid[blockPosition.x, blockPosition.y];
+            var blockOnPosition = BlocksGrid[blockPosition.x, blockPosition.y];
             if (blockOnPosition == null) continue;
 
             foreach (var previousPosition in _positionsPreviousChain)

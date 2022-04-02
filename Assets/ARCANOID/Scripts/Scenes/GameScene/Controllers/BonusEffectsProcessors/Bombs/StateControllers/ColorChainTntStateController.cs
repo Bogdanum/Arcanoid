@@ -17,6 +17,7 @@ public class ColorChainTntStateController : MonoBehaviour, IChainColorTntBonusHa
     public void OnExplode(Vector2 tntPosition)
     {
         var colorChainFinder = new ColorChainFinder(tntPosition, _gridOfBlocks);
+        MessageBus.RaiseEvent<IDestroyedBlockInChainHandler>(handler => handler.OnBlockDestroyedOnPosition(tntPosition));
         explosionProcessor.LaunchExplosion(colorChainFinder);
     }
 }

@@ -20,4 +20,4 @@ MonoBehaviour:
     reboundAngleMultiplier: 30
   horizontalNormal:
     minReboundAngle: 10
-    reboundAngleMultiplier: 5
+    reboundAngleMultiplier: 10

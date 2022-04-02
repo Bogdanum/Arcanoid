@@ -3,6 +3,7 @@ using UnityEngine;
 public class Ball : PoolItem, IPauseHandler
 {
     [SerializeField] private SpriteRenderer spriteRenderer;
+    [SerializeField] private Collider2D rageBallCollider;
     [SerializeField] private BallPhysics ballPhysics;
     [SerializeField] private BallParticleSystem ballParticleSystem;
 
@@ -21,7 +22,7 @@ public class Ball : PoolItem, IPauseHandler
         MessageBus.Subscribe(this);
         base.OnSpawned();
         Damage = _ballSettings.Damage;
-        SetDefaultVisualParams();
+        SetDefaultParams();
         var visualSettings = _ballSettings.BallVisualSettings;
         ballParticleSystem.SetupParticlesColor(visualSettings.firstParticleColor, visualSettings.secondParticleColor);
     }
@@ -34,18 +35,20 @@ public class Ball : PoolItem, IPauseHandler
         ballPhysics.OnDespawned();
     }
     
-    public void SetDefaultVisualParams()
+    public void SetDefaultParams()
     {
+        rageBallCollider.isTrigger = false;
         spriteRenderer.sprite = _ballSettings.BallVisualSettings.defaultSprite;
         ballParticleSystem.PlayNormalParticles();
     }
 
-    public void SetRageVisualParams()
+    public void SetRageParams()
     {
+        rageBallCollider.isTrigger = true;
         spriteRenderer.sprite = _ballSettings.BallVisualSettings.rageSprite;
         ballParticleSystem.PlayRageParticles();
     }
-    
+
     public void SetVelocity(float velocity)
     {
         _velocity = velocity;

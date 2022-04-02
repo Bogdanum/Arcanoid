@@ -4,12 +4,10 @@ public class RageBallBonusStateController : MonoBehaviour, IRageBallBonusHandler
 {
     [SerializeField] private SimpleTemporaryBonusProcessor bonusProcessor;
     private BallsOnSceneController _ballsOnSceneController;
-    private BlocksOnSceneController _blocksOnSceneController;
 
-    public void Init(BallsOnSceneController ballsOnSceneController, BlocksOnSceneController blocksOnSceneController, SimpleTemporaryBonusConfig config)
+    public void Init(BallsOnSceneController ballsOnSceneController, SimpleTemporaryBonusConfig config)
     {
         bonusProcessor.Init(config);
-        _blocksOnSceneController = blocksOnSceneController;
         _ballsOnSceneController = ballsOnSceneController;
         MessageBus.Subscribe(this);
         bonusProcessor.OnEffectEnded += OnEndEffectTime;
@@ -25,28 +23,20 @@ public class RageBallBonusStateController : MonoBehaviour, IRageBallBonusHandler
     {
         bonusProcessor.Activate();
         var ballsOnScene = _ballsOnSceneController.GetBallsOnSceneList();
-        ballsOnScene.ForEach(ball => ball.SetRageVisualParams());
-        var simpleBlocks = _blocksOnSceneController.GetBlocksOnSceneList<SimpleBlock>();
-        var bonusBlocks = _blocksOnSceneController.GetBlocksOnSceneList<BonusBlock>();
-        simpleBlocks?.ForEach(block => block.SetTriggerColliderState());
-        bonusBlocks?.ForEach(block => block.SetTriggerColliderState());
+        ballsOnScene.ForEach(ball => ball.SetRageParams());
     }
 
     private void OnEndEffectTime()
     {
         var ballsOnScene = _ballsOnSceneController.GetBallsOnSceneList();
-        ballsOnScene.ForEach(ball => ball.SetDefaultVisualParams());
-        var simpleBlocks = _blocksOnSceneController.GetBlocksOnSceneList<SimpleBlock>();
-        var bonusBlocks = _blocksOnSceneController.GetBlocksOnSceneList<BonusBlock>();
-        simpleBlocks?.ForEach(block => block.DisableTriggerColliderState());
-        bonusBlocks?.ForEach(block => block.DisableTriggerColliderState());
+        ballsOnScene.ForEach(ball => ball.SetDefaultParams());
     }
 
     public void OnSpawnBallOnScene(Ball ball)
     {
         if (bonusProcessor.IsBonusActive)
         {
-            ball.SetRageVisualParams();
+            ball.SetRageParams();
         }
     }
     

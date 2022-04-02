@@ -8,7 +8,7 @@ public class LinearChainFinder : GridBlockFinder
 
     public LinearChainFinder(Vector2 bombPosition, GridOfBlocks gridOfBlocks, LineTntDirection lineDirection) : base(bombPosition, gridOfBlocks)
     {
-        _positionDirectionMap = DirectionsInGridHelper.GetInitialPositionDirectionMap(_normalizedBombPosition, lineDirection);
+        _positionDirectionMap = DirectionsInGridHelper.GetInitialPositionDirectionMap(NormalizedBombPosition, lineDirection);
     }
 
     protected override void FillBlocksToDestroySet()
@@ -23,7 +23,7 @@ public class LinearChainFinder : GridBlockFinder
             if (IsInGridRange(position))
             {
                 HasNextBlocks = true;
-                Block block = _blocksGrid[position.x, position.y];
+                Block block = BlocksGrid[position.x, position.y];
                 if (block != null)
                 {
                     AddToDestroySet(block);

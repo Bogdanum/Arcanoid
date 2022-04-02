@@ -3,14 +3,12 @@ using UnityEngine;
 
 public class SimpleBombExplosionProcessor : MonoBehaviour, IExplosionProcessor, IPauseHandler
 {
-    private GridOfBlocks _gridOfBlocks;
     private BombBonusConfig _config;
     private bool _isPaused;
 
-    public void Init(GridOfBlocks gridOfBlocks, BombBonusConfig config)
+    public void Init(BombBonusConfig config)
     {
         MessageBus.Subscribe(this);
-        _gridOfBlocks = gridOfBlocks;
         _config = config;
     }
 
@@ -48,10 +46,6 @@ public class SimpleBombExplosionProcessor : MonoBehaviour, IExplosionProcessor, 
     {
         var destructibleBlock = (DestructibleBlock)block;
         int damage = _config.Damage;
-        if (destructibleBlock.DamageLessThanLife(damage))
-        {
-            _gridOfBlocks.Add(block.transform.position, block);
-        }
         destructibleBlock.TakeDamage(damage);
     }
 

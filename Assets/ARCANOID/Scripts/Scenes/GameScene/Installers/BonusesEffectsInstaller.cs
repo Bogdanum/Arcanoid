@@ -26,7 +26,7 @@ public class BonusesEffectsInstaller : MonoInstaller
     private void InitBallBonusesControllers()
     {
         var rageBallBonusController = ballBonusesSettings.rageBallBonusStateController;
-        rageBallBonusController.Init(ballBonusesSettings.ballsOnSceneController, ballBonusesSettings.blocksOnSceneController, ballBonusesSettings.rageBallConfig);
+        rageBallBonusController.Init(ballBonusesSettings.ballsOnSceneController, ballBonusesSettings.rageBallConfig);
         var ballSpeedBonusController = ballBonusesSettings.ballSpeedBonusStateController;
         ballSpeedBonusController.Init(ballBonusesSettings.ballsOnSceneController, ballBonusesSettings.speedConfig);
         var hiddenBallBonusProcessor = ballBonusesSettings.hiddenBallBonusProcessor;
@@ -62,7 +62,6 @@ public class BonusesEffectsInstaller : MonoInstaller
     internal class BallBonusesSettings
     {
         public BallsOnSceneController ballsOnSceneController;
-        public BlocksOnSceneController blocksOnSceneController;
         [Header("Rage bonus")]
         public RageBallBonusStateController rageBallBonusStateController;
         public SimpleTemporaryBonusConfig rageBallConfig;

@@ -3,7 +3,7 @@ using UnityEngine;
 
 public static class DirectionsInGridHelper
 {
-    public static readonly List<Vector2Int> _allDirections = new List<Vector2Int>()
+    public static readonly List<Vector2Int> AllDirections = new List<Vector2Int>()
     {
         Vector2Int.up, 
         Vector2Int.left, 
@@ -15,7 +15,7 @@ public static class DirectionsInGridHelper
         new Vector2Int(1, -1)
     };
 
-    public static readonly List<Vector2Int> _wasdDirections = new List<Vector2Int>()
+    public static readonly List<Vector2Int> WasdDirections = new List<Vector2Int>()
     {
         Vector2Int.up,
         Vector2Int.left,
