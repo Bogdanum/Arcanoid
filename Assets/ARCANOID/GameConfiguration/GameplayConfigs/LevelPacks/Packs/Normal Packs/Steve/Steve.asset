@@ -17,7 +17,12 @@ MonoBehaviour:
   - {fileID: 4900000, guid: 8025eab760a3d44719ae605c2c55ae05, type: 3}
   - {fileID: 4900000, guid: a2fb5563dd5e141a69b306978b797515, type: 3}
   - {fileID: 4900000, guid: 23166aa41786e4ed6bd04d6990771e2d, type: 3}
+  - {fileID: 4900000, guid: 7be42de0f55a2425dac0506d1fcd5cb0, type: 3}
   - {fileID: 4900000, guid: 1fbd7a95968e5456ab4aa411c5a60a93, type: 3}
+  - {fileID: 4900000, guid: d17284c52a35843989ebe3d5a59fb35f, type: 3}
+  - {fileID: 4900000, guid: fd4e5d467b3464a3a8c87a6d33616f2e, type: 3}
+  - {fileID: 4900000, guid: bf43452d2e49e4ea3874bb56261a7922, type: 3}
+  - {fileID: 4900000, guid: c5072b8bf83784eb48a49f7febab51b6, type: 3}
   icon: {fileID: 21300000, guid: 54ec7dd6c7519428682d7efb3c1d2252, type: 3}
   gameBackground: {fileID: 21300000, guid: 0c964d5fd7a2c4cc1993cf3cd0b4044a, type: 3}
   packButtonBackground: {fileID: 21300000, guid: 7b941e6c8c0944665b53ea282dcd5938, type: 3}

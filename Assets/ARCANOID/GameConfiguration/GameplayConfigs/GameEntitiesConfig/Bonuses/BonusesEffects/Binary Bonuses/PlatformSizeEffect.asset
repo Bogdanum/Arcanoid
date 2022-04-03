@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab53b27f4d624e53beb1419ec7ac9440, type: 3}
   m_Name: PlatformSizeEffect
   m_EditorClassIdentifier: 
-  bonusEffectTime: 3
+  bonusEffectTime: 6
   effectStep: 0.1
   min: -0.2
   max: 0.2
