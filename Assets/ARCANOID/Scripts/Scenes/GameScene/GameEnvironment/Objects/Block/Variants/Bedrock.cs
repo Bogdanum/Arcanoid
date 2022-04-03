@@ -14,7 +14,7 @@ public class Bedrock : Block
 
     public void SetInitialParams()
     {
-        _properties.Init();
+        _properties.Init(BlockRendererParamsID.Bedrock);
         var rendererParams = _properties.GetBlockRendererParamsByID(BlockRendererParamsID.Bedrock);
         mainSpriteRenderer.SetSprite(rendererParams.mainSprite);
         blockParticleSystem.SetColor(rendererParams.mainColor, rendererParams.accentColor);

@@ -6,7 +6,6 @@ public class BlockPropertiesParser
         (
             (BlockType)tileProperties.TileType, 
             (BlockRendererParamsID)tileProperties.TileRenderer,
-            tileProperties.CustomHealth,
             (BonusId)tileProperties.TileBonus
         );
     }

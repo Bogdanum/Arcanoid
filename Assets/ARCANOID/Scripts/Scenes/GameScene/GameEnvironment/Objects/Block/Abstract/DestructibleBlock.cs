@@ -15,13 +15,13 @@ public abstract class DestructibleBlock : Block
         cracksRenderer.Init(_designProps.BlockHealth);
     }
 
-    public virtual void SetInitialParams(BlockRendererParamsID paramsID, int customHealth)
+    public virtual void SetInitialParams(BlockRendererParamsID paramsID)
     {
         blockCollider.Enable();
-        _healthPoints = customHealth > 0 ? customHealth : _designProps.BlockHealth.DefaultHealth;
-        _designProps.Init(_healthPoints);
         cracksRenderer.Refresh();
+        _designProps.Init(paramsID);
         var rendererParams = _designProps.GetBlockRendererParamsByID(paramsID);
+        _healthPoints = rendererParams.blockHealth > 0 ? rendererParams.blockHealth : _designProps.BlockHealth.DefaultHealth;
         mainSpriteRenderer.SetSprite(rendererParams.mainSprite);
         blockParticleSystem.SetColor(rendererParams.mainColor, rendererParams.accentColor);
         blockParticleSystem.SetSize(transform.localScale);

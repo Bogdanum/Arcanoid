@@ -30,5 +30,4 @@ public struct TilesetTokens
     public string TypeName;
     public string SpriteName;
     public string BonusName;
-    public string CustomHealthName;
 }

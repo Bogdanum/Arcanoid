@@ -8,9 +8,9 @@ public class SimpleBlock : DestructibleBlock
         Type = BlockType.Simple;
     }
 
-    public override void SetInitialParams(BlockRendererParamsID paramsID, int customHealth)
+    public override void SetInitialParams(BlockRendererParamsID paramsID)
     {
-        base.SetInitialParams(paramsID, customHealth);
+        base.SetInitialParams(paramsID);
         ParamsID = paramsID;
     }
 

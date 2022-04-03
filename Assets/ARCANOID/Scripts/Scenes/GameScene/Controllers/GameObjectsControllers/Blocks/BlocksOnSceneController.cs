@@ -20,11 +20,6 @@ public class BlocksOnSceneController : MonoBehaviour, IBlockLifecycleHandler, IC
 
     public void OnDestructibleBlockSpawned() => _blocksOnSceneCount++;
 
-    public List<T> GetBlocksOnSceneList<T>() where T : Block
-    {
-        return _blockSpawnerController.GetBlocks<T>();
-    }
-
     public void OnGetBlockParams(Vector3 position, Vector3 size, Transform parent, BlockProperties properties)
     {
         var block = _blockSpawnerController.GetSpawnedBlock(properties, position, size, parent);
@@ -68,7 +63,6 @@ public class BlocksOnSceneController : MonoBehaviour, IBlockLifecycleHandler, IC
     }
     
     public void OnPrepare() {}
-    
     public void OnContinueGame() {}
     public void OnEndGame() {}
 }

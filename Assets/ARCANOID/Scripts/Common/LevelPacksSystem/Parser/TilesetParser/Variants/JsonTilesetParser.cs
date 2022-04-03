@@ -51,10 +51,6 @@ public class JsonTilesetParser : ITilesetParser<TileProperties>
             {
                 tileProps.TileBonus = propValue;
             }
-            else if (propName == tilesetTokens.CustomHealthName)
-            {
-                tileProps.CustomHealth = propValue;
-            }
         }
         return tileProps;
     }
