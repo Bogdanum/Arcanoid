@@ -9,6 +9,7 @@ public class EnergyFxAnimator : MonoBehaviour
     [SerializeField] private Transform fxContainer;
     [SerializeField] private RectTransform target;
     private PoolsManager _poolsManager;
+    private bool _isPlaing;
 
     [Inject]
     public void Init(PoolsManager poolsManager)
@@ -18,11 +19,14 @@ public class EnergyFxAnimator : MonoBehaviour
     
     public void Play(Vector3 startPosition, TweenCallback onComplete = null)
     {
+        if (_isPlaing) return;
+        
         StartCoroutine(AnimationProcess(startPosition, onComplete));
     }
 
     private IEnumerator AnimationProcess(Vector3 startPosition, TweenCallback onComplete = null)
     {
+        _isPlaing = true;
         for (int i = 0; i < energyFxConfig.EntitiesCount; i++)
         {
             yield return new WaitForSeconds(energyFxConfig.DelayBetweenEntities);
@@ -32,12 +36,10 @@ public class EnergyFxAnimator : MonoBehaviour
             if (fxEntity == null) continue;
             
             fxEntity.SetRectParams(randomStartPosition, energyFxConfig.FxEntitySize, fxContainer);
-            fxEntity.Play(target, energyFxConfig.EntityFlightDuration, energyFxConfig.MoveEaseType, () =>
-            {
-                ReturnToPool(fxEntity);
-            });
+            fxEntity.Play(target, energyFxConfig, () => ReturnToPool(fxEntity));
         }
         onComplete?.Invoke();
+        _isPlaing = false;
     }
 
     private Vector2 GetRandomStartPosition(Vector2 startPosition)

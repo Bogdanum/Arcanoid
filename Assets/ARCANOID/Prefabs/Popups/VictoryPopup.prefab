@@ -738,7 +738,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3dd9b5fd47de4c5bbd16b394b6df6502, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvasGroup: {fileID: 7854036413974272723}
+  canvasGroup: {fileID: 0}
 --- !u!1 &1010830652017207107
 GameObject:
   m_ObjectHideFlags: 0
@@ -1287,7 +1287,6 @@ GameObject:
   - component: {fileID: 8155832149705469349}
   - component: {fileID: 8316109893658130629}
   - component: {fileID: 3967520780224986849}
-  - component: {fileID: 7854036413974272723}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -1396,18 +1395,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01f9ad8fd99a4023917713dccc816b72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!225 &7854036413974272723
-CanvasGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5776110144836797879}
-  m_Enabled: 1
-  m_Alpha: 1
-  m_Interactable: 1
-  m_BlocksRaycasts: 1
-  m_IgnoreParentGroups: 0
 --- !u!1 &6841861030930096068
 GameObject:
   m_ObjectHideFlags: 0

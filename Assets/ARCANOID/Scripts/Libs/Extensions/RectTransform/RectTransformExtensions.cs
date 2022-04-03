@@ -8,4 +8,10 @@ public static class RectTransformExtensions
         rectTransform.localScale = Vector3.one;
         rectTransform.sizeDelta = Vector2.zero;
     }
+
+    public static void SetLocalPositionAndRotation(this RectTransform rectTransform, Vector3 localPosition, Quaternion rotation)
+    {
+        rectTransform.localPosition = localPosition;
+        rectTransform.rotation = rotation;
+    }
 }

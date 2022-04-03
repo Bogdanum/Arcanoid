@@ -29,8 +29,9 @@ public class PackProgressViewController : MonoBehaviour
         packIcon.Init(current, max);
     }
 
-    public void OnPrepareView()
+    public void InitSizes()
     {
+        continueButtonScaler.Stop();
         continueButtonScaler.transform.localScale = Vector3.zero;
     }
 
@@ -42,7 +43,7 @@ public class PackProgressViewController : MonoBehaviour
         });
     }
 
-    public void PlayAnimationOfGettingApples(TweenCallback onComplete = null)
+    private void PlayAnimationOfGettingApples(TweenCallback onComplete = null)
     {
         energyFxAnimator.Play(fxStartPoint.localPosition, onComplete);
     }

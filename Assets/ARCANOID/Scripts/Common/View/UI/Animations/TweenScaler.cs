@@ -23,11 +23,13 @@ public class TweenScaler : MonoBehaviour
         _tween = transform.DOScale(endValue, duration).SetDelay(delay).SetEase(ease);
     }
 
+    public void Stop() => CheckTween();
+
     private void CheckTween()
     {
         if (_tween != null)
         {
-            _tween.Kill(false);
+            _tween.Kill();
         }
     }
 }

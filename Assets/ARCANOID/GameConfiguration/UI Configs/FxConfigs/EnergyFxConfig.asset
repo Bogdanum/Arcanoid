@@ -15,6 +15,7 @@ MonoBehaviour:
   fxEntitySize: {x: 120, y: 120}
   moveEaseType: 28
   entityFlightDuration: 1
-  entitiesCount: 5
+  entitiesCount: 6
   delayBetweenEntities: 0.1
   maxDistanceBetweenEntities: 100
+  maxRotationAngle: 540

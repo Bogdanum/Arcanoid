@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -37,4 +38,19 @@ public class GridOfBlocks : MonoBehaviour
     public Block[,] GetGrid() => _grid;
 
     public Vector2Int GetNormalizedBlockPosition(Vector2 blockPosition) => _normalizedBlockLayouts[blockPosition];
+    
+    #if UNITY_EDITOR
+
+    public void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            foreach (var block in _grid)
+            {
+                block?.Destroy();
+            }
+        }
+    }
+
+#endif
 }

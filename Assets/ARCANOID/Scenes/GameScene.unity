@@ -3528,7 +3528,6 @@ MonoBehaviour:
     speedConfig: {fileID: 11400000, guid: 0526ca4dda7994083906c86c77855e5b, type: 2}
   ballBonusesSettings:
     ballsOnSceneController: {fileID: 820740115}
-    blocksOnSceneController: {fileID: 1011763912}
     rageBallBonusStateController: {fileID: 243354197}
     rageBallConfig: {fileID: 11400000, guid: 8cf4e2e727d574c3f83963f597d41143, type: 2}
     ballSpeedBonusStateController: {fileID: 597565188}

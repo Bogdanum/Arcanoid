@@ -21,11 +21,6 @@ public class VictoryPopup : BaseAnimatedPopup, IPackActionHandler
         InitProgressView();
     }
 
-    protected override void PrepareToShow()
-    {
-        packProgressViewController.OnPrepareView();
-    }
-
     private void OnDisable() => InitProgressView();
 
     public void OnChoosingAnotherPack()
@@ -37,6 +32,7 @@ public class VictoryPopup : BaseAnimatedPopup, IPackActionHandler
     {
         _cachedPackInfo = _levelPacksManager.GetCurrentPackInfo();
         if (_cachedPackInfo == null) return;
+        packProgressViewController.InitSizes();
         packProgressViewController.SetPackIcon(_cachedPackInfo.Pack.Icon);
         packProgressViewController.SetNextPackName(_cachedPackInfo.Pack.PackID);
         packProgressViewController.InitProgressValues(_cachedPackInfo.CurrentLevel , _cachedPackInfo.Pack.Count + 1);
@@ -59,7 +55,7 @@ public class VictoryPopup : BaseAnimatedPopup, IPackActionHandler
                 packProgressViewController.UpdateProgressAnimate(levelsCount + 1, PlayCompletePackAnimation);
             } else
             {
-                packProgressViewController.UpdateProgressAnimate(currentPackInfo.CurrentLevel, PlayAnimationOfGettingApples);
+                packProgressViewController.UpdateProgressAnimate(currentPackInfo.CurrentLevel, AddEnergyForWinning);
             } 
             return;
         }
@@ -75,12 +71,7 @@ public class VictoryPopup : BaseAnimatedPopup, IPackActionHandler
             AddEnergyForWinning();
         });
     }
-
-    private void PlayAnimationOfGettingApples()
-    {
-        packProgressViewController.PlayAnimationOfGettingApples(AddEnergyForWinning);
-    }
-
+    
     private void AddEnergyForWinning()
     {
         _energyManager.AddEnergyForAction(ActionWithEnergy.Victory);

@@ -10,6 +10,7 @@ public class EnergyFxConfig : ScriptableObject
     [SerializeField] private int entitiesCount;
     [SerializeField] private float delayBetweenEntities;
     [SerializeField] private float maxDistanceBetweenEntities;
+    [SerializeField] private float maxRotationAngle;
 
     public Vector2 FxEntitySize => fxEntitySize;
     public Ease MoveEaseType => moveEaseType;
@@ -17,4 +18,5 @@ public class EnergyFxConfig : ScriptableObject
     public int EntitiesCount => entitiesCount;
     public float DelayBetweenEntities => delayBetweenEntities;
     public float MaxDistanceBetweenEntities => maxDistanceBetweenEntities;
+    public float MaxRotationAngle => maxRotationAngle;
 }
