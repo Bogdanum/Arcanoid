@@ -4,19 +4,19 @@ using System.Linq;
 
 public static class MessageBus
 {
-    private static Dictionary<Type, SubscribersList<ISubscriber>> subscribers = new Dictionary<Type, SubscribersList<ISubscriber>>();
-    private static Dictionary<Type, List<Type>> cachedSubscriberTypes = new Dictionary<Type, List<Type>>();
+    private static readonly Dictionary<Type, SubscribersList<ISubscriber>> Subscribers = new Dictionary<Type, SubscribersList<ISubscriber>>();
+    private static readonly Dictionary<Type, List<Type>> CachedSubscriberTypes = new Dictionary<Type, List<Type>>();
 
     public static void Subscribe(ISubscriber subscriber)
     {
         List<Type> subscriberTypes = GetSubscriberTypes(subscriber);
         foreach (Type t in subscriberTypes)
         {
-            if (!subscribers.ContainsKey(t))
+            if (!Subscribers.ContainsKey(t))
             {
-                subscribers[t] = new SubscribersList<ISubscriber>();
+                Subscribers[t] = new SubscribersList<ISubscriber>();
             }
-            subscribers[t].Add(subscriber);
+            Subscribers[t].Add(subscriber);
         }
     }
 
@@ -25,8 +25,8 @@ public static class MessageBus
         List<Type> subscriberTypes = GetSubscriberTypes(subscriber);
         foreach (Type t in subscriberTypes)
         {
-            if (subscribers.ContainsKey(t))
-                subscribers[t].Remove(subscriber);
+            if (Subscribers.ContainsKey(t))
+                Subscribers[t].Remove(subscriber);
         }
     }
 
@@ -34,9 +34,9 @@ public static class MessageBus
     {
         var type = typeof(T);
             
-        if (!subscribers.ContainsKey(type)) return;
+        if (!Subscribers.ContainsKey(type)) return;
             
-        SubscribersList<ISubscriber> subscribersList = subscribers[type];
+        SubscribersList<ISubscriber> subscribersList = Subscribers[type];
 
         subscribersList.IsExecuting = true;
         foreach (ISubscriber subscriber in subscribersList.List)
@@ -50,12 +50,12 @@ public static class MessageBus
     private static List<Type> GetSubscriberTypes(ISubscriber globalSubscriber)
     {
         Type type = globalSubscriber.GetType();
-        if (cachedSubscriberTypes.ContainsKey(type))
+        if (CachedSubscriberTypes.ContainsKey(type))
         {
-            return cachedSubscriberTypes[type];
+            return CachedSubscriberTypes[type];
         }
         List<Type> subscriberTypes = GetListOfSubTypes(type);
-        cachedSubscriberTypes[type] = subscriberTypes;
+        CachedSubscriberTypes[type] = subscriberTypes;
         
         return subscriberTypes;
     }

@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 internal class SubscribersList<T> where T : class
 {
-    private bool _containsNull = false;
+    private bool _containsNull;
 
     public bool IsExecuting;
 

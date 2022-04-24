@@ -62,10 +62,11 @@ public class EnergyRestoreProcessor : MonoBehaviour
     {
         var timeIntervalAfterSaving = DateTime.Now.Subtract(savedEnergyProgress.SaveTime);
         var remainingTimerSeconds = savedEnergyProgress.RecoveryProgress * _config.TimeToRestoreStep;
-        var elapsedTimeAfterSaving = timeIntervalAfterSaving.TotalSeconds + remainingTimerSeconds;
-        int energyValue = (int)(_config.EnergyPerStep * (int)elapsedTimeAfterSaving / _config.TimeToRestoreStep);
-        _nextRestoreTime = DateTime.Now.AddSeconds(remainingTimerSeconds - _config.TimeToRestoreStep);
+        var timerProgress = _config.TimeToRestoreStep - remainingTimerSeconds;
+        var elapsedTimeAfterSaving = timeIntervalAfterSaving.TotalSeconds + timerProgress;
+        var energyValue = _config.EnergyPerStep * elapsedTimeAfterSaving / _config.TimeToRestoreStep;
+        _nextRestoreTime = DateTime.Now.AddSeconds(-energyValue % 1 * _config.TimeToRestoreStep);
         _hasOfflineProgress = true;
-        return energyValue;
+        return (int)energyValue;
     }
 }

@@ -1,13 +1,12 @@
 using System.Collections.Generic;
-using UnityEngine;
 
 public class TranslationsStorage : ITranslationsStorage
 {
     private Dictionary<string, string> _translationsDictionary;
     private ILanguageParser _languageParser;
-    private LanguageParserConfig _parserConfig;
-    private StoredDataManager _storedDataManager;
     private LanguagesEnums.Language _currentLanguage;
+    private readonly LanguageParserConfig _parserConfig;
+    private readonly StoredDataManager _storedDataManager;
 
     public TranslationsStorage(LanguageParserConfig parserConfig, StoredDataManager storedDataManager)
     {
