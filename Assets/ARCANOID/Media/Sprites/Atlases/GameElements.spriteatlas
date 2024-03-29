@@ -1,0 +1,155 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: GameElements
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 0
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 0
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    - serializedVersion: 3
+      m_BuildTarget: iPhone
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: 48
+      m_TextureCompression: 1
+      m_CompressionQuality: 100
+      m_CrunchedCompression: 0
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 1
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    - serializedVersion: 3
+      m_BuildTarget: Android
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: 48
+      m_TextureCompression: 1
+      m_CompressionQuality: 100
+      m_CrunchedCompression: 0
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 1
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 8
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 0
+      enableTightPacking: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: 1c783ce3b99a94ff4916585d2bd26bb4, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 4d3441507e3e946f3962c9beab585d90, type: 3}
+  - {fileID: 21300000, guid: 15e69770ebb064e11a4cbdf4ea7b2ba7, type: 3}
+  - {fileID: 21300000, guid: 6e341fc091fd544ef92bdea11eca9769, type: 3}
+  - {fileID: 21300000, guid: c4999dd06ff534305b4eaa8fd640d3e4, type: 3}
+  - {fileID: 21300000, guid: 879c6302888c047dba642337c4c4694b, type: 3}
+  - {fileID: 21300000, guid: 6f4006321775248cbb5b88c82f613c8a, type: 3}
+  - {fileID: 21300000, guid: d07d46326b7924480a26991a06e3f4e4, type: 3}
+  - {fileID: 21300000, guid: 98c10c726690b49a3b0b6144fe0f2bc0, type: 3}
+  - {fileID: 21300000, guid: dbc62fa2e312441e38a947205f7c3f5c, type: 3}
+  - {fileID: 21300000, guid: 75e094d28007a46cf8bffbd406809e5f, type: 3}
+  - {fileID: 21300000, guid: 66073903ba1d642778480e6d284f0e92, type: 3}
+  - {fileID: 21300000, guid: cd93f134457164ec39a606883d9b4caa, type: 3}
+  - {fileID: 21300000, guid: 95705a74f3e084a339768135a8512f06, type: 3}
+  - {fileID: 21300000, guid: 9b49f0d4d11784b31ad9b3de13521c60, type: 3}
+  - {fileID: 21300000, guid: 2e27c04565c8b430e95dbcd853a03c50, type: 3}
+  - {fileID: 21300000, guid: f1f35db51b52a40119d0a1546919c101, type: 3}
+  - {fileID: 21300000, guid: 75d24a16e935f453480b45455dba453f, type: 3}
+  - {fileID: 21300000, guid: c2d7ed163408d4563bba8c03ee87db71, type: 3}
+  - {fileID: 21300000, guid: 30345386b632a4593a1331d30670fe63, type: 3}
+  - {fileID: 21300000, guid: 3ff081a6196bb4c8d81b553851644cba, type: 3}
+  - {fileID: 21300000, guid: 06b6f3f652b5a4145913b56a4a069dec, type: 3}
+  - {fileID: 21300000, guid: 6b8c9767a4ad942609d2fbd76b2457f0, type: 3}
+  - {fileID: 21300000, guid: 03b574f7d106c440897eb99abe68c900, type: 3}
+  - {fileID: 21300000, guid: bcf3b5f85b6034254b3c2c63020e820e, type: 3}
+  - {fileID: 21300000, guid: 5a386aa9e72a84df48dcc50ddf3ec485, type: 3}
+  - {fileID: 21300000, guid: de5be3c94b6004f37ba69aa3dc75c2e4, type: 3}
+  - {fileID: 21300000, guid: 74a86fc96e9a6419b8a48f64961e8683, type: 3}
+  - {fileID: 21300000, guid: 37bf8ef9061284cedb8c5b93ef0207b2, type: 3}
+  - {fileID: 21300000, guid: 8f8b0d1ac784b4d4fafaf5dc697ad311, type: 3}
+  - {fileID: 21300000, guid: d6a29f8a118a346b8814b899b13e501a, type: 3}
+  - {fileID: 21300000, guid: 8718a9eb640fd4e2b9d62e402e4ac73c, type: 3}
+  - {fileID: 21300000, guid: 7b941e6c8c0944665b53ea282dcd5938, type: 3}
+  - {fileID: 21300000, guid: c8163a7ceabc3426791d6fdf5e867dc2, type: 3}
+  - {fileID: 21300000, guid: 61500ecdfa33b4980bbae4fd69e05fe8, type: 3}
+  - {fileID: 21300000, guid: e0a2990efa8614c9d9aca3fadfd1f9b4, type: 3}
+  - {fileID: 21300000, guid: 10eeee4ebe8834a428dad397c985d53f, type: 3}
+  - {fileID: 21300000, guid: 5dca726e1eac84b8b8015c28d4741d61, type: 3}
+  - {fileID: 21300000, guid: b78ce4de840cd4c05bbb34267efbc1ec, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - ColorTNT
+  - OakLog
+  - BlackLabel
+  - bed2
+  - oakLogVertical
+  - slimeBall
+  - PlatformSpeedIncrease
+  - fireBall
+  - PlatformSpeedDecrease
+  - endStone
+  - PlatformSizeDecrease
+  - IronOre
+  - DiamondOre
+  - leaves
+  - slimeBlock
+  - CryingObsidian
+  - Stone
+  - BallAcceleration
+  - cracks3
+  - Bedrock
+  - RedstoneOre
+  - PlatformSizeIncrease
+  - EmeraldOre
+  - RageBall
+  - BallDeceleration
+  - Furnace
+  - glass
+  - TntBG
+  - Tnt
+  - cracks2
+  - Dirt
+  - grass
+  - VerticalTnt
+  - HorizontalTnt
+  - cracks1
+  - WhiteBounsBase
+  - GoldOre
+  - SourceOfLife
+  m_RenderDataMap: {}
+  m_Tag: GameElements
+  m_IsVariant: 0
