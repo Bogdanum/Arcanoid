@@ -3,8 +3,8 @@ using Newtonsoft.Json;
 
 public class JsonTranslationParser : ILanguageParser
 {
-     private JsonParserConfig _parserConfig;
-     private LanguagesEnums.Language _currentLanguage;
+     private readonly JsonParserConfig _parserConfig;
+     private readonly LanguagesEnums.Language _currentLanguage;
      
      public JsonTranslationParser(JsonParserConfig parserConfig, LanguagesEnums.Language currentLanguage)
      {
