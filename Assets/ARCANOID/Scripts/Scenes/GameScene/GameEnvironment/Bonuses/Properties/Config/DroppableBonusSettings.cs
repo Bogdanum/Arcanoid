@@ -6,6 +6,7 @@ using UnityEngine;
 public class DroppableBonusSettings : ScriptableObject
 {
     [SerializeField] private float limitPositionY = -10;
+    [SerializeField] private bool visibleBonusRenderer;
     [SerializeField] private BonusParams[] allBonusParams;
     
     private Dictionary<BonusId, Settings> _settingsMap;
@@ -21,7 +22,8 @@ public class DroppableBonusSettings : ScriptableObject
         }
     }
 
-    public Sprite GetSprite(BonusId bonusId) => _settingsMap[bonusId].bonusSprite;
+    public Sprite GetSprite(BonusId bonusId) => visibleBonusRenderer 
+        ? _settingsMap[bonusId].bonusSprite : null;
 
     public Settings GetDroppableBonusSettings(BonusId bonusId) => _settingsMap[bonusId];
 
